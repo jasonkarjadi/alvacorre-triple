@@ -1,0 +1,30 @@
+{
+  "name": "alvacorre-web",
+  "version": "1.0.0",
+  "description": "Language encyclopedia built using Three, Next, and Chakra",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "keywords": [
+    "globe",
+    "language"
+  ],
+  "author": "Jason Karjadi",
+  "license": "ISC",
+  "dependencies": {
+    "@chakra-ui/react": "^1.6.8",
+    "framer-motion": "^4.1.17",
+    "glslify-loader": "^2.0.0",
+    "next": "^11.1.2",
+    "three": "^0.132.2"
+  },
+  "devDependencies": {
+    "@types/node": "^16.10.1",
+    "@types/react": "^17.0.24",
+    "@types/three": "^0.132.1",
+    "typescript": "^4.4.3"
+  }
+}
