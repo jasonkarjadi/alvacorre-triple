@@ -21,7 +21,7 @@ import {
   atmVertexShader,
   fragmentShader,
   vertexShader,
-} from "../components/shaders";
+} from "../shaders";
 
 const Index: FC = () => {
   const itemARef = useRef(""),
