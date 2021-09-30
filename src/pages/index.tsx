@@ -190,7 +190,7 @@ const Index: FC = () => {
           }
         />
         <Center bg="gray" h="full" flex={1}>
-          Select a Locale
+          {isLocaleMode ? "Select a Locale" : "Select a Language"}
         </Center>
         <SqrBtn
           ariaLabel="filter"

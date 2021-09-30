@@ -1,11 +1,12 @@
 import { Icon } from "@chakra-ui/react";
+import { FC } from "react";
 
 interface SetIconProps {
   viewBox: string;
   dataIcon?: string;
 }
 
-const SetIcon: React.FC<SetIconProps> = ({ children, viewBox, dataIcon }) => {
+const SetIcon: FC<SetIconProps> = ({ children, viewBox, dataIcon }) => {
   return (
     <Icon
       aria-hidden="true"

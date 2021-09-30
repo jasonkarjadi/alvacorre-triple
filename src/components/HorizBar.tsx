@@ -1,10 +1,11 @@
 import { HStack } from "@chakra-ui/react";
+import { FC } from "react";
 
 interface HorizBarProps {
   isTop: boolean;
 }
 
-const HorizBar: React.FC<HorizBarProps> = ({ children, isTop }) => {
+const HorizBar: FC<HorizBarProps> = ({ children, isTop }) => {
   return (
     <HStack
       w="full"
