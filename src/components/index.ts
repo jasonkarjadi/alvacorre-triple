@@ -1,5 +1,6 @@
-import HorizBar from "./HorizBar";
-import SetIcon from "./setIcon";
-import SqrBtn from "./SqrBtn";
+import HrzBar from "./HrzBar";
+import SqrBtn, { SqrBtnProps } from "./SqrBtn";
+import VrtBtnStack from "./VrtBtnStack";
 
-export { HorizBar, SqrBtn, SetIcon };
+export { HrzBar, SqrBtn, VrtBtnStack };
+export type { SqrBtnProps };

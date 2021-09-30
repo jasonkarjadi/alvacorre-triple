@@ -1,14 +1,30 @@
-import { Square, IconButton } from "@chakra-ui/react";
-import { ReactElement, JSXElementConstructor, FC } from "react";
+import { Icon, IconButton, Square } from "@chakra-ui/react";
+import { FC } from "react";
 
-interface SqrBtnProps {
+export interface SqrBtnProps {
   ariaLabel: string;
-  icon: ReactElement<any, string | JSXElementConstructor<any>>;
+  viewBox: string;
+  pathD: string;
 }
 
-const SqrBtn: FC<SqrBtnProps> = ({ ariaLabel, icon }) => {
+const SqrBtn: FC<SqrBtnProps> = ({ ariaLabel, viewBox, pathD }) => {
   return (
-    <Square as={IconButton} size={14} aria-label={ariaLabel} icon={icon} />
+    <Square
+      as={IconButton}
+      size={14}
+      aria-label={ariaLabel}
+      icon={
+        <Icon
+          aria-hidden="true"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          boxSize={10}
+          viewBox={viewBox}
+        >
+          <path d={pathD} />
+        </Icon>
+      }
+    />
   );
 };
 
