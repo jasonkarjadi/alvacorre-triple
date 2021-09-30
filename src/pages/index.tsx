@@ -167,7 +167,7 @@ const Index: FC = () => {
 
   return (
     <>
-      <HorizBar top={3}>
+      <HorizBar isTop={true}>
         <Box h="full" border="gray dashed 1px" flex={1}></Box>
         <Box h="full" border="gray dashed 1px" flex={1}></Box>
       </HorizBar>
@@ -177,7 +177,7 @@ const Index: FC = () => {
         onMouseMove={setMouseVector}
         onMouseDown={setPointRaycaster}
       />
-      <HorizBar bottom={3}>
+      <HorizBar isTop={false}>
         <SqrBtn
           ariaLabel="localer"
           icon={
