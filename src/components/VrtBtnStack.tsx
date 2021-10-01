@@ -1,27 +1,17 @@
 import { VStack } from "@chakra-ui/react";
 import { FC } from "react";
-import { SqrBtn, SqrBtnProps } from "./";
+import { SqrBtn, SqrBtnProps } from ".";
 
 interface VrtBtnStackProps {
-  MainBtn: SqrBtnProps;
   BtnArr: SqrBtnProps[];
 }
 
-const VrtBtnStack: FC<VrtBtnStackProps> = ({
-  BtnArr,
-  MainBtn: { ariaLabel, viewBox, pathD },
-}) => {
+const VrtBtnStack: FC<VrtBtnStackProps> = ({ BtnArr }) => {
   return (
     <VStack>
-      {BtnArr.map((Btn) => (
-        <SqrBtn
-          key={Btn.ariaLabel}
-          ariaLabel={Btn.ariaLabel}
-          viewBox={Btn.viewBox}
-          pathD={Btn.pathD}
-        />
+      {BtnArr.map((Btn, i) => (
+        <SqrBtn key={i} onClick={Btn.onClick} icon={Btn.icon} />
       ))}
-      <SqrBtn ariaLabel={ariaLabel} viewBox={viewBox} pathD={pathD} />
     </VStack>
   );
 };
