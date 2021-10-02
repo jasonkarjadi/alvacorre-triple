@@ -176,7 +176,7 @@ const Index: FC<IndexProps> = ({ points }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = () => {
+export const getStaticProps: GetStaticProps = async () => {
   const points = [
     {
       name: "INA",
