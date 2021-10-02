@@ -6,7 +6,6 @@ import {
   BackSide,
   Group,
   Mesh,
-  MeshBasicMaterial,
   PerspectiveCamera,
   Raycaster,
   Scene,
@@ -140,22 +139,15 @@ const Index: FC<IndexProps> = ({ points }) => {
       );
       setResize();
 
-      points.map((point) => {
-        const singlePoint = new Mesh(
-          new SphereGeometry(0.2, 50, 50),
-          new MeshBasicMaterial()
-        );
-        singlePoint.position.set(
-          radius * point.coords.x,
-          radius * point.coords.y,
-          radius * point.coords.z
-        );
-        singlePoint.name = point.name;
-        groupRef.current.add(singlePoint);
-        ptRef.current.push(singlePoint);
+      points.map(({ name, coords: { x, y, z } }) => {
+        const dot = new Mesh(new SphereGeometry(0.2));
+        dot.position.set(radius * x, radius * y, radius * z);
+        dot.name = name;
+        groupRef.current.add(dot);
+        ptRef.current.push(dot);
       });
     });
-  const ptRef = useRef<Mesh<SphereGeometry, MeshBasicMaterial>[]>([]);
+  const ptRef = useRef<Mesh[]>([]);
 
   return (
     <>
