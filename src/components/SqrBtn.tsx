@@ -1,9 +1,9 @@
 import { IconButton, Square } from "@chakra-ui/react";
-import { FC, ReactElement } from "react";
+import { FC, JSXElementConstructor, ReactElement } from "react";
 
 export interface SqrBtnProps {
   onClick: () => void;
-  icon: ReactElement;
+  icon: ReactElement<any, JSXElementConstructor<any>>;
 }
 
 const SqrBtn: FC<SqrBtnProps> = ({ onClick, icon }) => {
@@ -11,7 +11,7 @@ const SqrBtn: FC<SqrBtnProps> = ({ onClick, icon }) => {
     <Square
       as={IconButton}
       size={14}
-      aria-label={icon.type.name}
+      aria-label={icon.type.name.toLowerCase().replace("svg", "")}
       onClick={onClick}
       icon={icon}
     />
