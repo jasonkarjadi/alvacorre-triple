@@ -1,4 +1,5 @@
 import { Box, Center } from "@chakra-ui/react";
+import { GetStaticProps } from "next";
 import { FC, MouseEvent, useEffect, useRef, useState } from "react";
 import {
   AdditiveBlending,
@@ -24,10 +25,58 @@ import {
   vertexShader,
 } from "../shaders";
 
-const Index: FC = () => {
+interface Point {
+  name: string;
+  coords: { x: number; y: number; z: number };
+}
+
+interface IndexProps {
+  points: Point[];
+}
+
+const Index: FC<IndexProps> = ({ points }) => {
   const [isLocaleMode, setIsLocaleMode] = useState(true),
     [selected, setSelected] = useState(["", ""]),
     [radius, _] = useState(5);
+
+  const setResize = () => {
+      camRef.current.aspect = innerWidth / innerHeight;
+      camRef.current.updateProjectionMatrix();
+      rendRef.current!.setSize(innerWidth, innerHeight);
+    },
+    setMouseVector = (e: MouseEvent) => {
+      mouseRef.current.x = (e.clientX / innerWidth) * 2 - 1;
+      mouseRef.current.y = -(e.clientY / innerHeight) * 2 + 1;
+    },
+    tick = () => {
+      rayRef.current.setFromCamera(mouseRef.current, camRef.current);
+      if (rayRef.current.intersectObject(globeRef.current!).length > 0) {
+        ctrlRef.current!.autoRotate = false;
+      } else {
+        ctrlRef.current!.autoRotate = true;
+      }
+      ctrlRef.current!.update();
+      rendRef.current!.render(sceneRef.current, camRef.current);
+      requestAnimationFrame(tick);
+    };
+  const setPointRaycaster = () => {
+    rayRef.current.setFromCamera(mouseRef.current, camRef.current);
+    const intersects = rayRef.current.intersectObjects(ptRef.current);
+    if (intersects.length > 0) {
+      if (!selected[0]) {
+        setSelected([intersects[0].object.name, selected[1]]);
+      } else if (intersects[0].object.name !== selected[0]) {
+        if (!selected[1]) {
+          setSelected([selected[0], intersects[0].object.name]);
+        } else if (intersects[0].object.name !== selected[1]) {
+          setSelected([selected[0], intersects[0].object.name]);
+        }
+      }
+    }
+  };
+  const toggleIsLocaleMode = () => {
+    setIsLocaleMode(!isLocaleMode);
+  };
 
   useEffect(() => {
     requestRef.current = requestAnimationFrame(tick);
@@ -91,82 +140,22 @@ const Index: FC = () => {
       );
       setResize();
 
-      createPoint(
-        "INA",
-        0.9140165430070886,
-        -0.013775448070460912,
-        -0.4054429628687974
-      );
-      // Indonesia -0.7893, 113.9213
-      // 0.9140165430070886, -0.013775448070460912, -0.4054429628687974
-      createPoint(
-        "JPN",
-        0.5372766576225415,
-        0.5906732692963204,
-        -0.6020289711573246
-      );
-      // Japan 36.2048, 138.2529
-      // 0.5372766576225415, 0.5906732692963204, -0.6020289711573246
-      createPoint(
-        "ENG",
-        -0.034051759463686306,
-        0.822919263139182,
-        0.5671369887706965
-      );
-      // United Kingdom 55.3781, -3.436
-      // -0.034051759463686306, 0.822919263139182, 0.5671369887706965
+      points.map((point) => {
+        const singlePoint = new Mesh(
+          new SphereGeometry(0.2, 50, 50),
+          new MeshBasicMaterial()
+        );
+        singlePoint.position.set(
+          radius * point.coords.x,
+          radius * point.coords.y,
+          radius * point.coords.z
+        );
+        singlePoint.name = point.name;
+        groupRef.current.add(singlePoint);
+        ptRef.current.push(singlePoint);
+      });
     });
   const ptRef = useRef<Mesh<SphereGeometry, MeshBasicMaterial>[]>([]);
-
-  const setResize = () => {
-      camRef.current.aspect = innerWidth / innerHeight;
-      camRef.current.updateProjectionMatrix();
-      rendRef.current!.setSize(innerWidth, innerHeight);
-    },
-    setMouseVector = (e: MouseEvent) => {
-      mouseRef.current.x = (e.clientX / innerWidth) * 2 - 1;
-      mouseRef.current.y = -(e.clientY / innerHeight) * 2 + 1;
-    },
-    tick = () => {
-      rayRef.current.setFromCamera(mouseRef.current, camRef.current);
-      if (rayRef.current.intersectObject(globeRef.current!).length > 0) {
-        ctrlRef.current!.autoRotate = false;
-      } else {
-        ctrlRef.current!.autoRotate = true;
-      }
-      ctrlRef.current!.update();
-      rendRef.current!.render(sceneRef.current, camRef.current);
-      requestAnimationFrame(tick);
-    };
-  const createPoint = (name: string, x: number, y: number, z: number) => {
-      const point = new Mesh(
-        new SphereGeometry(0.2, 50, 50),
-        new MeshBasicMaterial()
-      );
-      const radCoord = (coord: number) => radius * coord;
-      point.position.set(radCoord(x), radCoord(y), radCoord(z));
-      point.name = name;
-      groupRef.current.add(point);
-      ptRef.current.push(point);
-    },
-    setPointRaycaster = () => {
-      rayRef.current.setFromCamera(mouseRef.current, camRef.current);
-      const intersects = rayRef.current.intersectObjects(ptRef.current);
-      if (intersects.length > 0) {
-        if (!selected[0]) {
-          setSelected([intersects[0].object.name, selected[1]]);
-        } else if (intersects[0].object.name !== selected[0]) {
-          if (!selected[1]) {
-            setSelected([selected[0], intersects[0].object.name]);
-          } else if (intersects[0].object.name !== selected[1]) {
-            setSelected([selected[0], intersects[0].object.name]);
-          }
-        }
-      }
-    };
-  const toggleIsLocaleMode = () => {
-    setIsLocaleMode(!isLocaleMode);
-  };
 
   return (
     <>
@@ -193,6 +182,41 @@ const Index: FC = () => {
       </HrzBar>
     </>
   );
+};
+
+export const getStaticProps: GetStaticProps = () => {
+  const points = [
+    {
+      name: "INA",
+      coords: {
+        x: 0.9140165430070886,
+        y: -0.013775448070460912,
+        z: -0.4054429628687974,
+      },
+    },
+    {
+      name: "JPN",
+      coords: {
+        x: 0.5372766576225415,
+        y: 0.5906732692963204,
+        z: -0.6020289711573246,
+      },
+    },
+    {
+      name: "ENG",
+      coords: {
+        x: -0.034051759463686306,
+        y: 0.822919263139182,
+        z: 0.5671369887706965,
+      },
+    },
+  ];
+
+  return {
+    props: {
+      points,
+    },
+  };
 };
 
 export default Index;
