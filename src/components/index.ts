@@ -1,7 +1,5 @@
-import FilterSVG from "./FilterSVG";
 import HrzBar from "./HrzBar";
-import LocalerSVG from "./LocalerSVG";
-import SclrVctrGrphc from "./SclrVctrGrphc";
+import SclrVctrGrphc, { FilterSVG, LocalerSVG } from "./SclrVctrGrphc";
 import SqrBtn, { SqrBtnProps } from "./SqrBtn";
 import VrtBtnStack from "./VrtBtnStack";
 
