@@ -2,7 +2,7 @@ import { IconButton, Square } from "@chakra-ui/react";
 import { FC, JSXElementConstructor, ReactElement } from "react";
 
 export interface SqrBtnProps {
-  onClick: () => void;
+  onClick?: () => void;
   icon: ReactElement<any, JSXElementConstructor<any>>;
 }
 
