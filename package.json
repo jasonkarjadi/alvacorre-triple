@@ -2,6 +2,8 @@
   "name": "alvacorre-web",
   "version": "1.0.0",
   "description": "Language encyclopedia built using Three, Next, and Chakra",
+  "homepage": "jasonkarjadi.github.io/alvacorre-triple",
+  "private": "true",
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
