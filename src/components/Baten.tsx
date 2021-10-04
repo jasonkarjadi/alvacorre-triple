@@ -34,10 +34,14 @@ export const VSBStack: FC<VSBStackProps> = ({ btnArr, mainAikon }) => {
       <AnimatePresence initial={false}>
         {isOpen &&
           btnArr
-            .map((props, i) => (
+            .map(({ icon, onClick }, i) => (
               <MotionSqrBtn
                 key={i}
-                {...props}
+                icon={icon}
+                onClick={() => {
+                  setIsOpen.off();
+                  onClick();
+                }}
                 variants={{
                   open: { opacity: 1, y: 0, transition: { duration: 0.1 } },
                   closed: {
