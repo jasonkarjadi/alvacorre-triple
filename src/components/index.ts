@@ -1,25 +1,26 @@
-import HrzBar from "./HrzBar";
-import SclrVctrGrphc, {
-  FilterSVG,
-  GrammarSVG,
-  LexiconSVG,
-  LocalerSVG,
-  SettingsSVG,
-  StudySVG,
-} from "./SclrVctrGrphc";
-import SqrBtn, { SqrBtnProps } from "./SqrBtn";
-import VrtBtnStack from "./VrtBtnStack";
+import {
+  Aikon,
+  CrossAikon,
+  FilterAikon,
+  GrammarAikon,
+  LexiconAikon,
+  LocalerAikon,
+  SettingsAikon,
+  StudyAikon,
+} from "./Aikon";
+import { MotionSqrBtn, VSBStack } from "./Baten";
+import { HrzBar } from "./HrzBar";
 
 export {
   HrzBar,
-  SqrBtn,
-  VrtBtnStack,
-  SclrVctrGrphc,
-  LocalerSVG,
-  FilterSVG,
-  GrammarSVG,
-  LexiconSVG,
-  SettingsSVG,
-  StudySVG,
+  VSBStack,
+  Aikon,
+  LocalerAikon,
+  FilterAikon,
+  GrammarAikon,
+  LexiconAikon,
+  SettingsAikon,
+  StudyAikon,
+  CrossAikon,
+  MotionSqrBtn,
 };
-export type { SqrBtnProps };

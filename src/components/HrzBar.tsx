@@ -5,7 +5,7 @@ interface HrzBarProps {
   isTop: boolean;
 }
 
-const HrzBar: FC<HrzBarProps> = ({ children, isTop }) => {
+export const HrzBar: FC<HrzBarProps> = ({ children, isTop }) => {
   return (
     <HStack
       w="full"
@@ -15,11 +15,9 @@ const HrzBar: FC<HrzBarProps> = ({ children, isTop }) => {
       left={0}
       top={isTop ? 3 : undefined}
       bottom={!isTop ? 3 : undefined}
-      align="end"
+      align={isTop ? "flex-start" : "flex-end"}
     >
       {children}
     </HStack>
   );
 };
-
-export default HrzBar;

@@ -1,4 +1,4 @@
-import { Box, Center } from "@chakra-ui/react";
+import { Box, Center, useBoolean } from "@chakra-ui/react";
 import { GetStaticProps } from "next";
 import { FC, MouseEvent, useEffect, useRef, useState } from "react";
 import {
@@ -16,7 +16,16 @@ import {
   WebGLRenderer,
 } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { HrzBar, VrtBtnStack, LocalerSVG, FilterSVG } from "../components/";
+import {
+  FilterAikon,
+  GrammarAikon,
+  HrzBar,
+  LexiconAikon,
+  LocalerAikon,
+  SettingsAikon,
+  StudyAikon,
+  VSBStack,
+} from "../components/";
 import {
   atmFragmentShader,
   atmVertexShader,
@@ -34,7 +43,7 @@ interface IndexProps {
 }
 
 const Index: FC<IndexProps> = ({ points }) => {
-  const [isLocaleMode, setIsLocaleMode] = useState(true),
+  const [isLocale, setIsLocale] = useBoolean(true),
     [selected, setSelected] = useState(["", ""]),
     [radius, _] = useState(5);
 
@@ -73,9 +82,6 @@ const Index: FC<IndexProps> = ({ points }) => {
       }
     }
   };
-  const toggleIsLocaleMode = () => {
-    setIsLocaleMode(!isLocaleMode);
-  };
 
   useEffect(() => {
     requestRef.current = requestAnimationFrame(tick);
@@ -90,7 +96,7 @@ const Index: FC<IndexProps> = ({ points }) => {
     rendRef = useRef<WebGLRenderer>(),
     camRef = useRef(new PerspectiveCamera(50, 2, 1, 100)),
     ctrlRef = useRef<OrbitControls>(),
-    globeRef = useRef<Mesh<SphereGeometry, ShaderMaterial>>(),
+    globeRef = useRef<Mesh>(),
     atmRef = useRef(
       new Mesh(
         new SphereGeometry(radius * 1.05, 50, 50),
@@ -152,7 +158,7 @@ const Index: FC<IndexProps> = ({ points }) => {
   return (
     <>
       <HrzBar isTop={true}>
-        <Box h={14} border="gray dashed 1px" flex={1}></Box>
+        {selected[0] && <Box h={14} border="gray dashed 1px" flex={1}></Box>}
         <Box h={14} border="gray dashed 1px" flex={1}></Box>
       </HrzBar>
       <Box
@@ -162,14 +168,22 @@ const Index: FC<IndexProps> = ({ points }) => {
         onMouseDown={setPointRaycaster}
       />
       <HrzBar isTop={false}>
-        <Center bg="gray" h={14} flex={1}>
-          {isLocaleMode ? "Select a Locale" : "Select a Language"}
-        </Center>
-        <VrtBtnStack
-          BtnArr={[
-            { onClick: toggleIsLocaleMode, icon: <LocalerSVG /> },
-            { onClick: () => {}, icon: <FilterSVG /> },
+        <VSBStack
+          btnArr={[
+            { onClick: () => {}, icon: <GrammarAikon /> },
+            { onClick: () => {}, icon: <LexiconAikon /> },
           ]}
+          mainAikon={<StudyAikon />}
+        />
+        <Center bg="gray" h={14} flex={1} userSelect="none">
+          {isLocale ? "Select a Locale" : "Select a Language"}
+        </Center>
+        <VSBStack
+          btnArr={[
+            { onClick: () => {}, icon: <FilterAikon /> },
+            { onClick: setIsLocale.toggle, icon: <LocalerAikon /> },
+          ]}
+          mainAikon={<SettingsAikon />}
         />
       </HrzBar>
     </>
