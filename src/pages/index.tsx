@@ -5,10 +5,10 @@ import {
   DrawerBody,
   DrawerContent,
   DrawerOverlay,
-  useBoolean,
-  useDisclosure,
   Heading,
   Text,
+  useBoolean,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { GetStaticProps } from "next";
 import { useTranslation } from "next-i18next";
@@ -50,30 +50,26 @@ interface Point {
   name: string;
   coords: { x: number; y: number; z: number };
 }
-
+interface Content {
+  langName: string;
+  family: string;
+  type: {
+    form: string;
+    wordOrder: string;
+  };
+}
 interface IndexProps {
   clickables: Point[];
-  content: {
-    langName: string;
-    family: string;
-    type: {
-      form: string;
-      wordOrder: string;
-    };
-  }[];
+  content: Content[];
 }
 
 const Index: FC<IndexProps> = ({ clickables, content }) => {
-  const [isLocale, setIsLocale] = useBoolean(true),
+  const [isLocale, setIsLocale] = useBoolean(false),
+    [isGrammar, setIsGrammar] = useBoolean(),
+    { isOpen, onOpen, onClose } = useDisclosure(),
     [selected, setSelected] = useState(["", ""]),
-    [radius, _] = useState(5);
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [isGrammar, setIsGrammar] = useBoolean();
-  const { t } = useTranslation("common");
-  const filterer = (target: string) =>
-    content.filter(({ langName }) => langName === target)[0];
-  const itemOne = filterer(selected[0]);
-  const itemTwo = filterer(selected[1]);
+    [radius, _] = useState(5),
+    { t } = useTranslation("common");
 
   const requestRef = useRef(0),
     rendRef = useRef<WebGLRenderer>(),
@@ -112,7 +108,7 @@ const Index: FC<IndexProps> = ({ clickables, content }) => {
       );
 
       rendRef.current.setPixelRatio(devicePixelRatio);
-      camRef.current.position.setZ(18);
+      camRef.current.position.setZ(22);
       Object.assign(ctrlRef.current, {
         enableDamping: true,
         rotateSpeed: 0.5,
@@ -173,6 +169,8 @@ const Index: FC<IndexProps> = ({ clickables, content }) => {
       }
     }
   };
+  const filterer = (target: string) =>
+    content.filter(({ langName }) => langName === target)[0];
   const openGrammarDrawer = () => {
     onOpen();
     setIsGrammar.on();
@@ -191,31 +189,36 @@ const Index: FC<IndexProps> = ({ clickables, content }) => {
     };
   }, []);
 
+  interface LangCardProps {
+    variable: string;
+  }
+  const LangCard: FC<LangCardProps> = ({ variable }) => {
+    return (
+      <Box h={16} border="gray dashed 1px" flex={1}>
+        {variable && (
+          <Box
+            p={3}
+            display="flex"
+            flexDir="column"
+            justifyContent="space-between"
+            bg="gray.900"
+            color="white"
+          >
+            <Heading fontSize="16px">
+              {t(`${filterer(variable).langName}`)}
+            </Heading>
+            <Text fontSize="10px">{t(`${filterer(variable).family}`)}</Text>
+          </Box>
+        )}
+      </Box>
+    );
+  };
+
   return (
     <>
       <HrzBar isTop={true}>
-        <Box h={14} border="gray dashed 1px" flex={1}>
-          {selected[0] && (
-            <Box bg="gray" color="white">
-              <Heading>{t(`langName.${itemOne.langName}`)}</Heading>
-              <Text>
-                {t(`langName.${itemOne.family}`)}
-                {t(`type.form.${itemOne.type.form}`)}
-              </Text>
-            </Box>
-          )}
-        </Box>
-        <Box h={14} border="gray dashed 1px" flex={1}>
-          {selected[1] && (
-            <Box>
-              <Heading>{t(`langName.${itemTwo.langName}`)}</Heading>
-              <Text>
-                {t(`langName.${itemOne.family}`)}
-                {t(`type.form.${itemOne.type.form}`)}
-              </Text>
-            </Box>
-          )}
-        </Box>
+        <LangCard variable={selected[0]} />
+        <LangCard variable={selected[1]} />
       </HrzBar>
       <Box
         as="canvas"
@@ -232,7 +235,13 @@ const Index: FC<IndexProps> = ({ clickables, content }) => {
           mainAikon={<StudyAikon />}
           isDisabled={!selected.join("")}
         />
-        <Center bg="gray" h={14} flex={1} userSelect="none">
+        <Center
+          h={16}
+          flex={1}
+          userSelect="none"
+          bg="gray.100"
+          borderRadius="base"
+        >
           {isLocale ? "Select a Locale" : "Select a Language"}
         </Center>
         <VSBStack
@@ -243,7 +252,7 @@ const Index: FC<IndexProps> = ({ clickables, content }) => {
           mainAikon={<SettingsAikon />}
         />
       </HrzBar>
-      <Drawer isOpen={isOpen} onClose={onClose}>
+      <Drawer isOpen={isOpen} onClose={onClose} placement="bottom">
         <DrawerOverlay />
         <DrawerContent>
           {isGrammar ? (
@@ -292,6 +301,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
         form: "analyt",
         wordOrder: "SVO",
       },
+      script: ["latin"],
     },
     {
       langName: "jpn",
@@ -300,6 +310,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
         form: "synthe",
         wordOrder: "SOV",
       },
+      script: ["han", "kana"],
     },
     {
       langName: "ina",
@@ -308,6 +319,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
         form: "synthe",
         wordOrder: "SVO",
       },
+      script: ["latin"],
     },
   ];
 

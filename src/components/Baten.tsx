@@ -13,7 +13,7 @@ const SqrBtn = forwardRef<HTMLDivElement, SqrBtnProps>((props, ref) => {
   return (
     <Square
       as={IconButton}
-      size={14}
+      size={16}
       aria-label={props.icon.type.name.toLowerCase().replace("aikon", "")}
       ref={ref}
       {...props}
