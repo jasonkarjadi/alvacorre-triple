@@ -1,0 +1,18 @@
+{
+  "langName": {
+    "eng": "English",
+    "jpn": "Japanese",
+    "ina": "Indonesian"
+  },
+  "family": {
+    "gem": "Germanic",
+    "jpx": "Japonic",
+    "map": "Austronesian"
+  },
+  "typology": {
+    "morphological": {
+      "analytic": "analytic",
+      "agglutinative": "agglutinative"
+    }
+  }
+}

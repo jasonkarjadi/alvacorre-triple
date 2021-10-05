@@ -6,6 +6,7 @@ import { CrossAikon } from ".";
 interface SqrBtnProps {
   onClick: () => void;
   icon: ReactElement<any, JSXElementConstructor<any>>;
+  isDisabled?: boolean;
 }
 
 const SqrBtn = forwardRef<HTMLDivElement, SqrBtnProps>((props, ref) => {
@@ -24,9 +25,14 @@ export const MotionSqrBtn = motion(SqrBtn);
 interface VSBStackProps {
   btnArr: SqrBtnProps[];
   mainAikon: SqrBtnProps["icon"];
+  isDisabled?: boolean;
 }
 
-export const VSBStack: FC<VSBStackProps> = ({ btnArr, mainAikon }) => {
+export const VSBStack: FC<VSBStackProps> = ({
+  btnArr,
+  mainAikon,
+  isDisabled,
+}) => {
   const [isOpen, setIsOpen] = useBoolean();
 
   return (
@@ -60,6 +66,7 @@ export const VSBStack: FC<VSBStackProps> = ({ btnArr, mainAikon }) => {
       <MotionSqrBtn
         onClick={setIsOpen.toggle}
         icon={isOpen ? <CrossAikon /> : mainAikon}
+        isDisabled={isDisabled}
       />
     </VStack>
   );
