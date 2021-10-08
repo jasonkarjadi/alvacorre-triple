@@ -1,19 +1,22 @@
 import {
   Box,
+  BoxProps,
   Center,
   Drawer,
   DrawerBody,
   DrawerContent,
+  DrawerHeader,
   DrawerOverlay,
   Heading,
   Text,
   useBoolean,
   useDisclosure,
 } from "@chakra-ui/react";
+import { AnimatePresence, motion } from "framer-motion";
 import { GetStaticProps } from "next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { FC, MouseEvent, useEffect, useRef, useState } from "react";
+import { FC, MouseEvent, useEffect, useMemo, useRef, useState } from "react";
 import {
   AdditiveBlending,
   BackSide,
@@ -57,6 +60,7 @@ interface Content {
     form: string;
     wordOrder: string;
   };
+  script: string[];
 }
 interface IndexProps {
   clickables: Point[];
@@ -67,18 +71,17 @@ const Index: FC<IndexProps> = ({ clickables, content }) => {
   const [isLocale, setIsLocale] = useBoolean(false),
     [isGrammar, setIsGrammar] = useBoolean(),
     { isOpen, onOpen, onClose } = useDisclosure(),
-    [selected, setSelected] = useState(["", ""]),
-    [radius, _] = useState(5),
     { t } = useTranslation("common");
 
   const requestRef = useRef(0),
     rendRef = useRef<WebGLRenderer>(),
     camRef = useRef(new PerspectiveCamera(50, 2, 1, 100)),
     ctrlRef = useRef<OrbitControls>(),
+    radRef = useRef(5),
     globeRef = useRef<Mesh>(),
     atmRef = useRef(
       new Mesh(
-        new SphereGeometry(radius * 1.05, 50, 50),
+        new SphereGeometry(radRef.current * 1.05, 50, 50),
         new ShaderMaterial({
           vertexShader: atmVertexShader,
           fragmentShader: atmFragmentShader,
@@ -95,7 +98,7 @@ const Index: FC<IndexProps> = ({ clickables, content }) => {
       rendRef.current = new WebGLRenderer({ canvas, antialias: true });
       ctrlRef.current = new OrbitControls(camRef.current, canvas);
       globeRef.current = new Mesh(
-        new SphereGeometry(radius, 50, 50),
+        new SphereGeometry(radRef.current, 50, 50),
         new ShaderMaterial({
           vertexShader,
           fragmentShader,
@@ -126,13 +129,16 @@ const Index: FC<IndexProps> = ({ clickables, content }) => {
 
       clickables.map(({ name, coords: { x, y, z } }) => {
         const dot = new Mesh(new SphereGeometry(0.2));
-        dot.position.set(radius * x, radius * y, radius * z);
+        const radCoords = (num: number) => num * radRef.current;
+        dot.position.set(radCoords(x), radCoords(y), radCoords(z));
         dot.name = name;
         groupRef.current.add(dot);
         ptRef.current.push(dot);
       });
     });
   const ptRef = useRef<Mesh[]>([]);
+  const [itemA, setItemA] = useState("");
+  const [itemB, setItemB] = useState("");
 
   const setResize = () => {
       camRef.current.aspect = innerWidth / innerHeight;
@@ -158,13 +164,14 @@ const Index: FC<IndexProps> = ({ clickables, content }) => {
     rayRef.current.setFromCamera(mouseRef.current, camRef.current);
     const intersects = rayRef.current.intersectObjects(ptRef.current);
     if (intersects.length > 0) {
-      if (!selected[0]) {
-        setSelected([intersects[0].object.name, selected[1]]);
-      } else if (intersects[0].object.name !== selected[0]) {
-        if (!selected[1]) {
-          setSelected([selected[0], intersects[0].object.name]);
-        } else if (intersects[0].object.name !== selected[1]) {
-          setSelected([selected[0], intersects[0].object.name]);
+      console.log("hooplah");
+      if (!itemA) {
+        setItemA(intersects[0].object.name);
+      } else if (intersects[0].object.name !== itemA) {
+        if (!itemB) {
+          setItemB(intersects[0].object.name);
+        } else if (intersects[0].object.name !== itemB) {
+          setItemB(intersects[0].object.name);
         }
       }
     }
@@ -183,42 +190,70 @@ const Index: FC<IndexProps> = ({ clickables, content }) => {
   useEffect(() => {
     requestRef.current = requestAnimationFrame(tick);
     addEventListener("resize", () => setResize());
+    oncontextmenu = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+    };
     return () => {
       cancelAnimationFrame(requestRef.current);
       removeEventListener("resize", () => setResize);
     };
   }, []);
 
-  interface LangCardProps {
-    variable: string;
+  const MotionBox = motion<BoxProps>(Box);
+  interface LangProps {
+    item: string;
   }
-  const LangCard: FC<LangCardProps> = ({ variable }) => {
+  const MotionLangCard: FC<LangProps> = ({ item }) => {
+    useEffect(() => {
+      console.log("render");
+    }, []);
+    return (
+      <MotionBox
+        p={3}
+        display="flex"
+        flexDir="column"
+        justifyContent="space-between"
+        h={16}
+        flex={1}
+        bg="gray.900"
+        color="white"
+        variants={{ visible: { x: 0 }, hidden: { x: innerWidth } }}
+        initial="hidden"
+        animate="visible"
+        exit="hidden"
+      >
+        <Heading fontSize="16px">{t(`${filterer(item).langName}`)}</Heading>
+        <Text
+          fontSize="10px"
+          children={`${t(`${filterer(item).family}`)} ${t(
+            `${filterer(item).type.wordOrder}`
+          )}`}
+        />
+      </MotionBox>
+    );
+  };
+
+  const CardBox: FC<LangProps> = ({ item }) => {
     return (
       <Box h={16} border="gray dashed 1px" flex={1}>
-        {variable && (
-          <Box
-            p={3}
-            display="flex"
-            flexDir="column"
-            justifyContent="space-between"
-            bg="gray.900"
-            color="white"
-          >
-            <Heading fontSize="16px">
-              {t(`${filterer(variable).langName}`)}
-            </Heading>
-            <Text fontSize="10px">{t(`${filterer(variable).family}`)}</Text>
-          </Box>
+        {item && (
+          <AnimatePresence initial={true}>
+            <MotionLangCard item={item} />
+          </AnimatePresence>
         )}
       </Box>
     );
   };
 
+  const CardAMemo = useMemo(() => <CardBox item={itemA} />, [itemA]);
+  const CardBMemo = useMemo(() => <CardBox item={itemB} />, [itemB]);
+
   return (
     <>
       <HrzBar isTop={true}>
-        <LangCard variable={selected[0]} />
-        <LangCard variable={selected[1]} />
+        {CardAMemo}
+        {CardBMemo}
       </HrzBar>
       <Box
         as="canvas"
@@ -233,7 +268,7 @@ const Index: FC<IndexProps> = ({ clickables, content }) => {
             { onClick: openLexiconDrawer, icon: <LexiconAikon /> },
           ]}
           mainAikon={<StudyAikon />}
-          isDisabled={!selected.join("")}
+          isDisabled={!itemA}
         />
         <Center
           h={16}
@@ -252,14 +287,13 @@ const Index: FC<IndexProps> = ({ clickables, content }) => {
           mainAikon={<SettingsAikon />}
         />
       </HrzBar>
-      <Drawer isOpen={isOpen} onClose={onClose} placement="bottom">
+      <Drawer isOpen={isOpen} onClose={onClose} placement="bottom" size="full">
         <DrawerOverlay />
-        <DrawerContent>
-          {isGrammar ? (
-            <DrawerBody>grammar modal</DrawerBody>
-          ) : (
-            <DrawerBody>lexicon modal</DrawerBody>
-          )}
+        <DrawerContent opacity="0.9">
+          <DrawerHeader>
+            {isGrammar ? "Grammatical Categories" : "Stratum & Word Class"}
+          </DrawerHeader>
+          <DrawerBody>{isGrammar ? "grammar" : "lexicon"}</DrawerBody>
         </DrawerContent>
       </Drawer>
     </>
