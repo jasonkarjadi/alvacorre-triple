@@ -1,7 +1,6 @@
 import {
   Box,
-  BoxProps,
-  Center,
+  chakra,
   Drawer,
   DrawerBody,
   DrawerContent,
@@ -16,7 +15,16 @@ import { AnimatePresence, motion } from "framer-motion";
 import { GetStaticProps } from "next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { FC, MouseEvent, useEffect, useMemo, useRef, useState } from "react";
+import {
+  Dispatch,
+  FC,
+  MouseEvent,
+  SetStateAction,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import {
   AdditiveBlending,
   BackSide,
@@ -33,14 +41,12 @@ import {
 } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import {
+  AikonBtn,
   FilterAikon,
   GrammarAikon,
   HrzBar,
   LexiconAikon,
   LocalerAikon,
-  SettingsAikon,
-  StudyAikon,
-  VSBStack,
 } from "../components/";
 import {
   atmFragmentShader,
@@ -72,6 +78,8 @@ const Index: FC<IndexProps> = ({ clickables, content }) => {
     [isGrammar, setIsGrammar] = useBoolean(),
     { isOpen, onOpen, onClose } = useDisclosure(),
     { t } = useTranslation("common");
+  const [itemA, setItemA] = useState("");
+  const [itemB, setItemB] = useState("");
 
   const requestRef = useRef(0),
     rendRef = useRef<WebGLRenderer>(),
@@ -111,7 +119,7 @@ const Index: FC<IndexProps> = ({ clickables, content }) => {
       );
 
       rendRef.current.setPixelRatio(devicePixelRatio);
-      camRef.current.position.setZ(22);
+      camRef.current.position.setZ(18);
       Object.assign(ctrlRef.current, {
         enableDamping: true,
         rotateSpeed: 0.5,
@@ -137,8 +145,6 @@ const Index: FC<IndexProps> = ({ clickables, content }) => {
       });
     });
   const ptRef = useRef<Mesh[]>([]);
-  const [itemA, setItemA] = useState("");
-  const [itemB, setItemB] = useState("");
 
   const setResize = () => {
       camRef.current.aspect = innerWidth / innerHeight;
@@ -199,12 +205,18 @@ const Index: FC<IndexProps> = ({ clickables, content }) => {
       removeEventListener("resize", () => setResize);
     };
   }, []);
+  useEffect(() => {
+    if (!itemA && itemB) {
+      setItemA(itemB);
+      setItemB("");
+    }
+  }, [itemA]);
 
-  const MotionBox = motion<BoxProps>(Box);
-  interface LangProps {
-    item: string;
+  const MotionBox = chakra(motion.div);
+  interface CardProps {
+    item: [string, Dispatch<SetStateAction<string>>];
   }
-  const MotionLangCard: FC<LangProps> = ({ item }) => {
+  const MotionLangCard: FC<CardProps> = ({ item }) => {
     useEffect(() => {
       console.log("render");
     }, []);
@@ -222,32 +234,45 @@ const Index: FC<IndexProps> = ({ clickables, content }) => {
         initial="hidden"
         animate="visible"
         exit="hidden"
+        drag="x"
+        dragConstraints={{ left: 0, right: 0 }}
+        onDragEnd={(_, i) => {
+          if (Math.abs(i.offset.x) > 100) {
+            item[1]("");
+          }
+        }}
       >
-        <Heading fontSize="16px">{t(`${filterer(item).langName}`)}</Heading>
+        <Heading fontSize="16px">{t(`${filterer(item[0]).langName}`)}</Heading>
         <Text
           fontSize="10px"
-          children={`${t(`${filterer(item).family}`)} ${t(
-            `${filterer(item).type.wordOrder}`
+          children={`${t(`${filterer(item[0]).family}`)} ${t(
+            `${filterer(item[0]).type.wordOrder}`
           )}`}
         />
       </MotionBox>
     );
   };
 
-  const CardBox: FC<LangProps> = ({ item }) => {
+  const CardBox: FC<CardProps> = (props) => {
     return (
       <Box h={16} border="gray dashed 1px" flex={1}>
-        {item && (
-          <AnimatePresence initial={true}>
-            <MotionLangCard item={item} />
+        {props.item[0] && (
+          <AnimatePresence>
+            <MotionLangCard {...props} />
           </AnimatePresence>
         )}
       </Box>
     );
   };
 
-  const CardAMemo = useMemo(() => <CardBox item={itemA} />, [itemA]);
-  const CardBMemo = useMemo(() => <CardBox item={itemB} />, [itemB]);
+  const CardAMemo = useMemo(
+    () => <CardBox item={[itemA, setItemA]} />,
+    [itemA]
+  );
+  const CardBMemo = useMemo(
+    () => <CardBox item={[itemB, setItemB]} />,
+    [itemB]
+  );
 
   return (
     <>
@@ -262,36 +287,36 @@ const Index: FC<IndexProps> = ({ clickables, content }) => {
         onMouseDown={setPointRaycaster}
       />
       <HrzBar isTop={false}>
-        <VSBStack
-          btnArr={[
-            { onClick: openGrammarDrawer, icon: <GrammarAikon /> },
-            { onClick: openLexiconDrawer, icon: <LexiconAikon /> },
-          ]}
-          mainAikon={<StudyAikon />}
+        <AikonBtn
+          onClick={setIsLocale.toggle}
+          icon={<LocalerAikon />}
+          flex={1}
+          isDisabled={true}
+        />
+        <AikonBtn
+          onClick={openGrammarDrawer}
+          icon={<GrammarAikon />}
+          flex={1}
           isDisabled={!itemA}
         />
-        <Center
-          h={16}
+        <AikonBtn
+          onClick={openLexiconDrawer}
+          icon={<LexiconAikon />}
           flex={1}
-          userSelect="none"
-          bg="gray.100"
-          borderRadius="base"
-        >
-          {isLocale ? "Select a Locale" : "Select a Language"}
-        </Center>
-        <VSBStack
-          btnArr={[
-            { onClick: () => {}, icon: <FilterAikon /> },
-            { onClick: setIsLocale.toggle, icon: <LocalerAikon /> },
-          ]}
-          mainAikon={<SettingsAikon />}
+          isDisabled={!itemA}
+        />
+        <AikonBtn
+          onClick={() => {}}
+          icon={<FilterAikon />}
+          flex={1}
+          isDisabled={true}
         />
       </HrzBar>
-      <Drawer isOpen={isOpen} onClose={onClose} placement="bottom" size="full">
+      <Drawer isOpen={isOpen} onClose={onClose} placement="bottom">
         <DrawerOverlay />
         <DrawerContent opacity="0.9">
           <DrawerHeader>
-            {isGrammar ? "Grammatical Categories" : "Stratum & Word Class"}
+            {isGrammar ? "Grammatical Categories" : "Strata & Word Classes"}
           </DrawerHeader>
           <DrawerBody>{isGrammar ? "grammar" : "lexicon"}</DrawerBody>
         </DrawerContent>

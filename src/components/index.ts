@@ -8,12 +8,11 @@ import {
   SettingsAikon,
   StudyAikon,
 } from "./Aikon";
-import { MotionSqrBtn, VSBStack } from "./Baten";
+import { AikonBtn } from "./Baten";
 import { HrzBar } from "./HrzBar";
 
 export {
   HrzBar,
-  VSBStack,
   Aikon,
   LocalerAikon,
   FilterAikon,
@@ -22,5 +21,5 @@ export {
   SettingsAikon,
   StudyAikon,
   CrossAikon,
-  MotionSqrBtn,
+  AikonBtn,
 };
