@@ -6,5 +6,7 @@
   "jpx": "日琉語族",
   "map": "南島語族",
   "analyt": "分析語",
-  "synthe": "膠着語"
+  "synthe": "膠着語",
+  "grammarHead": "文法範疇",
+  "lexiconHead": "品詞"
 }

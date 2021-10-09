@@ -1,6 +1,7 @@
 import {
   Box,
   chakra,
+  Divider,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
@@ -77,12 +78,12 @@ const Hub: FC<HubProps> = ({ clickables, content }) => {
 
   const MotionBox = chakra(motion.div);
   interface CardProps {
-    item: [string, Dispatch<SetStateAction<string>>];
+    state: [string, Dispatch<SetStateAction<string>>];
   }
-  const CardBox: FC<CardProps> = ({ item }) => {
+  const CardBox: FC<CardProps> = ({ state }) => {
     return (
       <Box h={16} border="gray dashed 1px" flex={1}>
-        {item[0] && (
+        {state[0] && (
           <AnimatePresence>
             <MotionBox
               p={3}
@@ -101,16 +102,16 @@ const Hub: FC<HubProps> = ({ clickables, content }) => {
               dragConstraints={{ left: 0, right: 0 }}
               onDragEnd={(_, i) => {
                 if (Math.abs(i.offset.x) > 100) {
-                  item[1]("");
+                  state[1]("");
                 }
               }}
             >
-              <Heading fontSize="16px">{t(`${item[0]}`)}</Heading>
+              <Heading fontSize="16px">{t(`${state[0]}`)}</Heading>
               <Text
                 fontSize="10px"
-                children={`${t(`${filterer(item[0]).family}`)} ${t(
-                  `${filterer(item[0]).type.wordOrder}`
-                )} ${t(`${filterer(item[0]).type.form}`)}`}
+                children={`${t(`${filterer(state[0]).family}`)} ${t(
+                  `${filterer(state[0]).type.wordOrder}`
+                )} ${t(`${filterer(state[0]).type.form}`)}`}
               />
             </MotionBox>
           </AnimatePresence>
@@ -120,11 +121,11 @@ const Hub: FC<HubProps> = ({ clickables, content }) => {
   };
 
   const CardAMemo = useMemo(
-    () => <CardBox item={[itemA, setItemA]} />,
+    () => <CardBox state={[itemA, setItemA]} />,
     [itemA]
   );
   const CardBMemo = useMemo(
-    () => <CardBox item={[itemB, setItemB]} />,
+    () => <CardBox state={[itemB, setItemB]} />,
     [itemB]
   );
 
@@ -165,10 +166,44 @@ const Hub: FC<HubProps> = ({ clickables, content }) => {
         <DrawerOverlay />
         <DrawerContent opacity="0.9" h="full">
           <DrawerHeader p={3}>
-            {isGrammar ? "Grammatical Categories" : "Strata & Word Classes"}
+            {isGrammar ? t("grammarHead") : t("lexiconHead")}
           </DrawerHeader>
           <DrawerCloseButton border="black 2px solid" />
-          <DrawerBody p={3}></DrawerBody>
+          <DrawerBody p={3} display="flex">
+            <Box flex={1} marginRight={3}>
+              {isGrammar
+                ? ""
+                : [
+                    "Noun",
+                    "Verb",
+                    "Adjective",
+                    "Adverb",
+                    "Pronoun",
+                    "Preposition",
+                    "Conjunction",
+                    "Interjection",
+                    "Determiner",
+                  ].map((value, i) => <Text key={i} children={value} />)}
+            </Box>
+            <Box flex={1}>
+              {isGrammar
+                ? ""
+                : [
+                    "動詞",
+                    "形容詞",
+                    "形容動詞",
+                    "名詞",
+                    "代名詞",
+                    "副詞",
+                    "接続詞",
+                    "感動詞",
+                    "連体詞",
+                    "助詞",
+                    "助数詞",
+                    "助動詞",
+                  ].map((value, i) => <Text key={i} children={value} />)}
+            </Box>
+          </DrawerBody>
         </DrawerContent>
       </Drawer>
     </>

@@ -6,5 +6,7 @@
   "jpx": "Japonic",
   "map": "Austronesian",
   "analyt": "Analytic",
-  "synthe": "Synthetic"
+  "synthe": "Synthetic",
+  "grammarHead": "Grammatical Categories",
+  "lexiconHead": "Word Classes"
 }
