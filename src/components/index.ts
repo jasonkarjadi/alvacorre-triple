@@ -9,6 +9,7 @@ import {
   StudyAikon,
 } from "./Aikon";
 import { AikonBtn } from "./Baten";
+import { Globe } from "./Globe";
 import { HrzBar } from "./HrzBar";
 
 export {
@@ -22,4 +23,5 @@ export {
   StudyAikon,
   CrossAikon,
   AikonBtn,
+  Globe,
 };
