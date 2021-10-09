@@ -56,7 +56,7 @@ export const Globe: FC<GlobeProps> = ({
       cancelAnimationFrame(requestRef.current);
       removeEventListener("resize", () => setResize);
     };
-  });
+  }, []);
 
   const requestRef = useRef(0),
     rendRef = useRef<WebGLRenderer>(),
@@ -99,7 +99,7 @@ export const Globe: FC<GlobeProps> = ({
       );
 
       rendRef.current.setPixelRatio(devicePixelRatio);
-      camRef.current.position.setZ(18);
+      camRef.current.position.setZ(20);
       Object.assign(ctrlRef.current, {
         enableDamping: true,
         rotateSpeed: 0.5,
@@ -169,6 +169,7 @@ export const Globe: FC<GlobeProps> = ({
       ref={onCanvasLoaded.current}
       onMouseMove={setMouseVector}
       onMouseDown={setPointRaycaster}
+      userSelect="none"
     />
   );
 };
