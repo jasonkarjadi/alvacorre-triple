@@ -1,7 +1,6 @@
 import {
   Box,
   chakra,
-  Divider,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
