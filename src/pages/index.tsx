@@ -3,6 +3,7 @@ import {
   chakra,
   Drawer,
   DrawerBody,
+  DrawerCloseButton,
   DrawerContent,
   DrawerHeader,
   DrawerOverlay,
@@ -15,6 +16,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { GetStaticProps } from "next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useRouter } from "next/dist/client/router";
 import {
   Dispatch,
   FC,
@@ -56,7 +58,7 @@ import {
 } from "../shaders";
 
 interface Point {
-  name: string;
+  iso: string;
   coords: { x: number; y: number; z: number };
 }
 interface Content {
@@ -66,7 +68,6 @@ interface Content {
     form: string;
     wordOrder: string;
   };
-  script: string[];
 }
 interface IndexProps {
   clickables: Point[];
@@ -74,12 +75,14 @@ interface IndexProps {
 }
 
 const Index: FC<IndexProps> = ({ clickables, content }) => {
-  const [isLocale, setIsLocale] = useBoolean(false),
+  const [isLocale, setIsLocale] = useBoolean(true),
     [isGrammar, setIsGrammar] = useBoolean(),
     { isOpen, onOpen, onClose } = useDisclosure(),
     { t } = useTranslation("common");
   const [itemA, setItemA] = useState("");
   const [itemB, setItemB] = useState("");
+  const router = useRouter();
+  // consider tidying constants later
 
   const requestRef = useRef(0),
     rendRef = useRef<WebGLRenderer>(),
@@ -103,6 +106,7 @@ const Index: FC<IndexProps> = ({ clickables, content }) => {
     mouseRef = useRef(new Vector2()),
     rayRef = useRef(new Raycaster()),
     onCanvasLoaded = useRef((canvas: HTMLCanvasElement & HTMLDivElement) => {
+      console.log("rendered");
       rendRef.current = new WebGLRenderer({ canvas, antialias: true });
       ctrlRef.current = new OrbitControls(camRef.current, canvas);
       globeRef.current = new Mesh(
@@ -133,13 +137,12 @@ const Index: FC<IndexProps> = ({ clickables, content }) => {
         groupRef.current.add(globeRef.current),
         atmRef.current
       );
-      setResize();
 
-      clickables.map(({ name, coords: { x, y, z } }) => {
+      clickables.map(({ iso, coords: { x, y, z } }) => {
         const dot = new Mesh(new SphereGeometry(0.2));
         const radCoords = (num: number) => num * radRef.current;
         dot.position.set(radCoords(x), radCoords(y), radCoords(z));
-        dot.name = name;
+        dot.name = iso;
         groupRef.current.add(dot);
         ptRef.current.push(dot);
       });
@@ -170,14 +173,16 @@ const Index: FC<IndexProps> = ({ clickables, content }) => {
     rayRef.current.setFromCamera(mouseRef.current, camRef.current);
     const intersects = rayRef.current.intersectObjects(ptRef.current);
     if (intersects.length > 0) {
-      console.log("hooplah");
-      if (!itemA) {
-        setItemA(intersects[0].object.name);
-      } else if (intersects[0].object.name !== itemA) {
-        if (!itemB) {
-          setItemB(intersects[0].object.name);
-        } else if (intersects[0].object.name !== itemB) {
-          setItemB(intersects[0].object.name);
+      if (isLocale) {
+        // router.push("/", undefined, { locale: intersects[0].object.name });
+        setIsLocale.off;
+      } else {
+        if (!itemA) {
+          setItemA(intersects[0].object.name);
+        } else if (intersects[0].object.name !== itemA) {
+          if (intersects[0].object.name !== itemB) {
+            setItemB(intersects[0].object.name);
+          }
         }
       }
     }
@@ -196,6 +201,7 @@ const Index: FC<IndexProps> = ({ clickables, content }) => {
   useEffect(() => {
     requestRef.current = requestAnimationFrame(tick);
     addEventListener("resize", () => setResize());
+    setResize();
     oncontextmenu = (e) => {
       e.preventDefault();
       e.stopPropagation();
@@ -217,9 +223,6 @@ const Index: FC<IndexProps> = ({ clickables, content }) => {
     item: [string, Dispatch<SetStateAction<string>>];
   }
   const MotionLangCard: FC<CardProps> = ({ item }) => {
-    useEffect(() => {
-      console.log("render");
-    }, []);
     return (
       <MotionBox
         p={3}
@@ -242,12 +245,12 @@ const Index: FC<IndexProps> = ({ clickables, content }) => {
           }
         }}
       >
-        <Heading fontSize="16px">{t(`${filterer(item[0]).langName}`)}</Heading>
+        <Heading fontSize="16px">{t(`${item[0]}`)}</Heading>
         <Text
           fontSize="10px"
           children={`${t(`${filterer(item[0]).family}`)} ${t(
             `${filterer(item[0]).type.wordOrder}`
-          )}`}
+          )} ${t(`${filterer(item[0]).type.form}`)}`}
         />
       </MotionBox>
     );
@@ -291,7 +294,6 @@ const Index: FC<IndexProps> = ({ clickables, content }) => {
           onClick={setIsLocale.toggle}
           icon={<LocalerAikon />}
           flex={1}
-          isDisabled={true}
         />
         <AikonBtn
           onClick={openGrammarDrawer}
@@ -314,11 +316,12 @@ const Index: FC<IndexProps> = ({ clickables, content }) => {
       </HrzBar>
       <Drawer isOpen={isOpen} onClose={onClose} placement="bottom">
         <DrawerOverlay />
-        <DrawerContent opacity="0.9">
-          <DrawerHeader>
+        <DrawerContent opacity="0.9" h="full">
+          <DrawerHeader p={3}>
             {isGrammar ? "Grammatical Categories" : "Strata & Word Classes"}
           </DrawerHeader>
-          <DrawerBody>{isGrammar ? "grammar" : "lexicon"}</DrawerBody>
+          <DrawerCloseButton border="black 2px solid" />
+          <DrawerBody p={3}></DrawerBody>
         </DrawerContent>
       </Drawer>
     </>
@@ -328,7 +331,7 @@ const Index: FC<IndexProps> = ({ clickables, content }) => {
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const clickables = [
     {
-      name: "ina",
+      iso: "id",
       coords: {
         x: 0.9140165430070886,
         y: -0.013775448070460912,
@@ -336,7 +339,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       },
     },
     {
-      name: "jpn",
+      iso: "jp",
       coords: {
         x: 0.5372766576225415,
         y: 0.5906732692963204,
@@ -344,7 +347,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       },
     },
     {
-      name: "eng",
+      iso: "en",
       coords: {
         x: -0.034051759463686306,
         y: 0.822919263139182,
@@ -354,31 +357,28 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   ];
   const content = [
     {
-      langName: "eng",
-      family: "gem",
+      langName: "en",
+      family: "ine",
       type: {
         form: "analyt",
         wordOrder: "SVO",
       },
-      script: ["latin"],
     },
     {
-      langName: "jpn",
+      langName: "jp",
       family: "jpx",
       type: {
         form: "synthe",
         wordOrder: "SOV",
       },
-      script: ["han", "kana"],
     },
     {
-      langName: "ina",
+      langName: "id",
       family: "map",
       type: {
         form: "synthe",
         wordOrder: "SVO",
       },
-      script: ["latin"],
     },
   ];
 
@@ -392,3 +392,14 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 };
 
 export default Index;
+
+// add locale globe feature
+// add UI indicating dots are clickable
+// add highlight on clicked dot
+// add curved lines indicating correlations feature
+// add UI indicating LangCard swipable
+// solidify content for each language
+// add common.json for each locale
+// fix camera zoom or globe size
+// fix whole screen select
+// fix itemB to itemA animation

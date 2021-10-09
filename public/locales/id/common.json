@@ -1,10 +1,10 @@
 {
-  "eng": "English",
-  "jpn": "Japanese",
-  "ina": "Indonesian",
-  "gem": "Germanic",
-  "jpx": "Japonic",
-  "map": "Austronesian",
-  "analyt": "Analytic",
-  "synthe": "Agglutinative"
+  "en": "Bahasa Inggris",
+  "jp": "Bahasa Jepang",
+  "id": "Bahasa Indonesia",
+  "ine": "Indo-Eropa",
+  "jpx": "Japonik",
+  "map": "Austronesia",
+  "analyt": "Analitik",
+  "synthe": "Sintetis"
 }
