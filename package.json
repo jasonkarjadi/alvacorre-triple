@@ -1,5 +1,5 @@
 {
-  "name": "alvacorre-web",
+  "name": "willow-dictionary",
   "version": "1.0.0",
   "description": "Language encyclopedia built using Three, Next, and Chakra",
   "homepage": "jasonkarjadi.github.io/alvacorre-triple",
@@ -17,21 +17,21 @@
   "author": "Jason Karjadi",
   "license": "ISC",
   "dependencies": {
-    "@chakra-ui/react": "^1.6.9",
+    "@chakra-ui/react": "^1.6.10",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "framer-motion": "^4.1.17",
     "glslify-loader": "^2.0.0",
     "next": "^11.1.2",
-    "next-i18next": "^8.8.0",
+    "next-translate": "^1.1.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "three": "^0.133.1"
   },
   "devDependencies": {
-    "@types/node": "^16.10.3",
-    "@types/react": "^17.0.27",
-    "@types/three": "^0.133.0",
-    "typescript": "^4.4.3"
+    "@types/node": "^16.11.0",
+    "@types/react": "^17.0.30",
+    "@types/three": "^0.133.1",
+    "typescript": "^4.4.4"
   }
 }

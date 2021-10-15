@@ -1,20 +1,23 @@
-import { Image, VStack } from "@chakra-ui/react";
+import { Image, Text, VStack } from "@chakra-ui/react";
 import { GetStaticProps } from "next";
 import getT from "next-translate/getT";
 import { FC } from "react";
 import NavBar from "../components/NavBar";
 import { TitleTag } from "../components/TitleTag";
 
-interface MyIndexProps {
+interface MyCreatorProps {
   titleTags: { locale: string; title: string; tagline: string }[];
 }
 
-const MyIndex: FC<MyIndexProps> = ({ titleTags }) => {
+const MyCreator: FC<MyCreatorProps> = ({ titleTags }) => {
   return (
     <VStack p={3} h="100vh" spacing={0}>
       <VStack spacing={8} flex={1} bg="gray.200" w="full" p={8}>
-        <Image flex={1} alt="main visual" />
-        <TitleTag titleTags={titleTags} placement="top" textAlign="center" />
+        <Image alt="my profile picture" />
+        <TitleTag titleTags={titleTags} textAlign="center" />
+        <Text w="full" flex={1}>
+          Lorem Ipsum
+        </Text>
       </VStack>
       <NavBar />
     </VStack>
@@ -24,7 +27,7 @@ const MyIndex: FC<MyIndexProps> = ({ titleTags }) => {
 export const getStaticProps: GetStaticProps = async ({ locales }) => {
   const titleTags: { locale: string; title: string; tagline: string }[] = [];
   locales?.map(async (locale) => {
-    const t = await getT(locale, "home");
+    const t = await getT(locale, "creator");
     const title = t("title");
     const tagline = t("tagline");
     titleTags.push({ locale, title, tagline });
@@ -35,11 +38,4 @@ export const getStaticProps: GetStaticProps = async ({ locales }) => {
   };
 };
 
-export default MyIndex;
-
-// add UI indicating dots are clickable
-// add highlight on clicked dot
-// add curved lines indicating correlations feature
-// solidify content for each language
-// add common.json for each locale
-// fix camera zoom or globe size
+export default MyCreator;

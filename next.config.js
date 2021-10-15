@@ -4,8 +4,6 @@
  * @type {import('next').NextConfig}
  */
 
-const { i18n } = require("./next-i18next.config");
-
 const nextConfig = {
   reactStrictMode: true,
   webpack: (config) => {
@@ -19,7 +17,9 @@ const nextConfig = {
 
     return config;
   },
-  i18n,
 };
 
-module.exports = nextConfig;
+const nextTranslate = require("next-translate");
+
+// @ts-ignore
+module.exports = nextTranslate(nextConfig);

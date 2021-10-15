@@ -1,13 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import { useRouter } from "next/router";
-import {
-  Dispatch,
-  FC,
-  MouseEvent,
-  SetStateAction,
-  useEffect,
-  useRef,
-} from "react";
+import { FC, MouseEvent, useEffect, useRef } from "react";
 import {
   AdditiveBlending,
   BackSide,
@@ -35,19 +27,9 @@ interface GlobeProps {
     iso: string;
     coords: { x: number; y: number; z: number };
   }[];
-  stateA?: [string, Dispatch<SetStateAction<string>>];
-  stateB?: [string, Dispatch<SetStateAction<string>>];
-  isLocaleMode: boolean;
 }
 
-export const Globe: FC<GlobeProps> = ({
-  clickables,
-  stateA,
-  stateB,
-  isLocaleMode,
-}) => {
-  const router = useRouter();
-
+export const Globe: FC<GlobeProps> = ({ clickables }) => {
   useEffect(() => {
     requestRef.current = requestAnimationFrame(tick);
     addEventListener("resize", () => setResize());
@@ -80,10 +62,8 @@ export const Globe: FC<GlobeProps> = ({
     mouseRef = useRef(new Vector2()),
     rayRef = useRef(new Raycaster()),
     onCanvasLoaded = useRef((canvas: HTMLCanvasElement & HTMLDivElement) => {
-      if (!canvas) {
-        return;
-      }
-      rendRef.current = new WebGLRenderer({ canvas, antialias: true });
+      if (!canvas) return;
+      rendRef.current = new WebGLRenderer({ canvas });
       ctrlRef.current = new OrbitControls(camRef.current, canvas);
       globeRef.current = new Mesh(
         new SphereGeometry(radRef.current, 50, 50),
@@ -115,7 +95,7 @@ export const Globe: FC<GlobeProps> = ({
       );
 
       clickables.map(({ iso, coords: { x, y, z } }) => {
-        const dot = new Mesh(new SphereGeometry(0.2));
+        const dot = new Mesh(new SphereGeometry(0.1));
         const radCoords = (num: number) => num * radRef.current;
         dot.position.set(radCoords(x), radCoords(y), radCoords(z));
         dot.name = iso;
@@ -135,12 +115,6 @@ export const Globe: FC<GlobeProps> = ({
       mouseRef.current.y = -(e.clientY / innerHeight) * 2 + 1;
     },
     tick = () => {
-      rayRef.current.setFromCamera(mouseRef.current, camRef.current);
-      if (rayRef.current.intersectObject(globeRef.current!).length > 0) {
-        ctrlRef.current!.autoRotate = false;
-      } else {
-        ctrlRef.current!.autoRotate = true;
-      }
       ctrlRef.current!.update();
       rendRef.current!.render(sceneRef.current, camRef.current);
       requestAnimationFrame(tick);
@@ -149,17 +123,13 @@ export const Globe: FC<GlobeProps> = ({
     rayRef.current.setFromCamera(mouseRef.current, camRef.current);
     const intersects = rayRef.current.intersectObjects(ptRef.current);
     if (intersects.length > 0) {
-      if (isLocaleMode) {
-        router.push("/", undefined, { locale: intersects[0].object.name });
-      } else {
-        if (!stateA![0]) {
-          stateA![1](intersects[0].object.name);
-        } else if (intersects[0].object.name !== stateA![0]) {
-          if (intersects[0].object.name !== stateB![0]) {
-            stateB![1](intersects[0].object.name);
-          }
-        }
-      }
+      // if (!stateA![0]) {
+      //   stateA![1](intersects[0].object.name);
+      // } else if (intersects[0].object.name !== stateA![0]) {
+      //   if (intersects[0].object.name !== stateB![0]) {
+      //     stateB![1](intersects[0].object.name);
+      //   }
+      // }
     }
   };
 
@@ -169,7 +139,6 @@ export const Globe: FC<GlobeProps> = ({
       ref={onCanvasLoaded.current}
       onMouseMove={setMouseVector}
       onMouseDown={setPointRaycaster}
-      userSelect="none"
     />
   );
 };

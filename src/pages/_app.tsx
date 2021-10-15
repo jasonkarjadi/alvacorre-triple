@@ -1,5 +1,4 @@
 import { ChakraProvider } from "@chakra-ui/react";
-import { appWithTranslation } from "next-i18next";
 import { AppProps } from "next/dist/shared/lib/router/router";
 import { useEffect } from "react";
 import theme from "../theme";
@@ -20,4 +19,4 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   );
 };
 
-export default appWithTranslation(MyApp);
+export default MyApp;

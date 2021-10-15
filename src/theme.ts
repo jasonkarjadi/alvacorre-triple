@@ -5,6 +5,7 @@ const theme = extendTheme({
     global: {
       "html, body": {
         overflow: "hidden",
+        bg: "gray",
       },
     },
   },
