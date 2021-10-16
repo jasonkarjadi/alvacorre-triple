@@ -2,7 +2,7 @@ import { Image, Text, VStack } from "@chakra-ui/react";
 import { GetStaticProps } from "next";
 import getT from "next-translate/getT";
 import { FC } from "react";
-import NavBar from "../components/NavBar";
+import { NavBar } from "../components/NavBar";
 import { TitleTag } from "../components/TitleTag";
 
 interface MyCreatorProps {

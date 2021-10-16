@@ -4,7 +4,7 @@ import { FC } from "react";
 import { GlobeAikon, HomeAikon, InfoAikon, UserAikon } from "./Aikon";
 import { AikonLink } from "./LinkBaten";
 
-const NavBar: FC = () => {
+export const NavBar: FC = () => {
   const { t } = useTranslation("navbar");
   return (
     <HStack as="nav" spacing={4} w="full" justify="center" bg="gray.300" py={8}>
@@ -27,5 +27,3 @@ const NavBar: FC = () => {
     </HStack>
   );
 };
-
-export default NavBar;

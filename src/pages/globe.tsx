@@ -3,7 +3,7 @@ import { GetStaticProps } from "next";
 import getT from "next-translate/getT";
 import { FC } from "react";
 import { Globe } from "../components/Globe";
-import NavBar from "../components/NavBar";
+import { NavBar } from "../components/NavBar";
 import { TitleTag } from "../components/TitleTag";
 
 interface MyGlobeProps {
