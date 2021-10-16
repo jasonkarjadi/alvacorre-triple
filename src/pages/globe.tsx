@@ -1,4 +1,4 @@
-import { VStack } from "@chakra-ui/react";
+import { Box, VStack } from "@chakra-ui/react";
 import { GetStaticProps } from "next";
 import getT from "next-translate/getT";
 import { FC } from "react";
@@ -16,20 +16,22 @@ interface MyGlobeProps {
 
 const MyGlobe: FC<MyGlobeProps> = ({ titleTags, clickables }) => {
   return (
-    <VStack p={1} h="100vh" spacing={0}>
-      <VStack spacing={8} flex={1} bg="gray.200" w="full" p={8} align="end">
-        <TitleTag titleTags={titleTags} textAlign="end" />
-        <Globe clickables={clickables} />
+    <Box py={3} paddingRight={3} h="100vh">
+      <VStack py={3} paddingRight={3} spacing={0} h="full" bg="gray.200">
+        <VStack spacing={8} flex={1} w="full" p={8} align="end" bg="white">
+          <TitleTag titleTags={titleTags} textAlign="end" />
+          <Globe clickables={clickables} />
+        </VStack>
+        <NavBar />
       </VStack>
-      <NavBar />
-    </VStack>
+    </Box>
   );
 };
 
 export const getStaticProps: GetStaticProps = async ({ locales }) => {
   const titleTags: { locale: string; title: string; tagline: string }[] = [];
   locales?.map(async (locale) => {
-    const t = await getT(locale, "creator");
+    const t = await getT(locale, "globe");
     const title = t("title");
     const tagline = t("tagline");
     titleTags.push({ locale, title, tagline });
@@ -99,9 +101,6 @@ export default MyGlobe;
 //   },
 // ];
 
-// const filterer = (target: string) =>
-//   content.filter(({ langName }) => langName === target)[0];
-
 // English => Latin, French, Greek, Dutch, Spanish, Italian, Indian, German, Arabic
-// Japanese =>
+// Japanese => Chinese
 // Indonesian => Dutch, Arabic, Sanskrit, Hokkien, Portuguese, English

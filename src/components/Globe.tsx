@@ -63,7 +63,7 @@ export const Globe: FC<GlobeProps> = ({ clickables }) => {
     rayRef = useRef(new Raycaster()),
     onCanvasLoaded = useRef((canvas: HTMLCanvasElement & HTMLDivElement) => {
       if (!canvas) return;
-      rendRef.current = new WebGLRenderer({ canvas });
+      rendRef.current = new WebGLRenderer({ canvas, antialias: false });
       ctrlRef.current = new OrbitControls(camRef.current, canvas);
       globeRef.current = new Mesh(
         new SphereGeometry(radRef.current, 50, 50),
@@ -78,8 +78,7 @@ export const Globe: FC<GlobeProps> = ({ clickables }) => {
         })
       );
 
-      rendRef.current.setPixelRatio(devicePixelRatio);
-      camRef.current.position.setZ(20);
+      camRef.current.position.setZ(16);
       Object.assign(ctrlRef.current, {
         enableDamping: true,
         rotateSpeed: 0.5,
@@ -104,11 +103,14 @@ export const Globe: FC<GlobeProps> = ({ clickables }) => {
       });
     });
   const ptRef = useRef<Mesh[]>([]);
+  const wrapRef = useRef<HTMLDivElement>(null);
 
   const setResize = () => {
-      camRef.current.aspect = innerWidth / innerHeight;
+      const rect = wrapRef.current!.getBoundingClientRect();
+      camRef.current.aspect = rect.width / rect.height;
       camRef.current.updateProjectionMatrix();
-      rendRef.current!.setSize(innerWidth, innerHeight);
+      rendRef.current!.setSize(rect.width, rect.height);
+      rendRef.current!.setPixelRatio(devicePixelRatio);
     },
     setMouseVector = (e: MouseEvent) => {
       mouseRef.current.x = (e.clientX / innerWidth) * 2 - 1;
@@ -123,22 +125,18 @@ export const Globe: FC<GlobeProps> = ({ clickables }) => {
     rayRef.current.setFromCamera(mouseRef.current, camRef.current);
     const intersects = rayRef.current.intersectObjects(ptRef.current);
     if (intersects.length > 0) {
-      // if (!stateA![0]) {
-      //   stateA![1](intersects[0].object.name);
-      // } else if (intersects[0].object.name !== stateA![0]) {
-      //   if (intersects[0].object.name !== stateB![0]) {
-      //     stateB![1](intersects[0].object.name);
-      //   }
-      // }
     }
   };
 
   return (
-    <Box
-      as="canvas"
-      ref={onCanvasLoaded.current}
-      onMouseMove={setMouseVector}
-      onMouseDown={setPointRaycaster}
-    />
+    <Box flex={1} w="full" ref={wrapRef}>
+      <Box
+        as="canvas"
+        ref={onCanvasLoaded.current}
+        onMouseMove={setMouseVector}
+        onMouseDown={setPointRaycaster}
+        borderRadius="base"
+      />
+    </Box>
   );
 };
