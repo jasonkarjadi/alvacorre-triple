@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, useBoolean } from "@chakra-ui/react";
 import { FC, MouseEvent, useEffect, useRef } from "react";
 import {
   AdditiveBlending,
@@ -21,6 +21,7 @@ import {
   fragmentShader,
   vertexShader,
 } from "../shaders";
+import { Slide } from "./Slide";
 
 interface GlobeProps {
   clickables: {
@@ -39,6 +40,7 @@ export const Globe: FC<GlobeProps> = ({ clickables }) => {
       removeEventListener("resize", () => setResize);
     };
   }, []);
+  const [isSlide, setIsSlide] = useBoolean(false);
 
   const requestRef = useRef(0),
     rendRef = useRef<WebGLRenderer>(),
@@ -113,8 +115,9 @@ export const Globe: FC<GlobeProps> = ({ clickables }) => {
       rendRef.current!.setPixelRatio(devicePixelRatio);
     },
     setMouseVector = (e: MouseEvent) => {
-      mouseRef.current.x = (e.clientX / innerWidth) * 2 - 1;
-      mouseRef.current.y = -(e.clientY / innerHeight) * 2 + 1;
+      const rect = wrapRef.current!.getBoundingClientRect();
+      mouseRef.current.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      mouseRef.current.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
     },
     tick = () => {
       ctrlRef.current!.update();
@@ -125,17 +128,19 @@ export const Globe: FC<GlobeProps> = ({ clickables }) => {
     rayRef.current.setFromCamera(mouseRef.current, camRef.current);
     const intersects = rayRef.current.intersectObjects(ptRef.current);
     if (intersects.length > 0) {
+      setIsSlide.on();
     }
   };
 
   return (
-    <Box flex={1} w="full" ref={wrapRef}>
+    <Box flex={1} w="full" ref={wrapRef} pos="relative">
+      <Slide useBoolean={[isSlide, setIsSlide]} />
       <Box
         as="canvas"
         ref={onCanvasLoaded.current}
         onMouseMove={setMouseVector}
         onMouseDown={setPointRaycaster}
-        borderRadius="base"
+        borderRadius="xl"
       />
     </Box>
   );
