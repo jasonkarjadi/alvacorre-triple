@@ -87,7 +87,8 @@ export const Globe: FC<GlobeProps> = ({ clickables }) => {
         autoRotate: true,
         autoRotateSpeed: 0.2,
         enablePan: false,
-        enableZoom: false,
+        minDistance: 10,
+        maxDistance: 30,
       });
       globeRef.current.rotateY(-Math.PI / 2);
       sceneRef.current.add(
