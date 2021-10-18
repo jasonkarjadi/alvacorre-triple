@@ -1,8 +1,8 @@
-import { Image, VStack } from "@chakra-ui/react";
+import { Image } from "@chakra-ui/react";
 import { GetStaticProps } from "next";
 import getT from "next-translate/getT";
 import { FC } from "react";
-import { NavBar } from "../components/NavBar";
+import { Layout } from "../components/Layout";
 import { TitleTag } from "../components/TitleTag";
 
 interface MyIndexProps {
@@ -11,13 +11,15 @@ interface MyIndexProps {
 
 const MyIndex: FC<MyIndexProps> = ({ titleTags }) => {
   return (
-    <VStack p={3} h="100vh" spacing={0}>
-      <VStack spacing={8} flex={1} bg="gray.200" w="full" p={8}>
-        <Image flex={1} alt="main visual" />
-        <TitleTag titleTags={titleTags} placement="top" textAlign="center" />
-      </VStack>
-      <NavBar />
-    </VStack>
+    <Layout isCover={true}>
+      <Image flex={1} alt="main visual" />
+      <TitleTag
+        titleTags={titleTags}
+        placement="top"
+        textAlign="center"
+        justifyContent="center"
+      />
+    </Layout>
   );
 };
 

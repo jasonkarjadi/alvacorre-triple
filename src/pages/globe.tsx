@@ -1,9 +1,8 @@
-import { Box, VStack } from "@chakra-ui/react";
 import { GetStaticProps } from "next";
 import getT from "next-translate/getT";
 import { FC } from "react";
 import { Globe } from "../components/Globe";
-import { NavBar } from "../components/NavBar";
+import { Layout } from "../components/Layout";
 import { TitleTag } from "../components/TitleTag";
 
 interface MyGlobeProps {
@@ -16,15 +15,15 @@ interface MyGlobeProps {
 
 const MyGlobe: FC<MyGlobeProps> = ({ titleTags, clickables }) => {
   return (
-    <Box py={3} paddingRight={3} h="100vh">
-      <VStack py={3} paddingRight={3} spacing={0} h="full" bg="gray.200">
-        <VStack spacing={8} flex={1} w="full" p={8} align="end" bg="white">
-          <TitleTag titleTags={titleTags} textAlign="end" />
-          <Globe clickables={clickables} />
-        </VStack>
-        <NavBar />
-      </VStack>
-    </Box>
+    <Layout isCover={false} align="flex-end">
+      <TitleTag
+        titleTags={titleTags}
+        placement="bottom-end"
+        textAlign="end"
+        justifyContent="flex-end"
+      />
+      <Globe clickables={clickables} />
+    </Layout>
   );
 };
 

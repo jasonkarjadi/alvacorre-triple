@@ -1,8 +1,8 @@
-import { Image, Text, VStack } from "@chakra-ui/react";
+import { Image, Text } from "@chakra-ui/react";
 import { GetStaticProps } from "next";
 import getT from "next-translate/getT";
 import { FC } from "react";
-import { NavBar } from "../components/NavBar";
+import { Layout } from "../components/Layout";
 import { TitleTag } from "../components/TitleTag";
 
 interface MyCreatorProps {
@@ -11,16 +11,18 @@ interface MyCreatorProps {
 
 const MyCreator: FC<MyCreatorProps> = ({ titleTags }) => {
   return (
-    <VStack p={3} h="100vh" spacing={0}>
-      <VStack spacing={8} flex={1} bg="gray.200" w="full" p={8}>
-        <Image alt="my profile picture" />
-        <TitleTag titleTags={titleTags} textAlign="center" />
-        <Text w="full" flex={1}>
-          Lorem Ipsum
-        </Text>
-      </VStack>
-      <NavBar />
-    </VStack>
+    <Layout isCover={true}>
+      <Image alt="my profile picture" />
+      <TitleTag
+        titleTags={titleTags}
+        placement="bottom"
+        textAlign="center"
+        justifyContent="center"
+      />
+      <Text w="full" flex={1}>
+        Lorem Ipsum
+      </Text>
+    </Layout>
   );
 };
 

@@ -80,7 +80,7 @@ export const Globe: FC<GlobeProps> = ({ clickables }) => {
         })
       );
 
-      camRef.current.position.setZ(16);
+      camRef.current.position.setZ(18);
       Object.assign(ctrlRef.current, {
         enableDamping: true,
         rotateSpeed: 0.5,
@@ -96,7 +96,7 @@ export const Globe: FC<GlobeProps> = ({ clickables }) => {
       );
 
       clickables.map(({ iso, coords: { x, y, z } }) => {
-        const dot = new Mesh(new SphereGeometry(0.1));
+        const dot = new Mesh(new SphereGeometry(0.2));
         const radCoords = (num: number) => num * radRef.current;
         dot.position.set(radCoords(x), radCoords(y), radCoords(z));
         dot.name = iso;
@@ -140,6 +140,7 @@ export const Globe: FC<GlobeProps> = ({ clickables }) => {
         ref={onCanvasLoaded.current}
         onMouseMove={setMouseVector}
         onMouseDown={setPointRaycaster}
+        userSelect="none"
         borderRadius="xl"
       />
     </Box>
