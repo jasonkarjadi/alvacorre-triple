@@ -1,4 +1,4 @@
-import { VStack, SystemProps } from "@chakra-ui/react";
+import { Box, SystemProps, VStack } from "@chakra-ui/react";
 import { FC } from "react";
 import { NavBar } from "./NavBar";
 
@@ -9,18 +9,13 @@ interface LayoutProps {
 
 export const Layout: FC<LayoutProps> = ({ children, isCover, align }) => {
   return (
-    <VStack p={3} h="full" spacing={0}>
-      <VStack
-        spacing={6}
-        flex={1}
-        w="full"
-        p={6}
-        bg={isCover ? "gray.100" : "white"}
-        align={align}
-      >
-        {children}
+    <Box h="full" p={3}>
+      <VStack h="full" spacing={0} bg={isCover ? "gray.100" : "white"}>
+        <VStack spacing={6} flex={1} w="full" p={6} align={align}>
+          {children}
+        </VStack>
+        <NavBar />
       </VStack>
-      <NavBar />
-    </VStack>
+    </Box>
   );
 };

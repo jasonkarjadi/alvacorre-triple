@@ -7,7 +7,7 @@ import { AikonLink } from "./LinkBaten";
 export const NavBar: FC = () => {
   const { t } = useTranslation("navbar");
   return (
-    <HStack as="nav" spacing={3} w="full" justify="center" bg="gray.300" py={6}>
+    <HStack as="nav" spacing={3} w="full" justify="center" py={6}>
       <AikonLink href="/">
         <HomeAikon />
         {t("home")}
