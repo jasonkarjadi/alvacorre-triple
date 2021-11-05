@@ -30,7 +30,8 @@ export const AikonLink: FC<AikonLinkProps> = ({ children, href }) => {
       fontSize="x-small"
       fontWeight="bold"
       bg={isRoute ? "" : "gray.400"}
-      children={children}
-    />
+    >
+      {children}
+    </Box>
   );
 };

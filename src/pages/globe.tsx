@@ -5,15 +5,30 @@ import { Globe } from "../components/Globe";
 import { Layout } from "../components/Layout";
 import { TitleTag } from "../components/TitleTag";
 
-interface MyGlobeProps {
-  titleTags: { locale: string; title: string; tagline: string }[];
-  clickables: {
-    iso: string;
-    coords: { x: number; y: number; z: number };
+type TitleTags = { locale: string; title: string; tagline: string }[];
+export type PolyCoords = [number, number][][];
+type FeatProps = { [index: string]: string | number | null };
+type FeatGeom =
+  | { type: "Polygon"; coordinates: PolyCoords }
+  | { type: "MultiPolygon"; coordinates: PolyCoords[] };
+type GeoJson = {
+  type: "FeatureCollection";
+  name: string;
+  crs: { type: "name"; properties: { name: string } };
+  features: {
+    type: "Feature";
+    properties: FeatProps;
+    bbox: [number, number, number, number];
+    geometry: FeatGeom;
   }[];
+  bbox: [number, number, number, number];
+};
+export interface MyGlobeProps {
+  titleTags: TitleTags;
+  feats: { properties: FeatProps; geometry: FeatGeom }[];
 }
 
-const MyGlobe: FC<MyGlobeProps> = ({ titleTags, clickables }) => {
+const MyGlobe: FC<MyGlobeProps> = ({ titleTags, feats }) => {
   return (
     <Layout isCover={false} align="flex-end">
       <TitleTag
@@ -22,84 +37,72 @@ const MyGlobe: FC<MyGlobeProps> = ({ titleTags, clickables }) => {
         textAlign="end"
         justifyContent="flex-end"
       />
-      <Globe clickables={clickables} />
+      <Globe feats={feats} />
     </Layout>
   );
 };
 
 export const getStaticProps: GetStaticProps = async ({ locales }) => {
-  const titleTags: { locale: string; title: string; tagline: string }[] = [];
+  const titleTags: TitleTags = [];
   locales?.map(async (locale) => {
     const t = await getT(locale, "globe");
-    const title = t("title");
-    const tagline = t("tagline");
-    titleTags.push({ locale, title, tagline });
+    titleTags.push({ locale, title: t("title"), tagline: t("tagline") });
   });
 
-  const clickables = [
-    {
-      iso: "id",
-      coords: {
-        x: 0.9140165430070886,
-        y: -0.013775448070460912,
-        z: -0.4054429628687974,
-      },
-    },
-    {
-      iso: "jp",
-      coords: {
-        x: 0.5372766576225415,
-        y: 0.5906732692963204,
-        z: -0.6020289711573246,
-      },
-    },
-    {
-      iso: "en",
-      coords: {
-        x: -0.034051759463686306,
-        y: 0.822919263139182,
-        z: 0.5671369887706965,
-      },
-    },
-  ];
+  const res = await fetch(
+    "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson"
+  );
+  const geojson: GeoJson = await res.json();
+  const feats = geojson.features.map(({ properties, geometry }) => ({
+    properties,
+    geometry,
+  }));
+
+  // const contents = [
+  //   {
+  //     iso: "en",
+  //     imports: ["la", "fr", "el", "nl", "es", "it", "hi", "de", "ar"],
+  //     family: "ine",
+  //     form: "anal",
+  //     wordOrder: "SVO",
+  //   },
+  //   {
+  //     iso: "id",
+  //     imports: ["nl", "ar", "sa", "pt", "en", "zh"],
+  //     family: "map",
+  //     form: "synt",
+  //     wordOrder: "SVO",
+  //   },
+  //   {
+  //     iso: "jp",
+  //     imports: ["zh", "en", "pt", "nl", "de", "fr"],
+  //     family: "jpx",
+  //     form: "synt",
+  //     wordOrder: "SOV",
+  //   },
+  // ];
 
   return {
     props: {
       titleTags,
-      clickables,
+      feats,
     },
   };
 };
 
 export default MyGlobe;
 
-// const content = [
+// const languages = [
 //   {
-//     langName: "en",
-//     family: "ine",
-//     type: {
-//       form: "analyt",
-//       wordOrder: "SVO",
-//     },
+//     iso: "en",
+//     coords: { lat: 55.3781, lng: -3.436 },
 //   },
 //   {
-//     langName: "jp",
-//     family: "jpx",
-//     type: {
-//       form: "synthe",
-//       wordOrder: "SOV",
-//     },
+//     iso: "id",
+//     coords: { lat: -0.7893, lng: 113.9213 },
 //   },
 //   {
-//     langName: "id",
-//     family: "map",
-//     type: {
-//       form: "synthe",
-//       wordOrder: "SVO",
-//     },
+//     iso: "jp",
+//     coords: { lat: 36.2048, lng: 138.2529 },
 //   },
 // ];
-
-// English => Latin, French, Greek, Dutch, Spanish, Italian, Indian, German, Arabic
-// Japanese => Chinese
-// Indonesian => Dutch, Arabic, Sanskrit, Hokkien, Portuguese, English
