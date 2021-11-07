@@ -2,10 +2,9 @@ import { mean, merge } from "d3-array";
 // import {} from "d3-geo-voronoi"
 import { Delaunay } from "d3-delaunay";
 import { geoBounds, geoContains, geoDistance, geoInterpolate } from "d3-geo";
-// import Delaunator from "delaunator";
 import earcut from "earcut";
 import { Polygon } from "geojson";
-import { PolyCoords } from "../pages/globe";
+import { PolyCoords } from "../types";
 
 export const geoPolyTrnglt = (polygon: PolyCoords, res = 5) => {
   const boundsGeom: Polygon = { type: "Polygon", coordinates: polygon };

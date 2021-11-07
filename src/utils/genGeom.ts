@@ -1,6 +1,6 @@
 import earcut from "earcut";
 import { BufferGeometry, Float32BufferAttribute } from "three";
-import { PolyCoords } from "../pages/globe";
+import { PolyCoords } from "../types";
 import { geoPolyTrnglt, interpLine } from "./geoPolyTrnglt";
 import { toXYZ } from "./toXYZ";
 
