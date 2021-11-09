@@ -4,9 +4,10 @@ import getT from "next-translate/getT";
 import { FC } from "react";
 import { Layout } from "../components/Layout";
 import { TitleTag } from "../components/TitleTag";
+import { TitleTags } from "../types";
 
 interface MyIndexProps {
-  titleTags: { locale: string; title: string; tagline: string }[];
+  titleTags: TitleTags;
 }
 
 const MyIndex: FC<MyIndexProps> = ({ titleTags }) => {
@@ -24,12 +25,10 @@ const MyIndex: FC<MyIndexProps> = ({ titleTags }) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ locales }) => {
-  const titleTags: { locale: string; title: string; tagline: string }[] = [];
+  const titleTags: TitleTags = [];
   locales?.map(async (locale) => {
     const t = await getT(locale, "home");
-    const title = t("title");
-    const tagline = t("tagline");
-    titleTags.push({ locale, title, tagline });
+    titleTags.push({ locale, title: t("title"), tagline: t("tagline") });
   });
 
   return {
@@ -38,10 +37,3 @@ export const getStaticProps: GetStaticProps = async ({ locales }) => {
 };
 
 export default MyIndex;
-
-// add UI indicating dots are clickable
-// add highlight on clicked dot
-// add curved lines indicating correlations feature
-// solidify content for each language
-// add common.json for each locale
-// fix camera zoom or globe size
