@@ -1,8 +1,10 @@
+import { Box, useBoolean } from "@chakra-ui/react";
 import { GetStaticProps } from "next";
 import getT from "next-translate/getT";
-import { FC } from "react";
+import { FC, useRef } from "react";
 import { Globe } from "../components/Globe";
 import { Layout } from "../components/Layout";
+import { Slide } from "../components/Slide";
 import { TitleTag } from "../components/TitleTag";
 import { TitleTags } from "../types";
 
@@ -11,15 +13,20 @@ interface MyGlobeProps {
 }
 
 const MyGlobe: FC<MyGlobeProps> = ({ titleTags }) => {
+  const [isSlide, setIsSlide] = useBoolean(false);
+  const wrapRef = useRef<HTMLDivElement>(null);
   return (
-    <Layout isCover={false} align="flex-end">
+    <Layout align="flex-end">
       <TitleTag
         titleTags={titleTags}
         placement="bottom-end"
         textAlign="end"
         justifyContent="flex-end"
       />
-      <Globe />
+      <Box flex={1} w="full" ref={wrapRef} pos="relative">
+        <Globe wrapRef={wrapRef} />
+        <Slide useBoolean={[isSlide, setIsSlide]} />
+      </Box>
     </Layout>
   );
 };

@@ -1,6 +1,13 @@
-import { Box, useBoolean } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { geoInterpolate } from "d3-geo";
-import { FC, MouseEvent, useCallback, useEffect, useRef } from "react";
+import {
+  FC,
+  MouseEvent,
+  RefObject,
+  useCallback,
+  useEffect,
+  useRef,
+} from "react";
 import {
   CubicBezierCurve3,
   Group,
@@ -17,12 +24,12 @@ import {
   WebGLRenderer,
 } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { Slide } from "./Slide";
 import { mergeBufferGeometries } from "three/examples/jsm/utils/BufferGeometryUtils";
 import { genLineGeom, genMeshGeom } from "../utils/genGeom";
 import features from "../ne_110m_admin_0_countries";
 
 interface GlobeProps {
+  wrapRef: RefObject<HTMLDivElement>;
   contents?: {
     iso: string;
     imports: string[];
@@ -32,10 +39,8 @@ interface GlobeProps {
   }[];
 }
 
-export const Globe: FC<GlobeProps> = () => {
-  const [isSlide, setIsSlide] = useBoolean(false);
+export const Globe: FC<GlobeProps> = ({ wrapRef }) => {
   const requestRef = useRef(0);
-  const wrapRef = useRef<HTMLDivElement>(null);
   const rendRef = useRef<WebGLRenderer>();
   const camRef = useRef(new PerspectiveCamera(50, 2, 1, 1000));
   const ctrlRef = useRef<OrbitControls>();
@@ -114,20 +119,25 @@ export const Globe: FC<GlobeProps> = () => {
     }
   );
 
-  const setResize = () => {
+  const setResize = useCallback(() => {
     const { width, height } = wrapRef.current!.getBoundingClientRect();
     camRef.current.aspect = width / height;
     camRef.current.updateProjectionMatrix();
     rendRef.current!.setSize(width, height);
     rendRef.current!.setPixelRatio(devicePixelRatio);
-  }; // useCallback?
+  }, [wrapRef]);
 
-  const setMouseVector = (e: MouseEvent) => {
-    const { width, height, left, top } =
-      wrapRef.current!.getBoundingClientRect();
-    mouseRef.current.x = ((e.clientX - left) / width) * 2 - 1;
-    mouseRef.current.y = -((e.clientY - top) / height) * 2 + 1;
-  }; //useCallback?
+  const setMouseXY = useCallback(
+    (e: MouseEvent) => {
+      const { width, height, left, top } =
+        wrapRef.current!.getBoundingClientRect();
+      mouseRef.current.set(
+        ((e.clientX - left) / width) * 2 - 1,
+        -((e.clientY - top) / height) * 2 + 1
+      );
+    },
+    [wrapRef]
+  );
 
   const tick = useCallback(() => {
     ctrlRef.current!.update();
@@ -155,26 +165,28 @@ export const Globe: FC<GlobeProps> = () => {
   };
 
   useEffect(() => {
-    requestRef.current = requestAnimationFrame(tick);
     addEventListener("resize", setResize);
     setResize();
     return () => {
-      cancelAnimationFrame(requestRef.current);
       removeEventListener("resize", setResize);
+    };
+  }, [setResize]);
+
+  useEffect(() => {
+    requestRef.current = requestAnimationFrame(tick);
+    return () => {
+      cancelAnimationFrame(requestRef.current);
     };
   }, [tick]);
 
   return (
-    <Box flex={1} w="full" ref={wrapRef} pos="relative">
-      <Slide useBoolean={[isSlide, setIsSlide]} />
-      <Box
-        as="canvas"
-        ref={onCanvasLoaded.current}
-        onMouseMove={setMouseVector}
-        onMouseDown={setPointRaycaster}
-        userSelect="none"
-        borderRadius="xl"
-      />
-    </Box>
+    <Box
+      as="canvas"
+      ref={onCanvasLoaded.current}
+      onMouseMove={setMouseXY}
+      onMouseDown={setPointRaycaster}
+      userSelect="none"
+      borderRadius="xl"
+    />
   );
 };

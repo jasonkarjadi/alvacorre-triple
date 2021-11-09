@@ -12,7 +12,7 @@ interface MyIndexProps {
 
 const MyIndex: FC<MyIndexProps> = ({ titleTags }) => {
   return (
-    <Layout isCover={true}>
+    <Layout>
       <Image flex={1} alt="main visual" />
       <TitleTag
         titleTags={titleTags}

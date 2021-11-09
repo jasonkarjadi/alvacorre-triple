@@ -14,7 +14,7 @@ interface MyPrefaceProps {
 const MyPreface: FC<MyPrefaceProps> = ({ titleTags }) => {
   const { t } = useTranslation("prefaceFill");
   return (
-    <Layout isCover={false} align="flex-start">
+    <Layout align="flex-start">
       <TitleTag
         titleTags={titleTags}
         placement="bottom-start"
