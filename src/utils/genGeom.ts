@@ -5,13 +5,12 @@ import { geoPolyTrnglt, interpLine } from "./geoPolyTrnglt";
 import { toXYZ } from "./toXYZ";
 
 export const genMeshGeom = (coords: PolyCoords, rad = 1, res = 5) => {
-  const { pnts, inds } = geoPolyTrnglt(coords, res);
-  const xyzs = [pnts].map((c) => c.map(([lng, lat]) => toXYZ(lat, lng, rad))); // shorten?
-  const verts = earcut.flatten(xyzs).vertices; // shorten?
+  const { verts, inds } = geoPolyTrnglt(coords, rad, res);
   const meshGeom = new BufferGeometry();
-  meshGeom.setIndex(inds);
-  meshGeom.setAttribute("position", new Float32BufferAttribute(verts, 3));
-  meshGeom.computeVertexNormals();
+  meshGeom
+    .setIndex(inds)
+    .setAttribute("position", new Float32BufferAttribute(verts, 3))
+    .computeVertexNormals();
   return meshGeom;
 };
 
@@ -41,7 +40,8 @@ export const genLineGeom = (coords: PolyCoords, rad = 1, res = 5) => {
     outerVerts.concat(holeVerts);
   }
   const lineGeom = new BufferGeometry();
-  lineGeom.setIndex(outerInds);
-  lineGeom.setAttribute("position", new Float32BufferAttribute(outerVerts, 3));
+  lineGeom
+    .setIndex(outerInds)
+    .setAttribute("position", new Float32BufferAttribute(outerVerts, 3));
   return lineGeom;
 };

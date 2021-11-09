@@ -20,10 +20,9 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { Slide } from "./Slide";
 import { mergeBufferGeometries } from "three/examples/jsm/utils/BufferGeometryUtils";
 import { genLineGeom, genMeshGeom } from "../utils/genGeom";
-import { MyGlobeProps } from "../pages/globe";
+import features from "../ne_110m_admin_0_countries";
 
 interface GlobeProps {
-  feats: MyGlobeProps["feats"];
   contents?: {
     iso: string;
     imports: string[];
@@ -33,7 +32,7 @@ interface GlobeProps {
   }[];
 }
 
-export const Globe: FC<GlobeProps> = ({ feats }) => {
+export const Globe: FC<GlobeProps> = () => {
   const [isSlide, setIsSlide] = useBoolean(false);
   const requestRef = useRef(0);
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -45,7 +44,7 @@ export const Globe: FC<GlobeProps> = ({ feats }) => {
   const mouseRef = useRef(new Vector2());
   const rayRef = useRef(new Raycaster());
   const worldRef = useRef(
-    feats.map(({ geometry }) => {
+    features.map(({ geometry }) => {
       const polygons =
         geometry.type === "Polygon"
           ? [geometry.coordinates]
@@ -53,17 +52,16 @@ export const Globe: FC<GlobeProps> = ({ feats }) => {
       const meshGeoms =
         polygons.map((c) => genMeshGeom(c, radRef.current, 1)) || [];
       const countryMesh = new Mesh(
-        mergeBufferGeometries(meshGeoms),
+        !meshGeoms.length ? undefined : mergeBufferGeometries(meshGeoms),
         new MeshBasicMaterial({ color: 0x101ab3 })
       );
       const lineGeoms =
         polygons.map((c) => genLineGeom(c, radRef.current, 1)) || [];
       const countryLine = new LineSegments(
-        mergeBufferGeometries(lineGeoms),
+        !lineGeoms.length ? undefined : mergeBufferGeometries(lineGeoms),
         new LineBasicMaterial({ color: 0xf78f2e })
       );
-      const group = new Group();
-      group.add(countryMesh, countryLine);
+      const group = new Group().add(countryMesh, countryLine);
       sceneRef.current.add(group);
       return countryMesh;
     })
@@ -72,7 +70,6 @@ export const Globe: FC<GlobeProps> = ({ feats }) => {
     (canvas: HTMLCanvasElement & HTMLDivElement) => {
       if (!canvas) return;
       rendRef.current = new WebGLRenderer({ canvas, antialias: false });
-      rendRef.current.setClearColor(0x222222);
       ctrlRef.current = new OrbitControls(camRef.current, canvas);
       camRef.current.position.set(0, 0, 200);
       Object.assign(ctrlRef.current, {
@@ -140,7 +137,7 @@ export const Globe: FC<GlobeProps> = ({ feats }) => {
 
   const setPointRaycaster = () => {
     rayRef.current.setFromCamera(mouseRef.current, camRef.current);
-    const intersects = rayRef.current.intersectObjects(worldRef.current);
+    const intersects = rayRef.current.intersectObjects(worldRef.current!);
     if (intersects.length) {
       console.log("hit");
       // setIsSlide.on();

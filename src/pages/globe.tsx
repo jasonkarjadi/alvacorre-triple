@@ -4,31 +4,13 @@ import { FC } from "react";
 import { Globe } from "../components/Globe";
 import { Layout } from "../components/Layout";
 import { TitleTag } from "../components/TitleTag";
+import { TitleTags } from "../types";
 
-type TitleTags = { locale: string; title: string; tagline: string }[];
-export type PolyCoords = [number, number][][];
-type FeatProps = { [index: string]: string | number | null };
-type FeatGeom =
-  | { type: "Polygon"; coordinates: PolyCoords }
-  | { type: "MultiPolygon"; coordinates: PolyCoords[] };
-type GeoJson = {
-  type: "FeatureCollection";
-  name: string;
-  crs: { type: "name"; properties: { name: string } };
-  features: {
-    type: "Feature";
-    properties: FeatProps;
-    bbox: [number, number, number, number];
-    geometry: FeatGeom;
-  }[];
-  bbox: [number, number, number, number];
-};
-export interface MyGlobeProps {
+interface MyGlobeProps {
   titleTags: TitleTags;
-  feats: { properties: FeatProps; geometry: FeatGeom }[];
 }
 
-const MyGlobe: FC<MyGlobeProps> = ({ titleTags, feats }) => {
+const MyGlobe: FC<MyGlobeProps> = ({ titleTags }) => {
   return (
     <Layout isCover={false} align="flex-end">
       <TitleTag
@@ -37,7 +19,7 @@ const MyGlobe: FC<MyGlobeProps> = ({ titleTags, feats }) => {
         textAlign="end"
         justifyContent="flex-end"
       />
-      <Globe feats={feats} />
+      <Globe />
     </Layout>
   );
 };
@@ -49,48 +31,38 @@ export const getStaticProps: GetStaticProps = async ({ locales }) => {
     titleTags.push({ locale, title: t("title"), tagline: t("tagline") });
   });
 
-  const res = await fetch(
-    "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson"
-  );
-  const geojson: GeoJson = await res.json();
-  const feats = geojson.features.map(({ properties, geometry }) => ({
-    properties,
-    geometry,
-  }));
-
-  // const contents = [
-  //   {
-  //     iso: "en",
-  //     imports: ["la", "fr", "el", "nl", "es", "it", "hi", "de", "ar"],
-  //     family: "ine",
-  //     form: "anal",
-  //     wordOrder: "SVO",
-  //   },
-  //   {
-  //     iso: "id",
-  //     imports: ["nl", "ar", "sa", "pt", "en", "zh"],
-  //     family: "map",
-  //     form: "synt",
-  //     wordOrder: "SVO",
-  //   },
-  //   {
-  //     iso: "jp",
-  //     imports: ["zh", "en", "pt", "nl", "de", "fr"],
-  //     family: "jpx",
-  //     form: "synt",
-  //     wordOrder: "SOV",
-  //   },
-  // ];
-
   return {
     props: {
       titleTags,
-      feats,
     },
   };
 };
 
 export default MyGlobe;
+
+// const contents = [
+//   {
+//     iso: "en",
+//     imports: ["la", "fr", "el", "nl", "es", "it", "hi", "de", "ar"],
+//     family: "ine",
+//     form: "anal",
+//     wordOrder: "SVO",
+//   },
+//   {
+//     iso: "id",
+//     imports: ["nl", "ar", "sa", "pt", "en", "zh"],
+//     family: "map",
+//     form: "synt",
+//     wordOrder: "SVO",
+//   },
+//   {
+//     iso: "jp",
+//     imports: ["zh", "en", "pt", "nl", "de", "fr"],
+//     family: "jpx",
+//     form: "synt",
+//     wordOrder: "SOV",
+//   },
+// ];
 
 // const languages = [
 //   {

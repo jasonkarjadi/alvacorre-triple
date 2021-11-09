@@ -1,12 +1,12 @@
 import { mean, merge } from "d3-array";
-// import {} from "d3-geo-voronoi"
 import { Delaunay } from "d3-delaunay";
 import { geoBounds, geoContains, geoDistance, geoInterpolate } from "d3-geo";
 import earcut from "earcut";
 import { Polygon } from "geojson";
 import { PolyCoords } from "../types";
+import { toXYZ } from "./toXYZ";
 
-export const geoPolyTrnglt = (polygon: PolyCoords, res = 5) => {
+export const geoPolyTrnglt = (polygon: PolyCoords, rad = 1, res = 5) => {
   const boundsGeom: Polygon = { type: "Polygon", coordinates: polygon };
   const [[minLng, minLat], [maxLng, maxLat]] = geoBounds(boundsGeom);
   const contour = polygon.map((c) => interpLine(c, res));
@@ -18,8 +18,9 @@ export const geoPolyTrnglt = (polygon: PolyCoords, res = 5) => {
           (pnt) => geoContains(boundsGeom, pnt)
         );
   const pnts = [...edgePnts, ...innerPnts];
+  const xyzs = pnts.map(([lng, lat]) => toXYZ(lat, lng, rad));
+  const verts = earcut.flatten([xyzs]).vertices;
   let inds: number[] = [];
-  //   if (minLng > maxLng || maxLat >= 89 || minLat <= -89) {}
   if (!innerPnts.length) {
     const { vertices, holes } = earcut.flatten(contour);
     inds = earcut(vertices, holes, 2);
@@ -38,7 +39,7 @@ export const geoPolyTrnglt = (polygon: PolyCoords, res = 5) => {
       inds.push(...idxs);
     }
   }
-  return { pnts, inds };
+  return { verts, inds };
 };
 
 export const interpLine = (lineCoords: [number, number][], maxDist = 1) => {
