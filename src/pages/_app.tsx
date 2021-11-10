@@ -11,7 +11,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     //   e.stopPropagation();
     // };
   }, []);
-
   return (
     <ChakraProvider resetCSS theme={theme}>
       <Component {...pageProps} />

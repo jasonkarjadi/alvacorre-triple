@@ -21,7 +21,7 @@ const MyPreface: FC<MyPrefaceProps> = ({ titleTags }) => {
         textAlign="start"
       />
       <Text flex={1} w="full">
-        {t("preface")}
+        {t("prefaceA")}
       </Text>
     </Layout>
   );
@@ -33,10 +33,7 @@ export const getStaticProps: GetStaticProps = async ({ locales }) => {
     const t = await getT(locale, "preface");
     titleTags.push({ locale, title: t("title"), tagline: t("tagline") });
   });
-
-  return {
-    props: { titleTags },
-  };
+  return { props: { titleTags } };
 };
 
 export default MyPreface;

@@ -30,10 +30,7 @@ export const getStaticProps: GetStaticProps = async ({ locales }) => {
     const t = await getT(locale, "home");
     titleTags.push({ locale, title: t("title"), tagline: t("tagline") });
   });
-
-  return {
-    props: { titleTags },
-  };
+  return { props: { titleTags } };
 };
 
 export default MyIndex;

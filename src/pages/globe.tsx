@@ -1,4 +1,5 @@
 import { Box, useBoolean } from "@chakra-ui/react";
+import { AnimatePresence } from "framer-motion";
 import { GetStaticProps } from "next";
 import getT from "next-translate/getT";
 import { FC, useRef } from "react";
@@ -24,8 +25,10 @@ const MyGlobe: FC<MyGlobeProps> = ({ titleTags }) => {
         justifyContent="flex-end"
       />
       <Box flex={1} w="full" ref={wrapRef} pos="relative">
-        <Globe wrapRef={wrapRef} />
-        <Slide useBoolean={[isSlide, setIsSlide]} />
+        <Globe wrapRef={wrapRef} setBool={setIsSlide} />
+        <AnimatePresence>
+          {isSlide && <Slide setBool={setIsSlide} />}
+        </AnimatePresence>
       </Box>
     </Layout>
   );
@@ -37,12 +40,7 @@ export const getStaticProps: GetStaticProps = async ({ locales }) => {
     const t = await getT(locale, "globe");
     titleTags.push({ locale, title: t("title"), tagline: t("tagline") });
   });
-
-  return {
-    props: {
-      titleTags,
-    },
-  };
+  return { props: { titleTags } };
 };
 
 export default MyGlobe;
