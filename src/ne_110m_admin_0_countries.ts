@@ -1,12 +1,10 @@
 import { FeatGeom, FeatProps } from "./types";
 
 const features: {
-  type: "Feature";
   properties: FeatProps;
   geometry: FeatGeom;
 }[] = [
   {
-    type: "Feature",
     properties: {
       NAME: "Fiji",
       FORMAL_EN: "Republic of Fiji",
@@ -53,7 +51,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Tanzania",
       FORMAL_EN: "United Republic of Tanzania",
@@ -120,7 +117,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "W. Sahara",
       FORMAL_EN: "Sahrawi Arab Democratic Republic",
@@ -163,7 +159,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Canada",
       FORMAL_EN: "Canada",
@@ -1090,7 +1085,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "United States of America",
       FORMAL_EN: "United States of America",
@@ -1590,7 +1584,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Kazakhstan",
       FORMAL_EN: "Republic of Kazakhstan",
@@ -1717,7 +1710,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Uzbekistan",
       FORMAL_EN: "Republic of Uzbekistan",
@@ -1786,7 +1778,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Papua New Guinea",
       FORMAL_EN: "Independent State of Papua New Guinea",
@@ -1896,7 +1887,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Indonesia",
       FORMAL_EN: "Republic of Indonesia",
@@ -2211,7 +2201,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Argentina",
       FORMAL_EN: "Argentine Republic",
@@ -2353,7 +2342,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Chile",
       FORMAL_EN: "Republic of Chile",
@@ -2488,7 +2476,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Dem. Rep. Congo",
       FORMAL_EN: "Democratic Republic of the Congo",
@@ -2627,7 +2614,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Somalia",
       FORMAL_EN: "Federal Republic of Somalia",
@@ -2679,7 +2665,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Kenya",
       FORMAL_EN: "Republic of Kenya",
@@ -2731,7 +2716,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Sudan",
       FORMAL_EN: "Republic of the Sudan",
@@ -2827,7 +2811,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Chad",
       FORMAL_EN: "Republic of Chad",
@@ -2900,7 +2883,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Haiti",
       FORMAL_EN: "Republic of Haiti",
@@ -2936,7 +2918,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Dominican Rep.",
       FORMAL_EN: "Dominican Republic",
@@ -2977,7 +2958,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Russia",
       FORMAL_EN: "Russian Federation",
@@ -3671,7 +3651,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Bahamas",
       FORMAL_EN: "Commonwealth of the Bahamas",
@@ -3717,7 +3696,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Falkland Is.",
       FORMAL_EN: "Falkland Islands",
@@ -3742,7 +3720,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Norway",
       FORMAL_EN: "Kingdom of Norway",
@@ -3859,7 +3836,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Greenland",
       FORMAL_EN: "Greenland",
@@ -4006,7 +3982,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Fr. S. Antarctic Lands",
       FORMAL_EN: "Territory of the French Southern and Antarctic Lands",
@@ -4030,7 +4005,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Timor-Leste",
       FORMAL_EN: "Democratic Republic of Timor-Leste",
@@ -4056,7 +4030,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "South Africa",
       FORMAL_EN: "Republic of South Africa",
@@ -4167,7 +4140,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Lesotho",
       FORMAL_EN: "Kingdom of Lesotho",
@@ -4194,7 +4166,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Mexico",
       FORMAL_EN: "United Mexican States",
@@ -4379,7 +4350,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Uruguay",
       FORMAL_EN: "Oriental Republic of Uruguay",
@@ -4415,7 +4385,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Brazil",
       FORMAL_EN: "Federative Republic of Brazil",
@@ -4633,7 +4602,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Bolivia",
       FORMAL_EN: "Plurinational State of Bolivia",
@@ -4708,7 +4676,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Peru",
       FORMAL_EN: "Republic of Peru",
@@ -4799,7 +4766,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Colombia",
       FORMAL_EN: "Republic of Colombia",
@@ -4914,7 +4880,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Panama",
       FORMAL_EN: "Republic of Panama",
@@ -4981,7 +4946,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Costa Rica",
       FORMAL_EN: "Republic of Costa Rica",
@@ -5032,7 +4996,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Nicaragua",
       FORMAL_EN: "Republic of Nicaragua",
@@ -5099,7 +5062,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Honduras",
       FORMAL_EN: "Republic of Honduras",
@@ -5171,7 +5133,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "El Salvador",
       FORMAL_EN: "Republic of El Salvador",
@@ -5206,7 +5167,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Guatemala",
       FORMAL_EN: "Republic of Guatemala",
@@ -5256,7 +5216,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Belize",
       FORMAL_EN: "Belize",
@@ -5291,7 +5250,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Venezuela",
       FORMAL_EN: "Bolivarian Republic of Venezuela",
@@ -5398,7 +5356,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Guyana",
       FORMAL_EN: "Co-operative Republic of Guyana",
@@ -5453,7 +5410,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Suriname",
       FORMAL_EN: "Republic of Suriname",
@@ -5494,7 +5450,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "France",
       FORMAL_EN: "French Republic",
@@ -5593,7 +5548,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Ecuador",
       FORMAL_EN: "Republic of Ecuador",
@@ -5641,7 +5595,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Puerto Rico",
       FORMAL_EN: "Commonwealth of Puerto Rico",
@@ -5665,7 +5618,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Jamaica",
       FORMAL_EN: "Jamaica",
@@ -5691,7 +5643,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Cuba",
       FORMAL_EN: "Republic of Cuba",
@@ -5748,7 +5699,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Zimbabwe",
       FORMAL_EN: "Republic of Zimbabwe",
@@ -5800,7 +5750,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Botswana",
       FORMAL_EN: "Republic of Botswana",
@@ -5855,7 +5804,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Namibia",
       FORMAL_EN: "Republic of Namibia",
@@ -5914,7 +5862,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Senegal",
       FORMAL_EN: "Republic of Senegal",
@@ -5973,7 +5920,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Mali",
       FORMAL_EN: "Republic of Mali",
@@ -6064,7 +6010,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Mauritania",
       FORMAL_EN: "Islamic Republic of Mauritania",
@@ -6118,7 +6063,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Benin",
       FORMAL_EN: "Republic of Benin",
@@ -6158,7 +6102,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Niger",
       FORMAL_EN: "Republic of Niger",
@@ -6231,7 +6174,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Nigeria",
       FORMAL_EN: "Federal Republic of Nigeria",
@@ -6304,7 +6246,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Cameroon",
       FORMAL_EN: "Republic of Cameroon",
@@ -6380,7 +6321,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Togo",
       FORMAL_EN: "Togolese Republic",
@@ -6414,7 +6354,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Ghana",
       FORMAL_EN: "Republic of Ghana",
@@ -6454,7 +6393,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Côte d'Ivoire",
       FORMAL_EN: "Republic of Ivory Coast",
@@ -6515,7 +6453,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Guinea",
       FORMAL_EN: "Republic of Guinea",
@@ -6600,7 +6537,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Guinea-Bissau",
       FORMAL_EN: "Republic of Guinea-Bissau",
@@ -6634,7 +6570,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Liberia",
       FORMAL_EN: "Republic of Liberia",
@@ -6676,7 +6611,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Sierra Leone",
       FORMAL_EN: "Republic of Sierra Leone",
@@ -6713,7 +6647,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Burkina Faso",
       FORMAL_EN: "Burkina Faso",
@@ -6767,7 +6700,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Central African Rep.",
       FORMAL_EN: "Central African Republic",
@@ -6844,7 +6776,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Congo",
       FORMAL_EN: "Republic of the Congo",
@@ -6908,7 +6839,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Gabon",
       FORMAL_EN: "Gabonese Republic",
@@ -6954,7 +6884,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Eq. Guinea",
       FORMAL_EN: "Republic of Equatorial Guinea",
@@ -6976,7 +6905,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Zambia",
       FORMAL_EN: "Republic of Zambia",
@@ -7052,7 +6980,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Malawi",
       FORMAL_EN: "Republic of Malawi",
@@ -7095,7 +7022,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Mozambique",
       FORMAL_EN: "Republic of Mozambique",
@@ -7189,7 +7115,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Swaziland",
       FORMAL_EN: "Kingdom of Swaziland",
@@ -7215,7 +7140,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Angola",
       FORMAL_EN: "People's Republic of Angola",
@@ -7311,7 +7235,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Burundi",
       FORMAL_EN: "Republic of Burundi",
@@ -7339,7 +7262,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Israel",
       FORMAL_EN: "State of Israel",
@@ -7380,7 +7302,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Lebanon",
       FORMAL_EN: "Lebanese Republic",
@@ -7406,7 +7327,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Madagascar",
       FORMAL_EN: "Republic of Madagascar",
@@ -7470,7 +7390,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Palestine",
       FORMAL_EN: "West Bank and Gaza",
@@ -7494,7 +7413,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Gambia",
       FORMAL_EN: "Republic of the Gambia",
@@ -7525,7 +7443,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Tunisia",
       FORMAL_EN: "Republic of Tunisia",
@@ -7571,7 +7488,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Algeria",
       FORMAL_EN: "People's Democratic Republic of Algeria",
@@ -7648,7 +7564,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Jordan",
       FORMAL_EN: "Hashemite Kingdom of Jordan",
@@ -7682,7 +7597,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "United Arab Emirates",
       FORMAL_EN: "United Arab Emirates",
@@ -7719,7 +7633,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Qatar",
       FORMAL_EN: "State of Qatar",
@@ -7743,7 +7656,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Kuwait",
       FORMAL_EN: "State of Kuwait",
@@ -7767,7 +7679,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Iraq",
       FORMAL_EN: "Republic of Iraq",
@@ -7812,7 +7723,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Oman",
       FORMAL_EN: "Sultanate of Oman",
@@ -7880,7 +7790,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Vanuatu",
       FORMAL_EN: "Republic of Vanuatu",
@@ -7913,7 +7822,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Cambodia",
       FORMAL_EN: "Kingdom of Cambodia",
@@ -7945,7 +7853,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Thailand",
       FORMAL_EN: "Kingdom of Thailand",
@@ -8024,7 +7931,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Laos",
       FORMAL_EN: "Lao People's Democratic Republic",
@@ -8076,7 +7982,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Myanmar",
       FORMAL_EN: "Republic of the Union of Myanmar",
@@ -8161,7 +8066,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Vietnam",
       FORMAL_EN: "Socialist Republic of Vietnam",
@@ -8220,7 +8124,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "North Korea",
       FORMAL_EN: "Democratic People's Republic of Korea",
@@ -8289,7 +8192,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "South Korea",
       FORMAL_EN: "Republic of Korea",
@@ -8323,7 +8225,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Mongolia",
       FORMAL_EN: "Mongolia",
@@ -8413,7 +8314,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "India",
       FORMAL_EN: "Republic of India",
@@ -8564,7 +8464,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Bangladesh",
       FORMAL_EN: "People's Republic of Bangladesh",
@@ -8615,7 +8514,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Bhutan",
       FORMAL_EN: "Kingdom of Bhutan",
@@ -8643,7 +8541,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Nepal",
       FORMAL_EN: "Nepal",
@@ -8681,7 +8578,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Pakistan",
       FORMAL_EN: "Islamic Republic of Pakistan",
@@ -8762,7 +8658,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Afghanistan",
       FORMAL_EN: "Islamic State of Afghanistan",
@@ -8846,7 +8741,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Tajikistan",
       FORMAL_EN: "Republic of Tajikistan",
@@ -8902,7 +8796,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Kyrgyzstan",
       FORMAL_EN: "Kyrgyz Republic",
@@ -8952,7 +8845,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Turkmenistan",
       FORMAL_EN: "Turkmenistan",
@@ -9021,7 +8913,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Iran",
       FORMAL_EN: "Islamic Republic of Iran",
@@ -9112,7 +9003,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Syria",
       FORMAL_EN: "Syrian Arab Republic",
@@ -9154,7 +9044,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Armenia",
       FORMAL_EN: "Republic of Armenia",
@@ -9189,7 +9078,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Sweden",
       FORMAL_EN: "Kingdom of Sweden",
@@ -9244,7 +9132,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Belarus",
       FORMAL_EN: "Republic of Belarus",
@@ -9304,7 +9191,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Ukraine",
       FORMAL_EN: "Ukraine",
@@ -9412,7 +9298,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Poland",
       FORMAL_EN: "Republic of Poland",
@@ -9472,7 +9357,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Austria",
       FORMAL_EN: "Republic of Austria",
@@ -9524,7 +9408,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Hungary",
       FORMAL_EN: "Republic of Hungary",
@@ -9571,7 +9454,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Moldova",
       FORMAL_EN: "Republic of Moldova",
@@ -9613,7 +9495,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Romania",
       FORMAL_EN: "Romania",
@@ -9672,7 +9553,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Lithuania",
       FORMAL_EN: "Republic of Lithuania",
@@ -9706,7 +9586,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Latvia",
       FORMAL_EN: "Republic of Latvia",
@@ -9743,7 +9622,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Estonia",
       FORMAL_EN: "Republic of Estonia",
@@ -9777,7 +9655,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Germany",
       FORMAL_EN: "Federal Republic of Germany",
@@ -9850,7 +9727,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Bulgaria",
       FORMAL_EN: "Republic of Bulgaria",
@@ -9893,7 +9769,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Greece",
       FORMAL_EN: "Hellenic Republic",
@@ -9968,7 +9843,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Turkey",
       FORMAL_EN: "Republic of Turkey",
@@ -10057,7 +9931,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Albania",
       FORMAL_EN: "Republic of Albania",
@@ -10096,7 +9969,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Croatia",
       FORMAL_EN: "Republic of Croatia",
@@ -10154,7 +10026,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Switzerland",
       FORMAL_EN: "Swiss Confederation",
@@ -10193,7 +10064,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Luxembourg",
       FORMAL_EN: "Grand Duchy of Luxembourg",
@@ -10215,7 +10085,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Belgium",
       FORMAL_EN: "Kingdom of Belgium",
@@ -10247,7 +10116,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Netherlands",
       FORMAL_EN: "Kingdom of the Netherlands",
@@ -10277,7 +10145,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Portugal",
       FORMAL_EN: "Portuguese Republic",
@@ -10325,7 +10192,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Spain",
       FORMAL_EN: "Kingdom of Spain",
@@ -10391,7 +10257,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Ireland",
       FORMAL_EN: "Ireland",
@@ -10419,7 +10284,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "New Caledonia",
       FORMAL_EN: "New Caledonia",
@@ -10447,7 +10311,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Solomon Is.",
       FORMAL_EN: null,
@@ -10517,7 +10380,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "New Zealand",
       FORMAL_EN: "New Zealand",
@@ -10604,7 +10466,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Australia",
       FORMAL_EN: "Commonwealth of Australia",
@@ -10866,7 +10727,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Sri Lanka",
       FORMAL_EN: "Democratic Socialist Republic of Sri Lanka",
@@ -10891,7 +10751,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "China",
       FORMAL_EN: "People's Republic of China",
@@ -11152,7 +11011,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Taiwan",
       FORMAL_EN: null,
@@ -11176,7 +11034,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Italy",
       FORMAL_EN: "Italian Republic",
@@ -11288,7 +11145,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Denmark",
       FORMAL_EN: "Kingdom of Denmark",
@@ -11333,7 +11189,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "United Kingdom",
       FORMAL_EN: "United Kingdom of Great Britain and Northern Ireland",
@@ -11410,7 +11265,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Iceland",
       FORMAL_EN: "Republic of Iceland",
@@ -11445,7 +11299,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Azerbaijan",
       FORMAL_EN: "Republic of Azerbaijan",
@@ -11510,7 +11363,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Georgia",
       FORMAL_EN: "Georgia",
@@ -11549,7 +11401,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Philippines",
       FORMAL_EN: "Republic of the Philippines",
@@ -11700,7 +11551,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Malaysia",
       FORMAL_EN: "Malaysia",
@@ -11783,7 +11633,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Brunei",
       FORMAL_EN: "Negara Brunei Darussalam",
@@ -11806,7 +11655,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Slovenia",
       FORMAL_EN: "Republic of Slovenia",
@@ -11839,7 +11687,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Finland",
       FORMAL_EN: "Republic of Finland",
@@ -11894,7 +11741,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Slovakia",
       FORMAL_EN: "Slovak Republic",
@@ -11942,7 +11788,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Czechia",
       FORMAL_EN: "Czech Republic",
@@ -11992,7 +11837,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Eritrea",
       FORMAL_EN: "State of Eritrea",
@@ -12035,7 +11879,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Japan",
       FORMAL_EN: "Japan",
@@ -12125,7 +11968,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Paraguay",
       FORMAL_EN: "Republic of Paraguay",
@@ -12173,7 +12015,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Yemen",
       FORMAL_EN: "Republic of Yemen",
@@ -12232,7 +12073,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Saudi Arabia",
       FORMAL_EN: "Kingdom of Saudi Arabia",
@@ -12323,7 +12163,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Antarctica",
       FORMAL_EN: null,
@@ -13029,7 +12868,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "N. Cyprus",
       FORMAL_EN: "Turkish Republic of Northern Cyprus",
@@ -13060,7 +12898,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Cyprus",
       FORMAL_EN: "Republic of Cyprus",
@@ -13090,7 +12927,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Morocco",
       FORMAL_EN: "Kingdom of Morocco",
@@ -13168,7 +13004,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Egypt",
       FORMAL_EN: "Arab Republic of Egypt",
@@ -13227,7 +13062,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Libya",
       FORMAL_EN: "Libya",
@@ -13298,7 +13132,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Ethiopia",
       FORMAL_EN: "Federal Democratic Republic of Ethiopia",
@@ -13372,7 +13205,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Djibouti",
       FORMAL_EN: "Republic of Djibouti",
@@ -13402,7 +13234,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Somaliland",
       FORMAL_EN: "Republic of Somaliland",
@@ -13443,7 +13274,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Uganda",
       FORMAL_EN: "Republic of Uganda",
@@ -13486,7 +13316,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Rwanda",
       FORMAL_EN: "Republic of Rwanda",
@@ -13515,7 +13344,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Bosnia and Herz.",
       FORMAL_EN: "Bosnia and Herzegovina",
@@ -13553,7 +13381,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "North Macedonia",
       FORMAL_EN: "Republic of North Macedonia",
@@ -13586,7 +13413,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Serbia",
       FORMAL_EN: "Republic of Serbia",
@@ -13649,7 +13475,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Montenegro",
       FORMAL_EN: "Montenegro",
@@ -13682,7 +13507,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Kosovo",
       FORMAL_EN: "Republic of Kosovo",
@@ -13718,7 +13542,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "Trinidad and Tobago",
       FORMAL_EN: "Republic of Trinidad and Tobago",
@@ -13741,7 +13564,6 @@ const features: {
     },
   },
   {
-    type: "Feature",
     properties: {
       NAME: "S. Sudan",
       FORMAL_EN: "Republic of South Sudan",

@@ -1,6 +1,11 @@
 export type TitleTags = { locale: string; title: string; tagline: string }[];
 export type PolyCoords = [number, number][][];
-export type FeatProps = { [index: string]: string | number | null };
+export type FeatProps = {
+  NAME: string;
+  FORMAL_EN: string | null;
+  ISO_A2: string;
+  [index: string]: string | number | null;
+};
 export type FeatGeom =
   | { type: "Polygon"; coordinates: PolyCoords }
   | { type: "MultiPolygon"; coordinates: PolyCoords[] };
