@@ -4,7 +4,7 @@ import { GetStaticProps } from "next";
 import getT from "next-translate/getT";
 import { FC, useRef } from "react";
 import { Globe } from "../components/Globe";
-import { Layout } from "../components/Layout";
+import { PageLayout } from "../components/Layout";
 import { Slide } from "../components/Slide";
 import { TitleTag } from "../components/TitleTag";
 import { TitleTags } from "../types";
@@ -17,7 +17,7 @@ const MyGlobe: FC<MyGlobeProps> = ({ titleTags }) => {
   const [isSlide, setIsSlide] = useBoolean(false);
   const wrapRef = useRef<HTMLDivElement>(null);
   return (
-    <Layout align="flex-end">
+    <PageLayout align="flex-end">
       <TitleTag
         titleTags={titleTags}
         placement="bottom-end"
@@ -30,7 +30,7 @@ const MyGlobe: FC<MyGlobeProps> = ({ titleTags }) => {
           {isSlide && <Slide setBool={setIsSlide} />}
         </AnimatePresence>
       </Box>
-    </Layout>
+    </PageLayout>
   );
 };
 

@@ -3,7 +3,7 @@ import { GetStaticProps } from "next";
 import getT from "next-translate/getT";
 import useTranslation from "next-translate/useTranslation";
 import { FC } from "react";
-import { Layout } from "../components/Layout";
+import { PageLayout } from "../components/Layout";
 import { TitleTag } from "../components/TitleTag";
 import { TitleTags } from "../types";
 
@@ -14,7 +14,7 @@ interface MyPrefaceProps {
 const MyPreface: FC<MyPrefaceProps> = ({ titleTags }) => {
   const { t } = useTranslation("prefaceFill");
   return (
-    <Layout align="flex-start">
+    <PageLayout align="flex-start">
       <TitleTag
         titleTags={titleTags}
         placement="bottom-start"
@@ -23,7 +23,7 @@ const MyPreface: FC<MyPrefaceProps> = ({ titleTags }) => {
       <Text flex={1} w="full">
         {t("prefaceA")}
       </Text>
-    </Layout>
+    </PageLayout>
   );
 };
 

@@ -1,6 +1,7 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { AppProps } from "next/dist/shared/lib/router/router";
 import { useEffect } from "react";
+import { AppLayout } from "../components/Layout";
 import theme from "../theme";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
@@ -13,7 +14,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   }, []);
   return (
     <ChakraProvider resetCSS theme={theme}>
-      <Component {...pageProps} />
+      <AppLayout>
+        <Component {...pageProps} />
+      </AppLayout>
     </ChakraProvider>
   );
 };
