@@ -12,9 +12,10 @@ import {
 import setLanguage from "next-translate/setLanguage";
 import { useRouter } from "next/router";
 import { FC } from "react";
+import { TitleTags } from "../types";
 
 interface TitleTagProps {
-  titleTags: { locale: string; title: string; tagline: string }[];
+  titleTags: TitleTags;
   placement?: UsePopperProps["placement"];
   textAlign?: SystemProps["textAlign"];
   justifyContent?: SystemProps["justifyContent"];
@@ -27,32 +28,29 @@ export const TitleTag: FC<TitleTagProps> = ({
   justifyContent,
 }) => {
   const { locale } = useRouter();
-  const filtered = titleTags.filter(
-    (titleTag) => titleTag.locale === locale
-  )[0];
-
+  const curr = titleTags.filter((tT) => tT.locale === locale)[0];
   return (
     <Menu placement={placement} isLazy={true}>
       <MenuButton textAlign={textAlign}>
         <Heading as="h1" fontSize="3xl">
-          {filtered.title}
+          {curr.title}
         </Heading>
-        <Text>{filtered.tagline}</Text>
+        <Text>{curr.tagline}</Text>
       </MenuButton>
       <MenuList userSelect="none">
         {titleTags
-          .filter((titleTag) => titleTag.locale !== locale)
-          .map((titleTag) => (
+          .filter((tT) => tT.locale !== locale)
+          .map((tT) => (
             <MenuItem
-              key={titleTag.locale}
+              key={tT.locale}
               justifyContent={justifyContent}
-              onClick={async () => await setLanguage(`${titleTag.locale}`)}
+              onClick={async () => await setLanguage(`${tT.locale}`)}
             >
               <Box textAlign={textAlign}>
                 <Heading as="h1" fontSize="2xl">
-                  {titleTag.title}
+                  {tT.title}
                 </Heading>
-                <Text fontSize="x-small">{titleTag.tagline}</Text>
+                <Text fontSize="x-small">{tT.tagline}</Text>
               </Box>
             </MenuItem>
           ))}
