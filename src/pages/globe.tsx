@@ -7,13 +7,15 @@ import { Globe } from "../components/Globe";
 import { PageLayout } from "../components/Layout";
 import { Slide } from "../components/Slide";
 import { TitleTag } from "../components/TitleTag";
-import { TitleTags } from "../types";
+import countries from "../ne_110m_admin_0_countries";
+import { Ctrys, TitleTags } from "../types";
 
 interface MyGlobeProps {
   titleTags: TitleTags;
+  countries: Ctrys;
 }
 
-const MyGlobe: FC<MyGlobeProps> = ({ titleTags }) => {
+const MyGlobe: FC<MyGlobeProps> = ({ titleTags, countries }) => {
   const [isSlide, setIsSlide] = useBoolean(false);
   const wrapRef = useRef<HTMLDivElement>(null);
   return (
@@ -25,7 +27,7 @@ const MyGlobe: FC<MyGlobeProps> = ({ titleTags }) => {
         justifyContent="flex-end"
       />
       <Box flex={1} w="full" ref={wrapRef} pos="relative">
-        <Globe wrapRef={wrapRef} setBool={setIsSlide} />
+        <Globe wrapRef={wrapRef} ctrys={countries} setBool={setIsSlide} />
         <AnimatePresence>
           {isSlide && <Slide setBool={setIsSlide} />}
         </AnimatePresence>
@@ -40,7 +42,11 @@ export const getStaticProps: GetStaticProps = async ({ locales }) => {
     const t = await getT(locale, "globe");
     titleTags.push({ locale, title: t("title"), tagline: t("tagline") });
   });
-  return { props: { titleTags } };
+  // const res = await fetch(
+  //   "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson"
+  // );
+  // const featColl = await res.json();
+  return { props: { titleTags, countries } };
 };
 
 export default MyGlobe;

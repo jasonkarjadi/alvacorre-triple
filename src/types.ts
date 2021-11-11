@@ -10,7 +10,7 @@ export type FeatGeom =
   | { type: "Polygon"; coordinates: PolyCoords }
   | { type: "MultiPolygon"; coordinates: PolyCoords[] };
 export type BBox = [number, number, number, number];
-export interface GeoJson {
+export type FeatColl = {
   type: "FeatureCollection";
   name: string;
   crs: { type: "name"; properties: { name: string } };
@@ -21,4 +21,8 @@ export interface GeoJson {
     geometry: FeatGeom;
   }[];
   bbox: BBox;
-}
+};
+export type Ctrys = {
+  properties: FeatProps;
+  geometry: FeatGeom;
+}[];

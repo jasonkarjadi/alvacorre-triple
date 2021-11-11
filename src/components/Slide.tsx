@@ -9,7 +9,11 @@ interface SlideProps {
   setBool: { on: () => void; off: () => void; toggle: () => void };
 }
 export const Slide: FC<SlideProps> = ({ setBool }) => {
-  const content = {
+  const shutter = {
+    visible: { height: "100%" },
+    hidden: { height: 0 },
+  };
+  const fade = {
     visible: { opacity: 1 },
     hidden: { opacity: 0 },
   };
@@ -21,10 +25,7 @@ export const Slide: FC<SlideProps> = ({ setBool }) => {
       h="full"
       w="full"
       bg="gray.900"
-      variants={{
-        visible: { height: "100%" },
-        hidden: { height: 0 },
-      }}
+      variants={fade}
       initial="hidden"
       animate="visible"
       exit="hidden"
@@ -33,7 +34,7 @@ export const Slide: FC<SlideProps> = ({ setBool }) => {
         aria-label="close"
         icon={<CrossAikon />}
         onClick={setBool.off}
-        variants={content}
+        variants={fade}
         initial="hidden"
         animate="visible"
         exit="hidden"

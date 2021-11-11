@@ -1,9 +1,6 @@
-import { FeatGeom, FeatProps } from "./types";
+import { Ctrys } from "./types";
 
-const features: {
-  properties: FeatProps;
-  geometry: FeatGeom;
-}[] = [
+const countries: Ctrys = [
   {
     properties: {
       NAME: "Fiji",
@@ -13641,4 +13638,4 @@ const features: {
     },
   },
 ];
-export default features;
+export default countries;
