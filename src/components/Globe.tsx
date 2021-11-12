@@ -1,19 +1,7 @@
 import { Box } from "@chakra-ui/react";
-import {
-  FC,
-  MouseEvent,
-  RefObject,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-} from "react";
+import { FC, MouseEvent, useCallback, useEffect, useRef } from "react";
 import {
   Group,
-  LineBasicMaterial,
-  LineSegments,
-  Mesh,
-  MeshBasicMaterial,
   PerspectiveCamera,
   Raycaster,
   Scene,
@@ -21,14 +9,11 @@ import {
   WebGLRenderer,
 } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { mergeBufferGeometries } from "three/examples/jsm/utils/BufferGeometryUtils";
-import { Ctrys } from "../types";
-import { genGeoms } from "../utils/genGeom";
 
 interface GlobeProps {
-  wrapRef: RefObject<HTMLElement>;
-  ctrys: Ctrys;
-  setBool: { on: () => void; off: () => void; toggle: () => void };
+  rect: DOMRect;
+  ctrys: Group[];
+  // setBool: { on: () => void; off: () => void; toggle: () => void };
   // contents?: {
   //   iso: string;
   //   imports: string[];
@@ -38,35 +23,14 @@ interface GlobeProps {
   // }[];
 }
 
-export const Globe: FC<GlobeProps> = ({ wrapRef, ctrys, setBool }) => {
+export const Globe: FC<GlobeProps> = ({ rect, ctrys }) => {
   const reqRef = useRef(0);
   const rendRef = useRef<WebGLRenderer>();
   const camRef = useRef(new PerspectiveCamera(50, 2, 1, 1000));
   const ctrlRef = useRef<OrbitControls>();
-  const radRef = useRef(50);
   const sceneRef = useRef(new Scene());
   const mouseRef = useRef(new Vector2());
   const rayRef = useRef(new Raycaster());
-  const worldMemo = useMemo(() => {
-    return ctrys.map(({ properties, geometry }) => {
-      const polys =
-        geometry.type === "Polygon"
-          ? [geometry.coordinates]
-          : geometry.coordinates;
-      const { meshGeoms, lineGeoms } = genGeoms(polys, radRef.current, 1);
-      const ctryMesh = new Mesh(
-        meshGeoms[0] && mergeBufferGeometries(meshGeoms),
-        new MeshBasicMaterial({ color: 0x101ab3 })
-      );
-      ctryMesh.name = properties?.NAME;
-      const ctryLine = new LineSegments(
-        lineGeoms[0] && mergeBufferGeometries(lineGeoms),
-        new LineBasicMaterial({ color: 0xf78f2e })
-      );
-      const ctryGroup = new Group().add(ctryMesh, ctryLine);
-      return ctryGroup;
-    });
-  }, [ctrys]);
   const onCanvasLoad = useCallback(
     (canvas: HTMLCanvasElement & HTMLDivElement) => {
       if (!canvas) return;
@@ -81,50 +45,40 @@ export const Globe: FC<GlobeProps> = ({ wrapRef, ctrys, setBool }) => {
         rotateSpeed: 0.5,
         enablePan: false,
         enableZoom: true,
-        minDistance: radRef.current * 2,
+        minDistance: 50 * 2,
         maxDistance: camRef.current.position.z * 2,
       });
-      sceneRef.current.add(...worldMemo);
     },
-    [worldMemo]
+    []
   );
   const setMouseXY = useCallback(
     (e: MouseEvent) => {
-      const { width, height, left, top } =
-        wrapRef.current!.getBoundingClientRect();
+      const { width, height, left, top } = rect;
       mouseRef.current.set(
         ((e.clientX - left) / width) * 2 - 1,
         -((e.clientY - top) / height) * 2 + 1
       );
     },
-    [wrapRef]
+    [rect]
   );
   const setRay = useCallback(() => {
     rayRef.current.setFromCamera(mouseRef.current, camRef.current);
     const intersects = rayRef.current.intersectObjects(
-      worldMemo.map((g) => g.children[0])
+      ctrys.map((c) => c.children[0])
     )[0];
     if (intersects) {
-      setBool.on();
-      // intersects.object.name;
-      // [].map((x: any) => genCurve(x.start, x.end, radRef.current));
+      console.log(intersects.object.name);
+      // [].map((x: any) => genCurve(x.start, x.end, 50));
     }
-  }, [worldMemo, setBool]);
+  }, [ctrys]);
 
   useEffect(() => {
-    const setResize = () => {
-      const { width, height } = wrapRef.current!.getBoundingClientRect();
-      camRef.current.aspect = width / height;
-      camRef.current.updateProjectionMatrix();
-      rendRef.current?.setSize(width, height);
-      rendRef.current?.setPixelRatio(devicePixelRatio);
-    };
-    addEventListener("resize", setResize);
-    setResize();
-    return () => {
-      removeEventListener("resize", setResize);
-    };
-  }, [wrapRef]);
+    const { width, height } = rect;
+    camRef.current.aspect = width / height;
+    camRef.current.updateProjectionMatrix();
+    rendRef.current?.setSize(width, height);
+    rendRef.current?.setPixelRatio(devicePixelRatio);
+  }, [rect]);
 
   useEffect(() => {
     const tick = () => {
@@ -137,6 +91,10 @@ export const Globe: FC<GlobeProps> = ({ wrapRef, ctrys, setBool }) => {
       cancelAnimationFrame(reqRef.current);
     };
   }, []);
+
+  useEffect(() => {
+    sceneRef.current.add(...ctrys);
+  }, [ctrys]);
 
   return (
     <Box

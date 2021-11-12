@@ -2,13 +2,22 @@ import { Box, useBoolean } from "@chakra-ui/react";
 import { AnimatePresence } from "framer-motion";
 import { GetStaticProps } from "next";
 import getT from "next-translate/getT";
-import { FC, useRef } from "react";
+import { FC, useEffect, useMemo, useRef, useState } from "react";
+import {
+  Group,
+  LineBasicMaterial,
+  LineSegments,
+  Mesh,
+  MeshBasicMaterial,
+} from "three";
+import { mergeBufferGeometries } from "three/examples/jsm/utils/BufferGeometryUtils";
 import { Globe } from "../components/Globe";
 import { PageLayout } from "../components/Layout";
 import { Slide } from "../components/Slide";
 import { TitleTag } from "../components/TitleTag";
-import countries from "../ne_110m_admin_0_countries";
+import countries from "../data/ne_110m_admin_0_countries";
 import { Ctrys, TitleTags } from "../types";
+import { genGeoms } from "../utils/genGeom";
 
 interface MyGlobeProps {
   titleTags: TitleTags;
@@ -16,8 +25,42 @@ interface MyGlobeProps {
 }
 
 const MyGlobe: FC<MyGlobeProps> = ({ titleTags, countries }) => {
-  const [isSlide, setIsSlide] = useBoolean(false);
   const wrapRef = useRef<HTMLDivElement>(null);
+  const [rect, setRect] = useState<DOMRect>();
+  const [isSlide, setIsSlide] = useBoolean(false);
+  const worldMemo = useMemo(() => {
+    return countries.map(({ properties, geometry }) => {
+      const polys =
+        geometry.type === "Polygon"
+          ? [geometry.coordinates]
+          : geometry.coordinates;
+      const { meshGeoms, lineGeoms } = genGeoms(polys, 50, 1);
+      const ctryMesh = new Mesh(
+        meshGeoms[0] && mergeBufferGeometries(meshGeoms),
+        new MeshBasicMaterial({ color: 0x171923 })
+      );
+      ctryMesh.name = properties.NAME;
+      const ctryLine = new LineSegments(
+        lineGeoms[0] && mergeBufferGeometries(lineGeoms),
+        new LineBasicMaterial({ color: 0xf6ad55 })
+      );
+      const ctryGroup = new Group().add(ctryMesh, ctryLine);
+      return ctryGroup;
+    });
+  }, [countries]);
+
+  useEffect(() => {
+    const setResize = () => {
+      setRect(undefined);
+      setRect(wrapRef.current?.getBoundingClientRect());
+    };
+    addEventListener("resize", setResize);
+    setResize();
+    return () => {
+      removeEventListener("resize", setResize);
+    };
+  }, []);
+
   return (
     <PageLayout align="flex-end">
       <TitleTag
@@ -27,7 +70,7 @@ const MyGlobe: FC<MyGlobeProps> = ({ titleTags, countries }) => {
         justifyContent="flex-end"
       />
       <Box flex={1} w="full" ref={wrapRef} pos="relative">
-        <Globe wrapRef={wrapRef} ctrys={countries} setBool={setIsSlide} />
+        {rect && <Globe rect={rect} ctrys={worldMemo} />}
         <AnimatePresence>
           {isSlide && <Slide setBool={setIsSlide} />}
         </AnimatePresence>
@@ -50,42 +93,3 @@ export const getStaticProps: GetStaticProps = async ({ locales }) => {
 };
 
 export default MyGlobe;
-
-// const contents = [
-//   {
-//     iso: "en",
-//     imports: ["la", "fr", "el", "nl", "es", "it", "hi", "de", "ar"],
-//     family: "ine",
-//     form: "anal",
-//     wordOrder: "SVO",
-//   },
-//   {
-//     iso: "id",
-//     imports: ["nl", "ar", "sa", "pt", "en", "zh"],
-//     family: "map",
-//     form: "synt",
-//     wordOrder: "SVO",
-//   },
-//   {
-//     iso: "jp",
-//     imports: ["zh", "en", "pt", "nl", "de", "fr"],
-//     family: "jpx",
-//     form: "synt",
-//     wordOrder: "SOV",
-//   },
-// ];
-
-// const languages = [
-//   {
-//     iso: "en",
-//     coords: { lat: 55.3781, lng: -3.436 },
-//   },
-//   {
-//     iso: "id",
-//     coords: { lat: -0.7893, lng: 113.9213 },
-//   },
-//   {
-//     iso: "jp",
-//     coords: { lat: 36.2048, lng: 138.2529 },
-//   },
-// ];
