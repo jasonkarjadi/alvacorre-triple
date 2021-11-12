@@ -1,4 +1,4 @@
-import { Ctrys } from "./types";
+import { Ctrys } from "../types";
 
 const countries: Ctrys = [
   {
