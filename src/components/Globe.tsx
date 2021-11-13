@@ -2,6 +2,7 @@ import { Box } from "@chakra-ui/react";
 import { FC, MouseEvent, useCallback, useEffect, useRef } from "react";
 import {
   Group,
+  Mesh,
   PerspectiveCamera,
   Raycaster,
   Scene,
@@ -9,10 +10,16 @@ import {
   WebGLRenderer,
 } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { Pnts, Rels } from "../types";
+import { genCurve } from "../utils/genCurve";
+import { genPoint } from "../utils/genPoint";
+import { toXYZ } from "../utils/toXYZ";
 
 interface GlobeProps {
   rect: DOMRect;
   ctrys: Group[];
+  pnts: Pnts;
+  rels: Rels;
   // setBool: { on: () => void; off: () => void; toggle: () => void };
   // contents?: {
   //   iso: string;
@@ -23,7 +30,7 @@ interface GlobeProps {
   // }[];
 }
 
-export const Globe: FC<GlobeProps> = ({ rect, ctrys }) => {
+export const Globe: FC<GlobeProps> = ({ rect, ctrys, pnts, rels }) => {
   const reqRef = useRef(0);
   const rendRef = useRef<WebGLRenderer>();
   const camRef = useRef(new PerspectiveCamera(50, 2, 1, 1000));
@@ -31,6 +38,7 @@ export const Globe: FC<GlobeProps> = ({ rect, ctrys }) => {
   const sceneRef = useRef(new Scene());
   const mouseRef = useRef(new Vector2());
   const rayRef = useRef(new Raycaster());
+  const relsRef = useRef<(Mesh | Group)[]>([]);
   const onCanvasLoad = useCallback(
     (canvas: HTMLCanvasElement & HTMLDivElement) => {
       if (!canvas) return;
@@ -63,14 +71,26 @@ export const Globe: FC<GlobeProps> = ({ rect, ctrys }) => {
   );
   const setRay = useCallback(() => {
     rayRef.current.setFromCamera(mouseRef.current, camRef.current);
-    const intersects = rayRef.current.intersectObjects(
+    const xName = rayRef.current.intersectObjects(
       ctrys.map((c) => c.children[0])
-    )[0];
-    if (intersects) {
-      console.log(intersects.object.name);
-      // [].map((x: any) => genCurve(x.start, x.end, 50));
+    )[0]?.object.name;
+    if (xName) {
+      const pntsFilter = (name: string) =>
+        pnts.filter(({ NAME }) => NAME === name)[0];
+      const pntA = pntsFilter(xName);
+      const [ax, ay, az] = toXYZ(pntA.LAT, pntA.LNG, 50);
+      const start = genPoint(ax, ay, az);
+      const filEnds = rels
+        .filter(({ A, B }) => A === xName || B === xName)
+        .map(({ A, B }) => (A !== xName ? A : B));
+      console.log([xName, ...filEnds]);
+      if (relsRef.current.length) sceneRef.current.remove(...relsRef.current);
+      relsRef.current = !filEnds.length
+        ? [start]
+        : [start, ...filEnds.map((D) => genCurve(pntA, pntsFilter(D), 50))];
+      sceneRef.current.add(...relsRef.current);
     }
-  }, [ctrys]);
+  }, [ctrys, pnts, rels]);
 
   useEffect(() => {
     const { width, height } = rect;

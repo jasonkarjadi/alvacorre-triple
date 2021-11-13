@@ -15,16 +15,25 @@ import { Globe } from "../components/Globe";
 import { PageLayout } from "../components/Layout";
 import { Slide } from "../components/Slide";
 import { TitleTag } from "../components/TitleTag";
+import points from "../data/countries_central_coordinates";
+import relations from "../data/curves_relations";
 import countries from "../data/ne_110m_admin_0_countries";
-import { Ctrys, TitleTags } from "../types";
+import { Ctrys, Pnts, Rels, TitleTags } from "../types";
 import { genGeoms } from "../utils/genGeom";
 
 interface MyGlobeProps {
   titleTags: TitleTags;
   countries: Ctrys;
+  points: Pnts;
+  relations: Rels;
 }
 
-const MyGlobe: FC<MyGlobeProps> = ({ titleTags, countries }) => {
+const MyGlobe: FC<MyGlobeProps> = ({
+  titleTags,
+  countries,
+  points,
+  relations,
+}) => {
   const wrapRef = useRef<HTMLDivElement>(null);
   const [rect, setRect] = useState<DOMRect>();
   const [isSlide, setIsSlide] = useBoolean(false);
@@ -70,7 +79,9 @@ const MyGlobe: FC<MyGlobeProps> = ({ titleTags, countries }) => {
         justifyContent="flex-end"
       />
       <Box flex={1} w="full" ref={wrapRef} pos="relative">
-        {rect && <Globe rect={rect} ctrys={worldMemo} />}
+        {rect && (
+          <Globe rect={rect} ctrys={worldMemo} pnts={points} rels={relations} />
+        )}
         <AnimatePresence>
           {isSlide && <Slide setBool={setIsSlide} />}
         </AnimatePresence>
@@ -89,7 +100,7 @@ export const getStaticProps: GetStaticProps = async ({ locales }) => {
   //   "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson"
   // );
   // const featColl = await res.json();
-  return { props: { titleTags, countries } };
+  return { props: { titleTags, countries, points, relations } };
 };
 
 export default MyGlobe;

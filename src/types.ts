@@ -26,3 +26,13 @@ export type Ctrys = {
   properties: FeatProps;
   geometry: FeatGeom;
 }[];
+export type Rels = {
+  A: string;
+  B: string;
+  FROM: "A" | "B" | "AB";
+}[];
+export type Pnts = {
+  NAME: string;
+  LAT: number;
+  LNG: number;
+}[];

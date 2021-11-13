@@ -9,7 +9,7 @@ interface PageLayoutProps {
 export const AppLayout: FC = ({ children }) => {
   return (
     <Box h="full" p={3}>
-      <VStack h="full" spacing={0} bg="gray.900">
+      <VStack h="full" spacing={0} bg="gray.300">
         {children}
         <NavBar />
       </VStack>
