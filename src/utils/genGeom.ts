@@ -45,9 +45,3 @@ export const genLineGeom = (coords: PolyCoords, rad = 1, res = 5) => {
     .setAttribute("position", new Float32BufferAttribute(outerVerts, 3));
   return lineGeom;
 };
-
-export const genGeoms = (polys: PolyCoords[], rad = 1, res = 5) => {
-  const meshGeoms = polys.map((c) => genMeshGeom(c, rad, res)) || [];
-  const lineGeoms = polys.map((c) => genLineGeom(c, rad, res)) || [];
-  return { meshGeoms, lineGeoms };
-};

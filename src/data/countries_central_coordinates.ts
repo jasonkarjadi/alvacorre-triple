@@ -886,6 +886,328 @@ const points: Pnts = [
     LAT: 6.877,
     LNG: 31.307,
   },
+  // ^177
+  {
+    NAME: "Vatican",
+    LAT: 41.9029,
+    LNG: 12.4534,
+  },
+  {
+    NAME: "Micronesia",
+    LAT: 7.4256,
+    LNG: 150.5508,
+  },
+  {
+    NAME: "Marshall Is.",
+    LAT: 7.1315,
+    LNG: 171.1845,
+  },
+  {
+    NAME: "N. Mariana Is.",
+    LAT: 15.0979,
+    LNG: 145.6739,
+  },
+  {
+    NAME: "U.S. Virgin Is.",
+    LAT: 18.3358,
+    LNG: -64.8963,
+  },
+  {
+    NAME: "Guam",
+    LAT: 13.4443,
+    LNG: 144.7937,
+  },
+  {
+    NAME: "American Samoa",
+    LAT: -14.271,
+    LNG: -170.1322,
+  },
+  {
+    NAME: "S. Geo. and the Is.",
+    LAT: -54.4296,
+    LNG: -36.5879,
+  },
+  {
+    NAME: "Br. Indian Ocean Ter.",
+    LAT: -6.3432,
+    LNG: 71.8765,
+  },
+  {
+    NAME: "Saint Helena",
+    LAT: -15.965,
+    LNG: -5.7089,
+  },
+  {
+    NAME: "Pitcairn Is.",
+    LAT: -24.3768,
+    LNG: -128.3242,
+  },
+  {
+    NAME: "Anguilla",
+    LAT: 18.2206,
+    LNG: -63.0686,
+  },
+  {
+    NAME: "Cayman Is.",
+    LAT: 19.3133,
+    LNG: -81.2546,
+  },
+  {
+    NAME: "Bermuda",
+    LAT: 32.3078,
+    LNG: -64.7505,
+  },
+  {
+    NAME: "British Virgin Is.",
+    LAT: 18.4207,
+    LNG: -64.64,
+  },
+  {
+    NAME: "Turks and Caicos Is.",
+    LAT: 21.694,
+    LNG: -71.7979,
+  },
+  {
+    NAME: "Montserrat",
+    LAT: 16.7425,
+    LNG: -62.1874,
+  },
+  {
+    NAME: "Jersey",
+    LAT: 49.2138,
+    LNG: -2.1358,
+  },
+  {
+    NAME: "Guernsey",
+    LAT: 49.4482,
+    LNG: -2.5895,
+  },
+  {
+    NAME: "Isle of Man",
+    LAT: 54.2361,
+    LNG: -4.5481,
+  },
+  {
+    NAME: "Tonga",
+    LAT: -21.179,
+    LNG: -175.1982,
+  },
+  {
+    NAME: "Singapore",
+    LAT: 1.3521,
+    LNG: 103.8198,
+  },
+  {
+    NAME: "Seychelles",
+    LAT: -4.6796,
+    LNG: 55.492,
+  },
+  {
+    NAME: "São Tomé and Principe",
+    LAT: 0.1864,
+    LNG: 6.6131,
+  },
+  {
+    NAME: "San Marino",
+    LAT: 43.9424,
+    LNG: 12.4578,
+  },
+  {
+    NAME: "Samoa",
+    LAT: -13.759,
+    LNG: -172.1046,
+  },
+  {
+    NAME: "St. Vin. and Gren.",
+    LAT: 12.9843,
+    LNG: -61.2872,
+  },
+  {
+    NAME: "Saint Lucia",
+    LAT: 13.9094,
+    LNG: -60.9789,
+  },
+  {
+    NAME: "St. Kitts and Nevis",
+    LAT: 17.3578,
+    LNG: -62.783,
+  },
+  {
+    NAME: "Palau",
+    LAT: 7.515,
+    LNG: 134.5825,
+  },
+  {
+    NAME: "Niue",
+    LAT: -19.0544,
+    LNG: -169.8672,
+  },
+  {
+    NAME: "Cook Is.",
+    LAT: -21.2367,
+    LNG: -159.7777,
+  },
+  {
+    NAME: "Aruba",
+    LAT: 12.5211,
+    LNG: -69.9683,
+  },
+  {
+    NAME: "Curaçao",
+    LAT: 12.1696,
+    LNG: -68.99,
+  },
+  {
+    NAME: "Nauru",
+    LAT: -0.5228,
+    LNG: 166.9315,
+  },
+  {
+    NAME: "Monaco",
+    LAT: 43.7384,
+    LNG: 7.4246,
+  },
+  {
+    NAME: "Mauritius",
+    LAT: -20.3484,
+    LNG: 57.5522,
+  },
+  {
+    NAME: "Malta",
+    LAT: 35.9375,
+    LNG: 14.3754,
+  },
+  {
+    NAME: "Maldives",
+    LAT: 3.2028,
+    LNG: 73.2207,
+  },
+  {
+    NAME: "Liechtenstein",
+    LAT: 47.166,
+    LNG: 9.5554,
+  },
+  {
+    NAME: "Kiribati",
+    LAT: -3.3704,
+    LNG: -168.734,
+  },
+  {
+    NAME: "Grenada",
+    LAT: 12.1165,
+    LNG: -61.679,
+  },
+  {
+    NAME: "St. Pierre and Miquelon",
+    LAT: 46.8852,
+    LNG: -56.3159,
+  },
+  {
+    NAME: "Wallis and Futuna Is.",
+    LAT: -14.2938,
+    LNG: -178.1165,
+  },
+  {
+    NAME: "St-Martin",
+    LAT: 18.0708,
+    LNG: -63.0501,
+  },
+  {
+    NAME: "St-Barthélemy",
+    LAT: 17.9,
+    LNG: -62.8333,
+  },
+  {
+    NAME: "Fr. Polynesia",
+    LAT: -17.6797,
+    LNG: -149.4068,
+  },
+  {
+    NAME: "Åland",
+    LAT: 60.1785,
+    LNG: 19.9156,
+  },
+  {
+    NAME: "Dominica",
+    LAT: 15.415,
+    LNG: -61.371,
+  },
+  {
+    NAME: "Faeroe Is.",
+    LAT: 61.8926,
+    LNG: -6.9118,
+  },
+  {
+    NAME: "Comoros",
+    LAT: -11.6455,
+    LNG: 43.3333,
+  },
+  {
+    NAME: "Macao",
+    LAT: 22.1987,
+    LNG: 113.5439,
+  },
+  {
+    NAME: "Hong Kong",
+    LAT: 22.3193,
+    LNG: 114.1694,
+  },
+  {
+    NAME: "Cabo Verde",
+    LAT: 16.5388,
+    LNG: -23.0418,
+  },
+  {
+    NAME: "Barbados",
+    LAT: 13.1939,
+    LNG: -59.5432,
+  },
+  {
+    NAME: "Bahrain",
+    LAT: 26.0667,
+    LNG: 50.5577,
+  },
+  {
+    NAME: "Indian Ocean Ter.", // Christmas Island and Cocos
+    LAT: -10.4475,
+    LNG: 105.6904,
+  },
+  {
+    NAME: "Heard I. and McDonald Is.",
+    LAT: -53.0818,
+    LNG: 73.5042,
+  },
+  {
+    NAME: "Norfolk Island",
+    LAT: -29.0408,
+    LNG: 167.9547,
+  },
+  {
+    NAME: "Ashmore and Cartier Is.", // Google failed me
+    LAT: -12,
+    LNG: 123,
+  },
+  {
+    NAME: "Antigua and Barb.",
+    LAT: 17.0608,
+    LNG: -61.7964,
+  },
+  {
+    NAME: "Andorra",
+    LAT: 42.5063,
+    LNG: 1.5218,
+  },
+  {
+    NAME: "Siachen Glacier",
+    LAT: 35.4639,
+    LNG: 77.0439,
+  },
+  {
+    NAME: "Sint Maarten",
+    LAT: 18.0708,
+    LNG: -63.0501,
+  },
+  // ^241
 ];
-// 177 ctrys lat north lng east plus
+// lat north lng east plus
 export default points;

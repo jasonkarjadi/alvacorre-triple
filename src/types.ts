@@ -2,8 +2,6 @@ export type TitleTags = { locale: string; title: string; tagline: string }[];
 export type PolyCoords = [number, number][][];
 export type FeatProps = {
   NAME: string;
-  FORMAL_EN: string | null;
-  ISO_A2: string;
   [index: string]: string | number | null;
 };
 export type FeatGeom =
@@ -24,6 +22,7 @@ export type FeatColl = {
 };
 export type Ctrys = {
   properties: FeatProps;
+  bbox?: BBox;
   geometry: FeatGeom;
 }[];
 export type Rels = {

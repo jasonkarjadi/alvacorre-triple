@@ -2,24 +2,16 @@ import { Box, useBoolean } from "@chakra-ui/react";
 import { AnimatePresence } from "framer-motion";
 import { GetStaticProps } from "next";
 import getT from "next-translate/getT";
-import { FC, useEffect, useMemo, useRef, useState } from "react";
-import {
-  Group,
-  LineBasicMaterial,
-  LineSegments,
-  Mesh,
-  MeshBasicMaterial,
-} from "three";
-import { mergeBufferGeometries } from "three/examples/jsm/utils/BufferGeometryUtils";
-import { Globe } from "../components/Globe";
+import { FC, useEffect, useRef, useState } from "react";
+import { Canvas } from "../components/Canvas";
 import { PageLayout } from "../components/Layout";
 import { Slide } from "../components/Slide";
 import { TitleTag } from "../components/TitleTag";
 import points from "../data/countries_central_coordinates";
 import relations from "../data/curves_relations";
-import countries from "../data/ne_110m_admin_0_countries";
+import countries from "../data/ne_50m_admin_0_countries";
 import { Ctrys, Pnts, Rels, TitleTags } from "../types";
-import { genGeoms } from "../utils/genGeom";
+import { useGlobe } from "../utils/useGlobe";
 
 interface MyGlobeProps {
   titleTags: TitleTags;
@@ -37,26 +29,7 @@ const MyGlobe: FC<MyGlobeProps> = ({
   const wrapRef = useRef<HTMLDivElement>(null);
   const [rect, setRect] = useState<DOMRect>();
   const [isSlide, setIsSlide] = useBoolean(false);
-  const worldMemo = useMemo(() => {
-    return countries.map(({ properties, geometry }) => {
-      const polys =
-        geometry.type === "Polygon"
-          ? [geometry.coordinates]
-          : geometry.coordinates;
-      const { meshGeoms, lineGeoms } = genGeoms(polys, 50, 1);
-      const ctryMesh = new Mesh(
-        meshGeoms[0] && mergeBufferGeometries(meshGeoms),
-        new MeshBasicMaterial({ color: 0x171923 })
-      );
-      ctryMesh.name = properties.NAME;
-      const ctryLine = new LineSegments(
-        lineGeoms[0] && mergeBufferGeometries(lineGeoms),
-        new LineBasicMaterial({ color: 0xf6ad55 })
-      );
-      const ctryGroup = new Group().add(ctryMesh, ctryLine);
-      return ctryGroup;
-    });
-  }, [countries]);
+  const three = useGlobe(countries, points, relations);
 
   useEffect(() => {
     const setResize = () => {
@@ -79,9 +52,7 @@ const MyGlobe: FC<MyGlobeProps> = ({
         justifyContent="flex-end"
       />
       <Box flex={1} w="full" ref={wrapRef} pos="relative">
-        {rect && (
-          <Globe rect={rect} ctrys={worldMemo} pnts={points} rels={relations} />
-        )}
+        {rect && <Canvas rect={rect} three={three} />}
         <AnimatePresence>
           {isSlide && <Slide setBool={setIsSlide} />}
         </AnimatePresence>
