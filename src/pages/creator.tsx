@@ -3,7 +3,6 @@ import { GetStaticProps } from "next";
 import getT from "next-translate/getT";
 import useTranslation from "next-translate/useTranslation";
 import { FC } from "react";
-import { PageLayout } from "../components/Layout";
 import { TitleTag } from "../components/TitleTag";
 import { TitleTags } from "../types";
 
@@ -14,18 +13,13 @@ interface MyCreatorProps {
 const MyCreator: FC<MyCreatorProps> = ({ titleTags }) => {
   const { t } = useTranslation("creatorFill");
   return (
-    <PageLayout>
+    <>
       <Image alt="my profile picture" />
-      <TitleTag
-        titleTags={titleTags}
-        placement="bottom"
-        textAlign="center"
-        justifyContent="center"
-      />
+      <TitleTag titleTags={titleTags} placement="bottom" />
       <Text w="full" flex={1}>
         {t("creator")}
       </Text>
-    </PageLayout>
+    </>
   );
 };
 

@@ -1,4 +1,4 @@
-import { Box, Link } from "@chakra-ui/react";
+import { Box, Link } from "@chakra-ui/layout";
 import NextLink, { LinkProps } from "next/link";
 import { useRouter } from "next/router";
 import { FC } from "react";

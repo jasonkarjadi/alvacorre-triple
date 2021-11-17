@@ -1,4 +1,5 @@
-import { Box, BoxProps, IconButton, IconButtonProps } from "@chakra-ui/react";
+import { IconButton, IconButtonProps } from "@chakra-ui/button";
+import { Box, BoxProps } from "@chakra-ui/layout";
 import { motion } from "framer-motion";
 import { FC } from "react";
 import { CrossAikon } from "./Aikon";

@@ -1,4 +1,4 @@
-import { Icon } from "@chakra-ui/react";
+import { Icon } from "@chakra-ui/icon";
 import { FC } from "react";
 
 interface AikonProps {

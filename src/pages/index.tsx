@@ -2,7 +2,6 @@ import { Image } from "@chakra-ui/react";
 import { GetStaticProps } from "next";
 import getT from "next-translate/getT";
 import { FC } from "react";
-import { PageLayout } from "../components/Layout";
 import { TitleTag } from "../components/TitleTag";
 import { TitleTags } from "../types";
 
@@ -12,15 +11,10 @@ interface MyIndexProps {
 
 const MyIndex: FC<MyIndexProps> = ({ titleTags }) => {
   return (
-    <PageLayout>
+    <>
       <Image flex={1} alt="main visual" />
-      <TitleTag
-        titleTags={titleTags}
-        placement="top"
-        textAlign="center"
-        justifyContent="center"
-      />
-    </PageLayout>
+      <TitleTag titleTags={titleTags} placement="top" />
+    </>
   );
 };
 

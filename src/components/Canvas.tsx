@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/layout";
 import { FC, MouseEvent, useCallback, useEffect, useRef } from "react";
 import { PerspectiveCamera, Scene, Vector2, WebGLRenderer } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
@@ -12,13 +12,6 @@ interface CanvasProps {
     setRay: () => void;
   };
   // setBool: { on: () => void; off: () => void; toggle: () => void };
-  // contents?: {
-  //   iso: string;
-  //   imports: string[];
-  //   family: string;
-  //   form: string;
-  //   wordOrder: string;
-  // }[];
 }
 
 export const Canvas: FC<CanvasProps> = ({ rect, three }) => {
@@ -39,8 +32,8 @@ export const Canvas: FC<CanvasProps> = ({ rect, three }) => {
         rotateSpeed: 0.5,
         enablePan: false,
         enableZoom: true,
-        minDistance: 50 * 1.5,
-        maxDistance: three.camera.position.z * 1.5,
+        minDistance: 50 * 1.1,
+        maxDistance: three.camera.far - 50,
       });
     },
     [three.camera]

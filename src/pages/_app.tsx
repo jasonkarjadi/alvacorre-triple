@@ -1,5 +1,5 @@
-import { ChakraProvider } from "@chakra-ui/react";
-import { AppProps } from "next/dist/shared/lib/router/router";
+import { ChakraProvider } from "@chakra-ui/provider";
+import { AppProps } from "next/app";
 import { useEffect } from "react";
 import { AppLayout } from "../components/Layout";
 import theme from "../theme";
