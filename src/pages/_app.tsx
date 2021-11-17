@@ -1,8 +1,12 @@
 import { ChakraProvider } from "@chakra-ui/provider";
-import { AppProps } from "next/app";
+import type { AppProps } from "next/app";
 import { useEffect } from "react";
 import { AppLayout } from "../components/Layout";
 import theme from "../theme";
+
+// export const reportWebVitals = (metric: NextWebVitalsMetric) => {
+//   if (metric.label === "web-vital") console.log(metric);
+// };
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   useEffect(() => {
