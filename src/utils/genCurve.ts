@@ -1,14 +1,12 @@
 import { geoInterpolate } from "d3-geo";
 import {
   CubicBezierCurve3,
-  Group,
-  Line,
-  LineBasicMaterial,
+  Mesh,
+  MeshBasicMaterial,
   TubeGeometry,
   Vector3,
 } from "three";
 import { Pnts } from "../types";
-import { genPoint } from "./genPoint";
 import { toXYZ } from "./toXYZ";
 
 export const genCurve = (start: Pnts[number], end: Pnts[number], rad = 1) => {
@@ -27,13 +25,10 @@ export const genCurve = (start: Pnts[number], end: Pnts[number], rad = 1) => {
   const vC = new Vector3(cx, cy, cz);
   const curve = new CubicBezierCurve3(vA, vB, vC, vD);
 
-  const line = new Line(
-    new TubeGeometry(curve, 20, 0.05, 8),
-    new LineBasicMaterial({ color: 0x00ff00 })
+  const line = new Mesh(
+    new TubeGeometry(curve),
+    new MeshBasicMaterial({ color: 0x00ff00 })
   );
-
-  const circleD = genPoint(dx, dy, dz);
-  const group = new Group().add(line, circleD);
-  return group;
+  return line;
 };
 // need to add shader function

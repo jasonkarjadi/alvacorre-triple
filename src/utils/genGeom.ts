@@ -6,11 +6,10 @@ import { toXYZ } from "./toXYZ";
 
 export const genMeshGeom = (coords: PolyCoords, rad = 1, res = 5) => {
   const { verts, inds } = geoPolyTrnglt(coords, rad, res);
-  const meshGeom = new BufferGeometry();
-  meshGeom
+  const meshGeom = new BufferGeometry()
     .setIndex(inds)
-    .setAttribute("position", new Float32BufferAttribute(verts, 3))
-    .computeVertexNormals();
+    .setAttribute("position", new Float32BufferAttribute(verts, 3));
+  meshGeom.computeVertexNormals();
   return meshGeom;
 };
 
@@ -39,8 +38,7 @@ export const genLineGeom = (coords: PolyCoords, rad = 1, res = 5) => {
     outerInds.concat(holeInds);
     outerVerts.concat(holeVerts);
   }
-  const lineGeom = new BufferGeometry();
-  lineGeom
+  const lineGeom = new BufferGeometry()
     .setIndex(outerInds)
     .setAttribute("position", new Float32BufferAttribute(outerVerts, 3));
   return lineGeom;

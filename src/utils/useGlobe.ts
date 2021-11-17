@@ -14,15 +14,15 @@ import { mergeBufferGeometries } from "three/examples/jsm/utils/BufferGeometryUt
 import { Ctrys, Pnts, Rels } from "../types";
 import { genCurve } from "./genCurve";
 import { genLineGeom, genMeshGeom } from "./genGeom";
-import { genPoint } from "./genPoint";
-import { toXYZ } from "./toXYZ";
 
-export const useGlobe = (countries: Ctrys, points: Pnts, relations: Rels) => {
+type UseGlobeProps = { countries: Ctrys; points: Pnts; relations: Rels };
+
+export const useGlobe = ({ countries, points, relations }: UseGlobeProps) => {
   const camRef = useRef(new PerspectiveCamera(50, 2, 1, 1000));
   const mouseRef = useRef(new Vector2());
   const rayRef = useRef(new Raycaster());
   const sceneRef = useRef(new Scene());
-  const relsRef = useRef<(Mesh | Group)[]>([]);
+  const relsRef = useRef<Mesh[]>([]);
   const worldMemo = useMemo(() => {
     return countries.map(({ properties, geometry }) => {
       const isPoly = geometry.type === "Polygon";
@@ -45,19 +45,18 @@ export const useGlobe = (countries: Ctrys, points: Pnts, relations: Rels) => {
   const setRay = useCallback(() => {
     rayRef.current.setFromCamera(mouseRef.current, camRef.current);
     const ctryMeshes = worldMemo.map((c) => c.children[0]);
-    const xName = rayRef.current.intersectObjects(ctryMeshes)[0]?.object.name;
-    if (xName) {
+    const hit = rayRef.current.intersectObjects(ctryMeshes)[0];
+    if (hit) {
       const pntsFilter = (n: string) => points.filter((p) => n === p.NAME)[0];
-      const pntA = pntsFilter(xName);
-      const [ax, ay, az] = toXYZ(pntA.LAT, pntA.LNG, 50);
-      const isX = (n: string) => n === xName;
+      const pntA = pntsFilter(hit.object.name);
+      const isX = (n: string) => n === hit.object.name;
       const filRels = relations.filter(({ A, B }) => isX(A) || isX(B));
       if (relsRef.current[0]) sceneRef.current.remove(...relsRef.current);
-      relsRef.current = [genPoint(ax, ay, az)];
+      relsRef.current = [];
       if (filRels[0]) {
         const filEnds = filRels.map(({ A, B }) => (isX(A) ? B : A));
-        const groups = filEnds.map((D) => genCurve(pntA, pntsFilter(D), 50));
-        relsRef.current.push(...groups);
+        const lines = filEnds.map((D) => genCurve(pntA, pntsFilter(D), 50));
+        relsRef.current.push(...lines);
       }
       sceneRef.current.add(...relsRef.current);
     }
