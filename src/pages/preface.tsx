@@ -14,7 +14,7 @@ const MyPreface: FC<MyPrefaceProps> = ({ titleTags }) => {
   const { t } = useTranslation("prefaceFill");
   return (
     <>
-      <TitleTag titleTags={titleTags} placement="bottom-start" />
+      <TitleTag titleTags={titleTags} placement="bottom" />
       <Text flex={1} w="full">
         {t("prefaceA")}
       </Text>

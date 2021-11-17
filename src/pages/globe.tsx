@@ -38,7 +38,7 @@ const MyGlobe: FC<MyGlobeProps> = ({ titleTags, data }) => {
 
   return (
     <>
-      <TitleTag titleTags={titleTags} placement="bottom-end" />
+      <TitleTag titleTags={titleTags} placement="bottom" />
       <Box flex={1} w="full" ref={wrapRef} pos="relative">
         {rect && <Canvas rect={rect} three={three} />}
         <AnimatePresence>
