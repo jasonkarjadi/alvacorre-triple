@@ -1,15 +1,13 @@
 // @ts-check
-
 /**
  * @type {import('next').NextConfig}
  */
-
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
 };
 
-const nextTranslate = require("next-translate");
+import nextTranslate from "next-translate";
 
 // @ts-ignore
-module.exports = nextTranslate(nextConfig);
+export default nextTranslate(nextConfig);
