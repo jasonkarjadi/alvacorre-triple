@@ -5,7 +5,7 @@ const theme = extendTheme({
     global: {
       "html, body": {
         height: "100%",
-        bg: "gray",
+        bg: "tan",
       },
       "#__next": {
         height: "100%",
