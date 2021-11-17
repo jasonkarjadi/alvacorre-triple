@@ -2,7 +2,7 @@ import { Ctrys } from "../types";
 
 const countries: Ctrys = [
   {
-    properties: {NAME: "Fiji"},
+    properties: { NAME: "Fiji" },
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -44,7 +44,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Tanzania"},
+    properties: { NAME: "Tanzania" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -106,7 +106,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "W. Sahara"},
+    properties: { NAME: "W. Sahara" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -144,7 +144,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Canada"},
+    properties: { NAME: "Canada" },
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -1066,7 +1066,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "United States of America"},
+    properties: { NAME: "United States of America" },
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -1561,7 +1561,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Kazakhstan"},
+    properties: { NAME: "Kazakhstan" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -1683,7 +1683,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Uzbekistan"},
+    properties: { NAME: "Uzbekistan" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -1747,7 +1747,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Papua New Guinea"},
+    properties: { NAME: "Papua New Guinea" },
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -1852,7 +1852,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Indonesia"},
+    properties: { NAME: "Indonesia" },
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -2162,7 +2162,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Argentina"},
+    properties: { NAME: "Argentina" },
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -2299,7 +2299,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Chile"},
+    properties: { NAME: "Chile" },
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -2429,7 +2429,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Dem. Rep. Congo"},
+    properties: { NAME: "Dem. Rep. Congo" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -2563,7 +2563,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Somalia"},
+    properties: { NAME: "Somalia" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -2610,7 +2610,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Kenya"},
+    properties: { NAME: "Kenya" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -2657,7 +2657,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Sudan"},
+    properties: { NAME: "Sudan" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -2748,7 +2748,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Chad"},
+    properties: { NAME: "Chad" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -2816,7 +2816,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Haiti"},
+    properties: { NAME: "Haiti" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -2847,7 +2847,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Dominican Rep."},
+    properties: { NAME: "Dominican Rep." },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -2883,7 +2883,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Russia"},
+    properties: { NAME: "Russia" },
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -3572,7 +3572,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Bahamas"},
+    properties: { NAME: "Bahamas" },
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -3613,7 +3613,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Falkland Is."},
+    properties: { NAME: "Falkland Is." },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -3633,7 +3633,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Norway"},
+    properties: { NAME: "Norway" },
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -3745,7 +3745,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Greenland"},
+    properties: { NAME: "Greenland" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -3887,7 +3887,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Fr. S. Antarctic Lands"},
+    properties: { NAME: "Fr. S. Antarctic Lands" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -3906,7 +3906,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Timor-Leste"},
+    properties: { NAME: "Timor-Leste" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -3927,7 +3927,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "South Africa"},
+    properties: { NAME: "South Africa" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -4033,7 +4033,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Lesotho"},
+    properties: { NAME: "Lesotho" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -4055,7 +4055,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Mexico"},
+    properties: { NAME: "Mexico" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -4235,7 +4235,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Uruguay"},
+    properties: { NAME: "Uruguay" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -4266,7 +4266,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Brazil"},
+    properties: { NAME: "Brazil" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -4479,7 +4479,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Bolivia"},
+    properties: { NAME: "Bolivia" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -4549,7 +4549,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Peru"},
+    properties: { NAME: "Peru" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -4635,7 +4635,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Colombia"},
+    properties: { NAME: "Colombia" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -4745,7 +4745,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Panama"},
+    properties: { NAME: "Panama" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -4807,7 +4807,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Costa Rica"},
+    properties: { NAME: "Costa Rica" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -4853,7 +4853,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Nicaragua"},
+    properties: { NAME: "Nicaragua" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -4915,7 +4915,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Honduras"},
+    properties: { NAME: "Honduras" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -4982,7 +4982,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "El Salvador"},
+    properties: { NAME: "El Salvador" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5012,7 +5012,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Guatemala"},
+    properties: { NAME: "Guatemala" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5057,7 +5057,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Belize"},
+    properties: { NAME: "Belize" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5087,7 +5087,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Venezuela"},
+    properties: { NAME: "Venezuela" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5189,7 +5189,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Guyana"},
+    properties: { NAME: "Guyana" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5239,7 +5239,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Suriname"},
+    properties: { NAME: "Suriname" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5275,7 +5275,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "France"},
+    properties: { NAME: "France" },
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -5369,7 +5369,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Ecuador"},
+    properties: { NAME: "Ecuador" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5412,7 +5412,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Puerto Rico"},
+    properties: { NAME: "Puerto Rico" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5431,7 +5431,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Jamaica"},
+    properties: { NAME: "Jamaica" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5452,7 +5452,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Cuba"},
+    properties: { NAME: "Cuba" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5504,7 +5504,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Zimbabwe"},
+    properties: { NAME: "Zimbabwe" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5551,7 +5551,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Botswana"},
+    properties: { NAME: "Botswana" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5601,7 +5601,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Namibia"},
+    properties: { NAME: "Namibia" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5655,7 +5655,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Senegal"},
+    properties: { NAME: "Senegal" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5709,7 +5709,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Mali"},
+    properties: { NAME: "Mali" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5795,7 +5795,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Mauritania"},
+    properties: { NAME: "Mauritania" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5844,7 +5844,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Benin"},
+    properties: { NAME: "Benin" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5879,7 +5879,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Niger"},
+    properties: { NAME: "Niger" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5947,7 +5947,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Nigeria"},
+    properties: { NAME: "Nigeria" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6015,7 +6015,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Cameroon"},
+    properties: { NAME: "Cameroon" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6086,7 +6086,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Togo"},
+    properties: { NAME: "Togo" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6115,7 +6115,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Ghana"},
+    properties: { NAME: "Ghana" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6150,7 +6150,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Côte d'Ivoire"},
+    properties: { NAME: "Côte d'Ivoire" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6206,7 +6206,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Guinea"},
+    properties: { NAME: "Guinea" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6286,7 +6286,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Guinea-Bissau"},
+    properties: { NAME: "Guinea-Bissau" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6315,7 +6315,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Liberia"},
+    properties: { NAME: "Liberia" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6352,7 +6352,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Sierra Leone"},
+    properties: { NAME: "Sierra Leone" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6384,7 +6384,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Burkina Faso"},
+    properties: { NAME: "Burkina Faso" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6433,7 +6433,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Central African Rep."},
+    properties: { NAME: "Central African Rep." },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6505,7 +6505,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Congo"},
+    properties: { NAME: "Congo" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6564,7 +6564,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Gabon"},
+    properties: { NAME: "Gabon" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6605,7 +6605,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Eq. Guinea"},
+    properties: { NAME: "Eq. Guinea" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6622,7 +6622,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Zambia"},
+    properties: { NAME: "Zambia" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6693,7 +6693,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Malawi"},
+    properties: { NAME: "Malawi" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6731,7 +6731,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Mozambique"},
+    properties: { NAME: "Mozambique" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6820,7 +6820,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Swaziland"},
+    properties: { NAME: "Swaziland" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6841,7 +6841,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Angola"},
+    properties: { NAME: "Angola" },
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -6932,7 +6932,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Burundi"},
+    properties: { NAME: "Burundi" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6955,7 +6955,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Israel"},
+    properties: { NAME: "Israel" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6991,7 +6991,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Lebanon"},
+    properties: { NAME: "Lebanon" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7012,7 +7012,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Madagascar"},
+    properties: { NAME: "Madagascar" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7071,7 +7071,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Palestine"},
+    properties: { NAME: "Palestine" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7090,7 +7090,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Gambia"},
+    properties: { NAME: "Gambia" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7116,7 +7116,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Tunisia"},
+    properties: { NAME: "Tunisia" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7157,7 +7157,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Algeria"},
+    properties: { NAME: "Algeria" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7229,7 +7229,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Jordan"},
+    properties: { NAME: "Jordan" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7258,7 +7258,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "United Arab Emirates"},
+    properties: { NAME: "United Arab Emirates" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7290,7 +7290,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Qatar"},
+    properties: { NAME: "Qatar" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7309,7 +7309,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Kuwait"},
+    properties: { NAME: "Kuwait" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7328,7 +7328,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Iraq"},
+    properties: { NAME: "Iraq" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7368,7 +7368,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Oman"},
+    properties: { NAME: "Oman" },
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -7431,7 +7431,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Vanuatu"},
+    properties: { NAME: "Vanuatu" },
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -7459,7 +7459,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Cambodia"},
+    properties: { NAME: "Cambodia" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7486,7 +7486,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Thailand"},
+    properties: { NAME: "Thailand" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7560,7 +7560,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Laos"},
+    properties: { NAME: "Laos" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7607,7 +7607,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Myanmar"},
+    properties: { NAME: "Myanmar" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7687,7 +7687,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Vietnam"},
+    properties: { NAME: "Vietnam" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7741,7 +7741,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "North Korea"},
+    properties: { NAME: "North Korea" },
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -7805,7 +7805,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "South Korea"},
+    properties: { NAME: "South Korea" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7834,7 +7834,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Mongolia"},
+    properties: { NAME: "Mongolia" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7919,7 +7919,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "India"},
+    properties: { NAME: "India" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8065,7 +8065,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Bangladesh"},
+    properties: { NAME: "Bangladesh" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8111,7 +8111,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Bhutan"},
+    properties: { NAME: "Bhutan" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8134,7 +8134,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Nepal"},
+    properties: { NAME: "Nepal" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8167,7 +8167,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Pakistan"},
+    properties: { NAME: "Pakistan" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8243,7 +8243,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Afghanistan"},
+    properties: { NAME: "Afghanistan" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8322,7 +8322,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Tajikistan"},
+    properties: { NAME: "Tajikistan" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8373,7 +8373,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Kyrgyzstan"},
+    properties: { NAME: "Kyrgyzstan" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8418,7 +8418,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Turkmenistan"},
+    properties: { NAME: "Turkmenistan" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8482,7 +8482,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Iran"},
+    properties: { NAME: "Iran" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8568,7 +8568,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Syria"},
+    properties: { NAME: "Syria" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8605,7 +8605,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Armenia"},
+    properties: { NAME: "Armenia" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8635,7 +8635,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Sweden"},
+    properties: { NAME: "Sweden" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8685,7 +8685,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Belarus"},
+    properties: { NAME: "Belarus" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8740,7 +8740,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Ukraine"},
+    properties: { NAME: "Ukraine" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8843,7 +8843,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Poland"},
+    properties: { NAME: "Poland" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8898,7 +8898,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Austria"},
+    properties: { NAME: "Austria" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8945,7 +8945,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Hungary"},
+    properties: { NAME: "Hungary" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8987,7 +8987,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Moldova"},
+    properties: { NAME: "Moldova" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9024,7 +9024,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Romania"},
+    properties: { NAME: "Romania" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9078,7 +9078,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Lithuania"},
+    properties: { NAME: "Lithuania" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9107,7 +9107,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Latvia"},
+    properties: { NAME: "Latvia" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9139,7 +9139,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Estonia"},
+    properties: { NAME: "Estonia" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9168,7 +9168,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Germany"},
+    properties: { NAME: "Germany" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9236,7 +9236,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Bulgaria"},
+    properties: { NAME: "Bulgaria" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9274,7 +9274,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Greece"},
+    properties: { NAME: "Greece" },
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -9344,7 +9344,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Turkey"},
+    properties: { NAME: "Turkey" },
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -9428,7 +9428,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Albania"},
+    properties: { NAME: "Albania" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9462,7 +9462,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Croatia"},
+    properties: { NAME: "Croatia" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9515,7 +9515,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Switzerland"},
+    properties: { NAME: "Switzerland" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9549,7 +9549,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Luxembourg"},
+    properties: { NAME: "Luxembourg" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9566,7 +9566,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Belgium"},
+    properties: { NAME: "Belgium" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9593,7 +9593,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Netherlands"},
+    properties: { NAME: "Netherlands" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9618,7 +9618,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Portugal"},
+    properties: { NAME: "Portugal" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9661,7 +9661,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Spain"},
+    properties: { NAME: "Spain" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9722,7 +9722,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Ireland"},
+    properties: { NAME: "Ireland" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9745,7 +9745,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "New Caledonia"},
+    properties: { NAME: "New Caledonia" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9768,7 +9768,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Solomon Is."},
+    properties: { NAME: "Solomon Is." },
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -9833,7 +9833,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "New Zealand"},
+    properties: { NAME: "New Zealand" },
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -9915,7 +9915,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Australia"},
+    properties: { NAME: "Australia" },
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -10172,7 +10172,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Sri Lanka"},
+    properties: { NAME: "Sri Lanka" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -10192,7 +10192,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "China"},
+    properties: { NAME: "China" },
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -10448,7 +10448,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Taiwan"},
+    properties: { NAME: "Taiwan" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -10467,7 +10467,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Italy"},
+    properties: { NAME: "Italy" },
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -10574,7 +10574,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Denmark"},
+    properties: { NAME: "Denmark" },
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -10614,7 +10614,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "United Kingdom"},
+    properties: { NAME: "United Kingdom" },
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -10686,7 +10686,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Iceland"},
+    properties: { NAME: "Iceland" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -10716,7 +10716,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Azerbaijan"},
+    properties: { NAME: "Azerbaijan" },
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -10776,7 +10776,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Georgia"},
+    properties: { NAME: "Georgia" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -10810,7 +10810,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Philippines"},
+    properties: { NAME: "Philippines" },
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -10956,7 +10956,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Malaysia"},
+    properties: { NAME: "Malaysia" },
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -11034,7 +11034,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Brunei"},
+    properties: { NAME: "Brunei" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -11052,7 +11052,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Slovenia"},
+    properties: { NAME: "Slovenia" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -11080,7 +11080,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Finland"},
+    properties: { NAME: "Finland" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -11130,7 +11130,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Slovakia"},
+    properties: { NAME: "Slovakia" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -11173,7 +11173,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Czechia"},
+    properties: { NAME: "Czechia" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -11218,7 +11218,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Eritrea"},
+    properties: { NAME: "Eritrea" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -11256,7 +11256,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Japan"},
+    properties: { NAME: "Japan" },
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -11341,7 +11341,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Paraguay"},
+    properties: { NAME: "Paraguay" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -11384,7 +11384,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Yemen"},
+    properties: { NAME: "Yemen" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -11438,7 +11438,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Saudi Arabia"},
+    properties: { NAME: "Saudi Arabia" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -11524,7 +11524,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Antarctica"},
+    properties: { NAME: "Antarctica" },
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -12225,7 +12225,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "N. Cyprus"},
+    properties: { NAME: "N. Cyprus" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12251,7 +12251,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Cyprus"},
+    properties: { NAME: "Cyprus" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12276,7 +12276,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Morocco"},
+    properties: { NAME: "Morocco" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12349,7 +12349,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Egypt"},
+    properties: { NAME: "Egypt" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12403,7 +12403,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Libya"},
+    properties: { NAME: "Libya" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12469,7 +12469,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Ethiopia"},
+    properties: { NAME: "Ethiopia" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12538,7 +12538,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Djibouti"},
+    properties: { NAME: "Djibouti" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12563,7 +12563,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Somaliland"},
+    properties: { NAME: "Somaliland" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12599,7 +12599,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Uganda"},
+    properties: { NAME: "Uganda" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12637,7 +12637,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Rwanda"},
+    properties: { NAME: "Rwanda" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12661,7 +12661,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Bosnia and Herz."},
+    properties: { NAME: "Bosnia and Herz." },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12694,7 +12694,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "North Macedonia"},
+    properties: { NAME: "North Macedonia" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12722,7 +12722,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Serbia"},
+    properties: { NAME: "Serbia" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12780,7 +12780,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Montenegro"},
+    properties: { NAME: "Montenegro" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12808,7 +12808,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Kosovo"},
+    properties: { NAME: "Kosovo" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12839,7 +12839,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "Trinidad and Tobago"},
+    properties: { NAME: "Trinidad and Tobago" },
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12857,7 +12857,7 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: {NAME: "S. Sudan"},
+    properties: { NAME: "S. Sudan" },
     geometry: {
       type: "Polygon",
       coordinates: [

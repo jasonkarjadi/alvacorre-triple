@@ -18,6 +18,11 @@ const relations: Rels = [
   },
   {
     A: "China",
+    B: "Vietnam",
+    FROM: "A",
+  },
+  {
+    A: "China",
     B: "Japan",
     FROM: "AB",
   },
@@ -71,30 +76,31 @@ const relations: Rels = [
     B: "Japan",
     FROM: "A",
   },
+  {
+    A: "United Kingdom",
+    B: "Australia",
+    FROM: "A",
+  },
+  {
+    A: "United Kingdom",
+    B: "Malaysia",
+    FROM: "A",
+  },
+  {
+    A: "United Kingdom",
+    B: "Hong Kong",
+    FROM: "A",
+  },
+  {
+    A: "United Kingdom",
+    B: "United States of America",
+    FROM: "A",
+  },
+  {
+    A: "United States of America",
+    B: "Philippines",
+    FROM: "A",
+  },
 ];
 
 export default relations;
-
-// const contents = [
-//   {
-//     iso: "en",
-//     imports: ["la", "fr", "el", "nl", "es", "it", "hi", "de", "ar"],
-//     family: "ine",
-//     form: "anal",
-//     wordOrder: "SVO",
-//   },
-//   {
-//     iso: "id",
-//     imports: ["nl", "ar", "sa", "pt", "en", "zh"],
-//     family: "map",
-//     form: "synt",
-//     wordOrder: "SVO",
-//   },
-//   {
-//     iso: "jp",
-//     imports: ["zh", "en", "pt", "nl", "de", "fr"],
-//     family: "jpx",
-//     form: "synt",
-//     wordOrder: "SOV",
-//   },
-// ];
