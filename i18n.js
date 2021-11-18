@@ -1,6 +1,6 @@
 module.exports = {
-  locales: ["en", "jp", "id"],
   defaultLocale: "en",
+  locales: ["en", "jp", "id"],
   pages: {
     "*": ["navbar"],
     "/": ["home"],
