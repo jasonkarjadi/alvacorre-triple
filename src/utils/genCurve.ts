@@ -26,9 +26,9 @@ export const genCurve = (start: Pnts[number], end: Pnts[number], rad = 1) => {
   const curve = new CubicBezierCurve3(vA, vB, vC, vD);
 
   const line = new Mesh(
-    new TubeGeometry(curve),
-    new MeshBasicMaterial({ color: 0x00ff00 })
+    new TubeGeometry(curve, 32, 0.05, 8),
+    new MeshBasicMaterial({ color: 0xd1f20a })
   );
   return line;
 };
-// need to add shader function
+// need to add shader function based on from A or AB
