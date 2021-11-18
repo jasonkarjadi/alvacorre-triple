@@ -1,5 +1,4 @@
 import { Button } from "@chakra-ui/button";
-import { useBoolean } from "@chakra-ui/hooks";
 import { Link, Square } from "@chakra-ui/layout";
 import NextLink, { LinkProps } from "next/link";
 import { useRouter } from "next/router";
@@ -13,7 +12,6 @@ export const AikonLink: FC<AikonLinkProps> = ({ children, href }) => {
   const { pathname } = useRouter();
   const isRoute = href === pathname;
   const MergedLink: FC = (props) => {
-    const [isClicked, setIsClicked] = useBoolean(false);
     return (
       <NextLink href={href}>
         <Button
@@ -22,8 +20,6 @@ export const AikonLink: FC<AikonLinkProps> = ({ children, href }) => {
           bg="tan"
           _hover={{ border: "solid", textDecorationThickness: "2px" }}
           _active={{ bg: "transparent" }}
-          onClick={setIsClicked.on}
-          isLoading={isClicked}
         />
       </NextLink>
     );
