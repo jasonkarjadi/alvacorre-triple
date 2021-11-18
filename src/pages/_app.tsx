@@ -1,3 +1,4 @@
+import "@fontsource/raleway";
 import { ChakraProvider } from "@chakra-ui/provider";
 import type { AppProps } from "next/app";
 import { useEffect } from "react";
