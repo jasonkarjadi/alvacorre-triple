@@ -12,6 +12,11 @@ const theme = extendTheme({
       },
     },
   },
+  fonts: {
+    heading: "Georgia, serif",
+    body: "Raleway, system-ui, sans-serif",
+    mono: "Menlo, monospace",
+  },
 });
 
 export default theme;
