@@ -25,7 +25,7 @@ export const Slide: FC<SlideProps> = ({ setBool }) => {
       left="0"
       h="full"
       w="full"
-      bg="gray.900"
+      bg="orange.100"
       variants={fade}
       initial="hidden"
       animate="visible"
@@ -34,7 +34,7 @@ export const Slide: FC<SlideProps> = ({ setBool }) => {
       <MotionIconButton
         aria-label="close"
         icon={<CrossAikon />}
-        onClick={setBool.off}
+        onClick={setBool.on}
         variants={fade}
         initial="hidden"
         animate="visible"
