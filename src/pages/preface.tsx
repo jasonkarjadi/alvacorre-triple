@@ -1,20 +1,13 @@
-import { Text } from "@chakra-ui/react";
-import { GetStaticProps } from "next";
-import getT from "next-translate/getT";
+import { Text } from "@chakra-ui/layout";
 import useTranslation from "next-translate/useTranslation";
 import { FC } from "react";
-import { TitleTag } from "../components/TitleTag";
-import { TitleTags } from "../types";
+import { Localer } from "../components/Localer";
 
-interface MyPrefaceProps {
-  titleTags: TitleTags;
-}
-
-const MyPreface: FC<MyPrefaceProps> = ({ titleTags }) => {
+const PrefacePage: FC = () => {
   const { t } = useTranslation("prefaceFill");
   return (
     <>
-      <TitleTag titleTags={titleTags} placement="bottom" />
+      <Localer ns="preface" placement="bottom" />
       <Text flex={1} w="full">
         {t("prefaceA")}
       </Text>
@@ -22,13 +15,4 @@ const MyPreface: FC<MyPrefaceProps> = ({ titleTags }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ locales }) => {
-  const titleTags: TitleTags = [];
-  locales?.map(async (locale) => {
-    const t = await getT(locale, "preface");
-    titleTags.push({ locale, title: t("title"), tagline: t("tagline") });
-  });
-  return { props: { titleTags } };
-};
-
-export default MyPreface;
+export default PrefacePage;

@@ -1,44 +1,19 @@
-import { Box, Heading, Text } from "@chakra-ui/layout";
-import { Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/menu";
-import { UsePopperProps } from "@chakra-ui/popper";
-import setLanguage from "next-translate/setLanguage";
-import { useRouter } from "next/router";
+import { Heading, Text } from "@chakra-ui/layout";
 import { FC } from "react";
-import { TitleTags } from "../types";
 
 interface TitleTagProps {
-  titleTags: TitleTags;
-  placement?: UsePopperProps["placement"];
+  title: string;
+  tagline: string;
+  main: boolean;
 }
 
-export const TitleTag: FC<TitleTagProps> = ({ titleTags, placement }) => {
-  const { locale } = useRouter();
-  const curr = titleTags.filter((tT) => tT.locale === locale)[0];
-  const notCurrs = titleTags.filter((tT) => tT.locale !== locale);
+export const TitleTag: FC<TitleTagProps> = ({ title, tagline, main }) => {
   return (
-    <Menu placement={placement} isLazy={true}>
-      <MenuButton textAlign="center">
-        <Heading as="h1" fontSize="3xl">
-          {curr.title}
-        </Heading>
-        <Text>{curr.tagline}</Text>
-      </MenuButton>
-      <MenuList userSelect="none">
-        {notCurrs.map((tT) => (
-          <MenuItem
-            key={tT.locale}
-            justifyContent="center"
-            onClick={async () => await setLanguage(`${tT.locale}`)}
-          >
-            <Box textAlign="center">
-              <Heading as="h1" fontSize="2xl">
-                {tT.title}
-              </Heading>
-              <Text fontSize="x-small">{tT.tagline}</Text>
-            </Box>
-          </MenuItem>
-        ))}
-      </MenuList>
-    </Menu>
+    <>
+      <Heading as="h1" fontSize={main ? "3xl" : "2xl"}>
+        {title}
+      </Heading>
+      <Text fontSize={main ? "" : "x-small"}>{tagline}</Text>
+    </>
   );
 };

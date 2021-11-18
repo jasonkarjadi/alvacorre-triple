@@ -1,28 +1,17 @@
 import { useBoolean } from "@chakra-ui/hooks";
 import { Box } from "@chakra-ui/layout";
 import { AnimatePresence } from "framer-motion";
-import { GetStaticProps } from "next";
-import getT from "next-translate/getT";
 import { FC, useEffect, useRef, useState } from "react";
 import { Canvas } from "../components/Canvas";
+import { Localer } from "../components/Localer";
 import { Slide } from "../components/Slide";
-import { TitleTag } from "../components/TitleTag";
-import points from "../data/countries_central_coordinates";
-import relations from "../data/curves_relations";
-import countries from "../data/ne_50m_admin_0_countries";
-import { Ctrys, Pnts, Rels, TitleTags } from "../types";
 import { useGlobe } from "../utils/useGlobe";
 
-interface MyGlobeProps {
-  titleTags: TitleTags;
-  data: { countries: Ctrys; points: Pnts; relations: Rels };
-}
-
-const MyGlobe: FC<MyGlobeProps> = ({ titleTags, data }) => {
+const MyGlobe: FC = () => {
   const wrapRef = useRef<HTMLDivElement>(null);
   const [rect, setRect] = useState<DOMRect>();
-  const [isSlide, setIsSlide] = useBoolean(false);
-  const three = useGlobe(data);
+  const [isCanvas, setIsCanvas] = useBoolean(true);
+  const three = useGlobe();
 
   useEffect(() => {
     const setResize = () => {
@@ -38,28 +27,17 @@ const MyGlobe: FC<MyGlobeProps> = ({ titleTags, data }) => {
 
   return (
     <>
-      <TitleTag titleTags={titleTags} placement="bottom" />
+      <Box pos="relative">
+        <Localer ns="globe" placement="bottom" />
+      </Box>
       <Box flex={1} w="full" ref={wrapRef} pos="relative">
         {rect && <Canvas rect={rect} three={three} />}
         <AnimatePresence>
-          {isSlide && <Slide setBool={setIsSlide} />}
+          {!isCanvas && <Slide setBool={setIsCanvas} />}
         </AnimatePresence>
       </Box>
     </>
   );
-};
-
-export const getStaticProps: GetStaticProps = async ({ locales }) => {
-  const titleTags: TitleTags = [];
-  locales?.map(async (locale) => {
-    const t = await getT(locale, "globe");
-    titleTags.push({ locale, title: t("title"), tagline: t("tagline") });
-  });
-  // const res = await fetch(
-  //   "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_50m_admin_0_countries.geojson"
-  // );
-  // const featColl = await res.json();
-  return { props: { titleTags, data: { countries, points, relations } } };
 };
 
 export default MyGlobe;
