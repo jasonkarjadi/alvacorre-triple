@@ -1,4 +1,4 @@
-module.exports = {
+const i18n = {
   defaultLocale: "en",
   locales: ["en", "jp", "id"],
   pages: {
@@ -9,3 +9,5 @@ module.exports = {
     "/creator": ["creator", "creatorFill"],
   },
 };
+
+export default i18n;
