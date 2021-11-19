@@ -13,7 +13,7 @@ interface LocalerProps {
 export const Localer: FC<LocalerProps> = ({ ns, placement }) => {
   const { t, lang } = useTranslation(ns);
   return (
-    <Menu placement={placement} isLazy={true}>
+    <Menu placement={placement} isLazy>
       <MenuButton textAlign="center">
         <TitleTag title={t("title")} tagline={t("tagline")} main={true} />
       </MenuButton>
