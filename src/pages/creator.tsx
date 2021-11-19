@@ -3,7 +3,7 @@ import useTranslation from "next-translate/useTranslation";
 import { FC } from "react";
 import { Localer } from "../components/Localer";
 
-const MyCreator: FC = () => {
+const CreatorPage: FC = () => {
   const { t } = useTranslation("creatorFill");
   return (
     <>
@@ -16,4 +16,4 @@ const MyCreator: FC = () => {
   );
 };
 
-export default MyCreator;
+export default CreatorPage;

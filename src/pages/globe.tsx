@@ -7,7 +7,7 @@ import { Localer } from "../components/Localer";
 import { Slide } from "../components/Slide";
 import { useGlobe } from "../utils/useGlobe";
 
-const MyGlobe: FC = () => {
+const GlobePage: FC = () => {
   const wrapRef = useRef<HTMLDivElement>(null);
   const [rect, setRect] = useState<DOMRect>();
   const [isCanvas, setIsCanvas] = useBoolean(true);
@@ -40,4 +40,4 @@ const MyGlobe: FC = () => {
   );
 };
 
-export default MyGlobe;
+export default GlobePage;
