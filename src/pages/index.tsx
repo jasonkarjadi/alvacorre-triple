@@ -5,6 +5,7 @@ const IndexPage: FC = () => {
   return (
     <>
       {/* <Image flex={1} alt="main visual" /> */}
+      <div style={{ flex: "1" }} />
       <Localer ns="home" placement="top" />
     </>
   );
