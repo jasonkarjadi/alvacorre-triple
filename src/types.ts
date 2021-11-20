@@ -1,8 +1,10 @@
+import { ColorRepresentation } from "three";
+
 export type TitleTags = { locale: string; title: string; tagline: string }[];
 export type PolyCoords = [number, number][][];
 export type FeatProps = {
   NAME: string;
-  [index: string]: string | number | null;
+  [key: string]: string | number | null;
 };
 export type FeatGeom =
   | { type: "Polygon"; coordinates: PolyCoords }
@@ -25,13 +27,11 @@ export type Ctrys = {
   bbox?: BBox;
   geometry: FeatGeom;
 }[];
-export type Rels = {
-  A: string;
-  B: string;
-  FROM: "A" | "B" | "AB";
+export type Rels = { A: string; B: string; FROM: "A" | "B" | "AB" }[];
+export type Pnts = { NAME: string; LAT: number; LNG: number }[];
+export type Fams = {
+  FAMILY: string;
+  COUNTRIES: string[];
+  COLOR: ColorRepresentation;
 }[];
-export type Pnts = {
-  NAME: string;
-  LAT: number;
-  LNG: number;
-}[];
+export type ThreeData = { points: Pnts; relations: Rels; families: Fams };

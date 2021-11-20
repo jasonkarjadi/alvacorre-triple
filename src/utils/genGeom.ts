@@ -1,17 +1,8 @@
 import earcut from "earcut";
 import { BufferGeometry, Float32BufferAttribute } from "three";
 import { PolyCoords } from "../types";
-import { geoPolyTrnglt, interpLine } from "./geoPolyTrnglt";
+import { interpLine } from "./geoPolyTrnglt";
 import { toXYZ } from "./toXYZ";
-
-export const genMeshGeom = (coords: PolyCoords, rad = 1, res = 5) => {
-  const { verts, inds } = geoPolyTrnglt(coords, rad, res);
-  const meshGeom = new BufferGeometry()
-    .setIndex(inds)
-    .setAttribute("position", new Float32BufferAttribute(verts, 3));
-  meshGeom.computeVertexNormals();
-  return meshGeom;
-};
 
 export const genLineGeom = (coords: PolyCoords, rad = 1, res = 5) => {
   const xyzs = coords.map((c) =>
