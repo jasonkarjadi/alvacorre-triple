@@ -2,7 +2,7 @@ import { HStack } from "@chakra-ui/layout";
 import useTranslation from "next-translate/useTranslation";
 import { FC } from "react";
 import { GlobeAikon, HomeAikon, InfoAikon, UserAikon } from "./Aikon";
-import { AikonLink } from "./LinkBaten";
+import { AikonLink } from "./AikonLink";
 
 const navItems = [
   {
