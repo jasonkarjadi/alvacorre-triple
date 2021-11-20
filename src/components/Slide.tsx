@@ -1,19 +1,14 @@
-import { IconButton, IconButtonProps } from "@chakra-ui/button";
 import { Box, BoxProps } from "@chakra-ui/layout";
 import { motion } from "framer-motion";
 import { FC } from "react";
-import { CrossAikon } from "./Aikon";
 
 const MotionBox = motion<BoxProps>(Box);
-const MotionIconButton = motion<IconButtonProps>(IconButton);
-interface SlideProps {
-  setBool: { on: () => void; off: () => void; toggle: () => void };
-}
-export const Slide: FC<SlideProps> = ({ setBool }) => {
-  const shutter = {
-    visible: { height: "100%" },
-    hidden: { height: 0 },
-  };
+
+export const Slide: FC = () => {
+  // const shutter = {
+  //   visible: { height: "100%" },
+  //   hidden: { height: 0 },
+  // };
   const fade = {
     visible: { opacity: 1 },
     hidden: { opacity: 0 },
@@ -30,16 +25,6 @@ export const Slide: FC<SlideProps> = ({ setBool }) => {
       initial="hidden"
       animate="visible"
       exit="hidden"
-    >
-      <MotionIconButton
-        aria-label="close"
-        icon={<CrossAikon />}
-        onClick={setBool.on}
-        variants={fade}
-        initial="hidden"
-        animate="visible"
-        exit="hidden"
-      />
-    </MotionBox>
+    ></MotionBox>
   );
 };

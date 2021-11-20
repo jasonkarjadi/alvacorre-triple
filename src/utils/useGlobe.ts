@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   BufferGeometry,
   Color,
@@ -13,15 +13,18 @@ import {
   Scene,
   Vector2,
 } from "three";
-import countries from "../data/ne_110m_admin_0_countries";
-import { ThreeData } from "../types";
+import { FeatColl, ThreeData } from "../types";
 import { genCurve } from "./genCurve";
 import { genLineGeom } from "./genGeom";
 import { geoPolyTrnglt } from "./geoPolyTrnglt";
 
 type CtryMesh = Mesh<BufferGeometry, MeshBasicMaterial>;
+type SetBool = { on: () => void; off: () => void; toggle: () => void };
 
-export const useGlobe = ({ points, relations, families }: ThreeData) => {
+export const useGlobe = (
+  { points, relations, families }: ThreeData,
+  setBool: SetBool
+) => {
   const camRef = useRef(new PerspectiveCamera(50, 2, 1, 1000));
   const mouseRef = useRef(new Vector2());
   const rayRef = useRef(new Raycaster());
@@ -29,6 +32,7 @@ export const useGlobe = ({ points, relations, families }: ThreeData) => {
   const earthRef = useRef<Group[]>([]);
   const prevHitRef = useRef<Group>();
   const relsRef = useRef<Mesh[]>([]);
+  const [data, setData] = useState<FeatColl>();
 
   const setRay = useCallback(() => {
     rayRef.current.setFromCamera(mouseRef.current, camRef.current);
@@ -54,44 +58,50 @@ export const useGlobe = ({ points, relations, families }: ThreeData) => {
           relsRef.current = lines;
           sceneRef.current.add(...relsRef.current);
         }
+        setBool.on();
       }
     }
-  }, [points, relations]);
+  }, [points, relations, setBool]);
 
   useEffect(() => {
-    (() => {
-      // const res = await fetch(
-      //   "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_50m_admin_0_countries.geojson"
-      // );
-      // const data: FeatColl = await res.json();
-      const ctryMeshGrps = countries.map(({ properties, geometry }) => {
-        const isPoly = geometry.type === "Polygon";
-        const polys = isPoly ? [geometry.coordinates] : geometry.coordinates;
-        const color = families.filter(
-          (x) => x.COUNTRIES.filter((y) => y === properties.NAME)[0]
-        )[0].COLOR;
-        const meshMatl = new MeshBasicMaterial({ color });
-        const meshGrp = new Group();
-        polys.map((c) => {
-          const { verts, inds } = geoPolyTrnglt(c, 50, 1);
-          const meshGeom = new BufferGeometry()
-            .setIndex(inds)
-            .setAttribute("position", new Float32BufferAttribute(verts, 3));
-          meshGeom.computeVertexNormals();
-          meshGrp.add(new Mesh(meshGeom, meshMatl));
-        });
-        const lineMatl = new LineBasicMaterial({ color: 0xf6ad55 });
-        const lineGrp = new Group();
-        polys.map((c) =>
-          lineGrp.add(new LineSegments(genLineGeom(c, 50, 1), lineMatl))
-        );
-        meshGrp.name = properties.NAME;
-        sceneRef.current.add(meshGrp, lineGrp);
-        return meshGrp;
-      });
-      earthRef.current = ctryMeshGrps;
+    (async () => {
+      const res = await fetch(
+        "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_50m_admin_0_countries.geojson"
+      );
+      setData(await res.json());
     })();
-  }, [families]);
+  }, []);
+
+  useEffect(() => {
+    if (!data) return;
+    const meshGrps = data.features.map(({ properties, geometry }) => {
+      const isPoly = geometry.type === "Polygon";
+      const polys = isPoly ? [geometry.coordinates] : geometry.coordinates;
+      const famColor = families.filter(
+        (x) => x.COUNTRIES.filter((y) => y === properties.NAME)[0]
+      )[0].COLOR;
+      const color = false ? famColor : 0x171923;
+      const meshMatl = new MeshBasicMaterial({ color });
+      const meshGrp = new Group();
+      polys.map((c) => {
+        const { verts, inds } = geoPolyTrnglt(c, 50, 1);
+        const meshGeom = new BufferGeometry()
+          .setIndex(inds)
+          .setAttribute("position", new Float32BufferAttribute(verts, 3));
+        meshGeom.computeVertexNormals();
+        meshGrp.add(new Mesh(meshGeom, meshMatl));
+      });
+      const lineMatl = new LineBasicMaterial({ color: 0xf6ad55 });
+      const lineGrp = new Group();
+      polys.map((c) =>
+        lineGrp.add(new LineSegments(genLineGeom(c, 50, 1), lineMatl))
+      );
+      meshGrp.name = properties.NAME;
+      sceneRef.current.add(meshGrp, lineGrp);
+      return meshGrp;
+    });
+    earthRef.current = meshGrps;
+  }, [families, data]);
 
   return {
     camera: camRef.current,

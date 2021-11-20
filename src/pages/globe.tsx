@@ -1,5 +1,6 @@
+import { IconButton } from "@chakra-ui/button";
 import { useBoolean } from "@chakra-ui/hooks";
-import { Box } from "@chakra-ui/layout";
+import { Box, Square } from "@chakra-ui/layout";
 import { AnimatePresence } from "framer-motion";
 import { GetStaticProps } from "next";
 import { FC, useEffect, useRef, useState } from "react";
@@ -20,7 +21,8 @@ const GlobePage: FC<GlobePageProps> = ({ data }) => {
   const wrapRef = useRef<HTMLDivElement>(null);
   const [rect, setRect] = useState<DOMRect>();
   const [isCanvas, setIsCanvas] = useBoolean(true);
-  const three = useGlobe(data);
+  const [isHit, setIsHit] = useBoolean(false);
+  const three = useGlobe(data, setIsHit);
 
   useEffect(() => {
     const setResize = () => {
@@ -36,15 +38,24 @@ const GlobePage: FC<GlobePageProps> = ({ data }) => {
 
   return (
     <>
-      <Box pos="relative">
-        <Localer ns="globe" placement="bottom" />
-      </Box>
+      <Localer ns="globe" placement="bottom" />
       <Box flex={1} w="full" ref={wrapRef} pos="relative">
         {rect && <Canvas rect={rect} three={three} />}
-        <AnimatePresence>
-          {!isCanvas && <Slide setBool={setIsCanvas} />}
-        </AnimatePresence>
+        <AnimatePresence>{!isCanvas && <Slide />}</AnimatePresence>
       </Box>
+      {isHit && (
+        <Square
+          as={IconButton}
+          aria-label="country or language info"
+          onClick={setIsCanvas.toggle}
+          pos="absolute"
+          bottom={9}
+          left={innerWidth / 2 + 6}
+          size={16}
+          bg={isCanvas ? "black" : "white"}
+          border="solid"
+        />
+      )}
     </>
   );
 };
