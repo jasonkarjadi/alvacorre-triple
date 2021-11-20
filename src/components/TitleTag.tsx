@@ -13,7 +13,9 @@ export const TitleTag: FC<TitleTagProps> = ({ title, tagline, main }) => {
       <Heading as="h1" fontSize={main ? "3xl" : "2xl"}>
         {title}
       </Heading>
-      <Text fontSize={main ? "" : "x-small"}>{tagline}</Text>
+      <Text fontSize={main ? "" : "x-small"} lineHeight="1">
+        {tagline}
+      </Text>
     </>
   );
 };
