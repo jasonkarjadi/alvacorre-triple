@@ -101,6 +101,16 @@ const relations: Rels = [
     B: "Philippines",
     FROM: "A",
   },
+  {
+    A: "Portugal",
+    B: "Angola",
+    FROM: "A",
+  },
+  {
+    A: "Spain",
+    B: "Mexico",
+    FROM: "A",
+  },
 ];
 
 export default relations;
