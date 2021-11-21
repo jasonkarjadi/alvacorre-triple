@@ -10,12 +10,15 @@ interface TitleTagProps {
 export const TitleTag: FC<TitleTagProps> = ({ title, tagline, main }) => {
   return (
     <>
-      <Heading as="h1" fontSize={main ? "3xl" : "2xl"}>
+      <Heading
+        as="h1"
+        fontSize={main ? "3xl" : "xl"}
+        fontWeight={main ? "bold" : "normal"}
+        lineHeight="none"
+      >
         {title}
       </Heading>
-      <Text fontSize={main ? "" : "x-small"} lineHeight="1">
-        {tagline}
-      </Text>
+      <Text fontSize={main ? "" : "x-small"}>{tagline}</Text>
     </>
   );
 };
