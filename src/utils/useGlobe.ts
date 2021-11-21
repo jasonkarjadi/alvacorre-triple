@@ -66,7 +66,7 @@ export const useGlobe = (
   useEffect(() => {
     (async () => {
       const res = await fetch(
-        "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_50m_admin_0_countries.geojson"
+        "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson"
       );
       setData(await res.json());
     })();
