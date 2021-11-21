@@ -33,7 +33,7 @@ export const AikonLink: FC<AikonLinkProps> = ({ children, href }) => {
       flexDir="column"
       alignItems="center"
       justifyContent="center"
-      fontSize="x-small"
+      fontSize="xx-small"
       fontWeight="bold"
     >
       {children}

@@ -6,7 +6,7 @@ import { GetStaticProps } from "next";
 import { FC, useEffect, useRef, useState } from "react";
 import { Canvas } from "../components/Canvas";
 import { Localer } from "../components/Localer";
-import { Slide } from "../components/Slide";
+import { InfoSlide } from "../components/InfoSlide";
 import points from "../data/countries_central_coordinates";
 import relations from "../data/curves_relations";
 import { ThreeData } from "../types";
@@ -40,19 +40,19 @@ const GlobePage: FC<GlobePageProps> = ({ data }) => {
       <Localer ns="globe" placement="bottom" />
       <Box flex={1} w="full" ref={wrapRef} pos="relative">
         {rect && <Canvas rect={rect} three={three} />}
-        <AnimatePresence>{!isCanvas && <Slide />}</AnimatePresence>
+        <AnimatePresence>{!isCanvas && <InfoSlide />}</AnimatePresence>
       </Box>
       {isHit && (
         <Square
           as={IconButton}
-          aria-label="country or language info"
+          aria-label="language info"
           onClick={setIsCanvas.toggle}
           pos="absolute"
           bottom={9}
           left={innerWidth / 2 + 6}
           size={16}
-          bg={isCanvas ? "black" : "white"}
-          border="solid"
+          bg={isCanvas ? "gray" : "white"}
+          _hover={{ border: "solid" }}
         />
       )}
     </>
