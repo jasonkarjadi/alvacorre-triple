@@ -22,7 +22,7 @@ type CtryMesh = Mesh<BufferGeometry, MeshBasicMaterial>;
 type SetBool = { on: () => void; off: () => void; toggle: () => void };
 
 export const useGlobe = (
-  { points, relations, families }: ThreeData,
+  { points, relations }: ThreeData,
   setBool: SetBool
 ) => {
   const camRef = useRef(new PerspectiveCamera(50, 2, 1, 1000));
@@ -77,11 +77,7 @@ export const useGlobe = (
     const meshGrps = data.features.map(({ properties, geometry }) => {
       const isPoly = geometry.type === "Polygon";
       const polys = isPoly ? [geometry.coordinates] : geometry.coordinates;
-      const famColor = families.filter(
-        (x) => x.COUNTRIES.filter((y) => y === properties.NAME)[0]
-      )[0].COLOR;
-      const color = false ? famColor : 0x171923;
-      const meshMatl = new MeshBasicMaterial({ color });
+      const meshMatl = new MeshBasicMaterial({ color: 0x171923 });
       const meshGrp = new Group();
       polys.map((c) => {
         const { verts, inds } = geoPolyTrnglt(c, 50, 1);
@@ -101,7 +97,7 @@ export const useGlobe = (
       return meshGrp;
     });
     earthRef.current = meshGrps;
-  }, [families, data]);
+  }, [data]);
 
   return {
     camera: camRef.current,

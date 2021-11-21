@@ -9,7 +9,6 @@ import { Localer } from "../components/Localer";
 import { Slide } from "../components/Slide";
 import points from "../data/countries_central_coordinates";
 import relations from "../data/curves_relations";
-import families from "../data/language_families";
 import { ThreeData } from "../types";
 import { useGlobe } from "../utils/useGlobe";
 
@@ -61,7 +60,7 @@ const GlobePage: FC<GlobePageProps> = ({ data }) => {
 };
 
 export const getStaticProps: GetStaticProps = () => {
-  return { props: { data: { points, relations, families } } };
+  return { props: { data: { points, relations } } };
 };
 
 export default GlobePage;

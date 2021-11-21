@@ -34,4 +34,4 @@ export type Fams = {
   COUNTRIES: string[];
   COLOR: ColorRepresentation;
 }[];
-export type ThreeData = { points: Pnts; relations: Rels; families: Fams };
+export type ThreeData = { points: Pnts; relations: Rels };
