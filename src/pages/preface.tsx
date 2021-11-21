@@ -9,7 +9,7 @@ const PrefacePage: FC = () => {
     <>
       <Localer ns="preface" placement="bottom" />
       <Text flex={1} w="full">
-        {t("prefaceA")}
+        {t("preface")}
       </Text>
     </>
   );
