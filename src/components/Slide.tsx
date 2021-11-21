@@ -4,7 +4,7 @@ import { FC } from "react";
 
 const MotionBox = motion<BoxProps>(Box);
 
-export const Slide: FC = () => {
+export const Slide: FC = ({ children }) => {
   // const shutter = {
   //   visible: { height: "100%" },
   //   hidden: { height: 0 },
@@ -25,6 +25,8 @@ export const Slide: FC = () => {
       initial="hidden"
       animate="visible"
       exit="hidden"
-    ></MotionBox>
+    >
+      {children}
+    </MotionBox>
   );
 };

@@ -11,7 +11,6 @@ interface CanvasProps {
     scene: Scene;
     setRay: () => void;
   };
-  // setBool: { on: () => void; off: () => void; toggle: () => void };
 }
 
 export const Canvas: FC<CanvasProps> = ({ rect, three }) => {
@@ -26,8 +25,6 @@ export const Canvas: FC<CanvasProps> = ({ rect, three }) => {
       three.camera.position.set(0, 0, 200);
       Object.assign(ctrlRef.current, {
         enableDamping: true,
-        autoRotate: true,
-        autoRotateSpeed: 0.2,
         enableRotate: true,
         rotateSpeed: 0.5,
         enablePan: false,
