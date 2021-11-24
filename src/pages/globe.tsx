@@ -18,7 +18,7 @@ import {
   Scene,
   Vector2,
 } from "three";
-import { CrossAikon, MenuAikon } from "../components/Aikon";
+import { CrossAikon, MenuAikon, UndoAikon } from "../components/Aikon";
 import { Canvas } from "../components/Canvas";
 import { InfoText } from "../components/InfoText";
 import { Localer } from "../components/Localer";
@@ -188,19 +188,17 @@ const GlobePage: FC<GlobePageProps> = ({ points, relations }) => {
         >
           <IconButton
             aria-label="Exit Back"
-            icon={<CrossAikon />}
+            icon={pair ? <UndoAikon /> : <CrossAikon />}
             flex={1}
             bg="gray.900"
             color="tan"
             borderTopLeftRadius="none"
             borderBottomLeftRadius="xl"
             onClick={() => {
-              if (curr) {
-                if (!pair) {
-                  handleOff(curr);
-                } else {
-                  setPair(0);
-                }
+              if (!pair) {
+                handleOff(curr);
+              } else {
+                setPair(0);
               }
             }}
           />
