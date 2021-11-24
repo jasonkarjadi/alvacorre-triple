@@ -5,15 +5,19 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 interface CanvasProps {
   rect: DOMRect;
-  three: {
-    camera: PerspectiveCamera;
-    mouse: Vector2;
-    scene: Scene;
-    setRay: () => void;
-  };
+  camera: PerspectiveCamera;
+  mouse: Vector2;
+  scene: Scene;
+  setRay: () => void;
 }
 
-export const Canvas: FC<CanvasProps> = ({ rect, three }) => {
+export const Canvas: FC<CanvasProps> = ({
+  rect,
+  camera,
+  mouse,
+  scene,
+  setRay,
+}) => {
   const reqRef = useRef(0);
   const rendRef = useRef<WebGLRenderer>();
   const ctrlRef = useRef<OrbitControls>();
@@ -21,8 +25,8 @@ export const Canvas: FC<CanvasProps> = ({ rect, three }) => {
     (canvas: HTMLCanvasElement & HTMLDivElement) => {
       if (!canvas) return;
       rendRef.current = new WebGLRenderer({ canvas, antialias: false });
-      ctrlRef.current = new OrbitControls(three.camera, canvas);
-      three.camera.position.set(0, 0, 200);
+      ctrlRef.current = new OrbitControls(camera, canvas);
+      camera.position.set(0, 0, 200);
       Object.assign(ctrlRef.current, {
         enableDamping: true,
         enableRotate: true,
@@ -30,48 +34,48 @@ export const Canvas: FC<CanvasProps> = ({ rect, three }) => {
         enablePan: false,
         enableZoom: true,
         minDistance: 50 * 1.1,
-        maxDistance: three.camera.far - 50,
+        maxDistance: camera.far - 50,
       });
     },
-    [three.camera]
+    [camera]
   );
   const setMouseXY = useCallback(
     (e: MouseEvent) => {
       const { width, height, left, top } = rect;
-      three.mouse.set(
+      mouse.set(
         ((e.clientX - left) / width) * 2 - 1,
         -((e.clientY - top) / height) * 2 + 1
       );
     },
-    [rect, three.mouse]
+    [rect, mouse]
   );
 
   useEffect(() => {
     const { width, height } = rect;
-    three.camera.aspect = width / height;
-    three.camera.updateProjectionMatrix();
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
     rendRef.current?.setSize(width, height);
     rendRef.current?.setPixelRatio(devicePixelRatio);
-  }, [rect, three.camera]);
+  }, [rect, camera]);
 
   useEffect(() => {
     const tick = () => {
       ctrlRef.current?.update();
-      rendRef.current?.render(three.scene, three.camera);
+      rendRef.current?.render(scene, camera);
       reqRef.current = requestAnimationFrame(tick);
     };
     reqRef.current = requestAnimationFrame(tick);
     return () => {
       cancelAnimationFrame(reqRef.current);
     };
-  }, [three.scene, three.camera]);
+  }, [scene, camera]);
 
   return (
     <Box
       as="canvas"
       ref={onCanvasLoad}
       onMouseMove={setMouseXY}
-      onMouseDown={three.setRay}
+      onMouseDown={setRay}
       userSelect="none"
       borderRadius="xl"
     />
