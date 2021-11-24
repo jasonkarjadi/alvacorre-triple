@@ -3,7 +3,7 @@ import { Menu, MenuButton, MenuList } from "@chakra-ui/menu";
 import { UsePopperProps } from "@chakra-ui/popper";
 import useTranslation from "next-translate/useTranslation";
 import { FC } from "react";
-import { MenuAitems } from "./MenuAitem";
+import { LocalerAitems } from "./LocalerAitem";
 import { TitleTag } from "./TitleTag";
 
 interface LocalerProps {
@@ -22,7 +22,7 @@ export const Localer: FC<LocalerProps> = ({ ns, placement }) => {
         </Box>
       </MenuButton>
       <MenuList userSelect="none">
-        <MenuAitems lang={lang} ns={ns} />
+        <LocalerAitems lang={lang} ns={ns} />
       </MenuList>
     </Menu>
   );

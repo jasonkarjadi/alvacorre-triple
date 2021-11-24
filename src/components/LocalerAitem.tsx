@@ -5,12 +5,12 @@ import { useRouter } from "next/router";
 import { FC, useEffect, useState } from "react";
 import { TitleTag } from "./TitleTag";
 
-interface MenuAitemProps {
+interface LocalerAitemProps {
   locale: string;
   ns: string;
 }
 
-const MenuAitem: FC<MenuAitemProps> = ({ locale, ns }) => {
+const LocalerAitem: FC<LocalerAitemProps> = ({ locale, ns }) => {
   const [title, setTitle] = useState("");
   const [tagline, setTagline] = useState("");
   useEffect(() => {
@@ -33,18 +33,18 @@ const MenuAitem: FC<MenuAitemProps> = ({ locale, ns }) => {
   );
 };
 
-interface MenuAitemsProps {
+interface LocalerAitemsProps {
   lang: string;
   ns: string;
 }
 
-export const MenuAitems: FC<MenuAitemsProps> = ({ lang, ns }) => {
+export const LocalerAitems: FC<LocalerAitemsProps> = ({ lang, ns }) => {
   const { locales } = useRouter();
   const notCurr = locales!.filter((l) => l !== lang);
   return (
     <>
       {notCurr.map((l) => (
-        <MenuAitem key={l} locale={l} ns={ns} />
+        <LocalerAitem key={l} locale={l} ns={ns} />
       ))}
     </>
   );
