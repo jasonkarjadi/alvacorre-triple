@@ -8,7 +8,7 @@ const PrefacePage: FC = () => {
   return (
     <>
       <Localer ns="preface" placement="bottom" />
-      <Text flex={1} w="full" textAlign="justify">
+      <Text w="full" textAlign="justify">
         &emsp;{t("preface")}
       </Text>
     </>

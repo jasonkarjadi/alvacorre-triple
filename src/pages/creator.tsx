@@ -8,8 +8,16 @@ const CreatorPage: FC = () => {
   return (
     <>
       {/* <Image alt="my profile picture" /> */}
+      <div
+        style={{
+          width: "120px",
+          height: "120px",
+          borderRadius: "120px",
+          background: "black",
+        }}
+      />
       <Localer ns="creator" placement="bottom" />
-      <Text w="full" flex={1} textAlign="justify">
+      <Text w="full" textAlign="justify">
         {t("creator")}
       </Text>
     </>
