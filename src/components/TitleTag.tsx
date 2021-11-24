@@ -15,7 +15,7 @@ export const TitleTag: FC<TitleTagProps> = ({ title, tagline, main }) => {
         fontSize={main ? "3xl" : "xl"}
         fontWeight={main ? "bold" : "normal"}
       >
-        {title}
+        {title.toUpperCase()}
       </Heading>
       <Text fontSize={main ? "" : "x-small"} lineHeight="none">
         {tagline}

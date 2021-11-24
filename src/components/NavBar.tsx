@@ -1,36 +1,26 @@
 import { HStack } from "@chakra-ui/layout";
 import useTranslation from "next-translate/useTranslation";
 import { FC } from "react";
-import { GlobeAikon, HomeAikon, InfoAikon, UserAikon } from "./Aikon";
+import { AsiaAikon, BookAikon, InfoAikon, UserAikon } from "./Aikon";
 import { AikonLink } from "./AikonLink";
 
-const navItems = [
-  {
-    string: "home",
-    aikon: <HomeAikon />,
-  },
-  {
-    string: "preface",
-    aikon: <InfoAikon />,
-  },
-  {
-    string: "globe",
-    aikon: <GlobeAikon />,
-  },
-  {
-    string: "creator",
-    aikon: <UserAikon />,
-  },
-];
-
 export const NavBar: FC = () => {
+  const navItems: [string, FC][] = [
+    ["home", BookAikon],
+    ["preface", InfoAikon],
+    ["globe", AsiaAikon],
+    ["creator", UserAikon],
+  ];
   const { t } = useTranslation("navbar");
   return (
-    <HStack as="nav" spacing={3} w="full" justify="center">
-      {navItems.map((x, i) => (
-        <AikonLink key={x.string} href={`/${i ? x.string : ""}`}>
-          {x.aikon}
-          {t(x.string)}
+    <HStack as="nav" spacing="0" w="full" bg="tan">
+      {navItems.map(([string, Aikon], i) => (
+        <AikonLink
+          key={string}
+          href={`/${i ? string : ""}`}
+          leftIcon={<Aikon />}
+        >
+          {t(string)}
         </AikonLink>
       ))}
     </HStack>

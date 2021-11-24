@@ -6,6 +6,7 @@ const theme = extendTheme({
       "html, body": {
         height: "100%",
         bg: "tan",
+        overflow: "hidden",
       },
       "#__next": {
         height: "100%",
