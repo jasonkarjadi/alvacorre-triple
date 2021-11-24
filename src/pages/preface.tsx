@@ -4,7 +4,7 @@ import { FC } from "react";
 import { Localer } from "../components/Localer";
 
 const PrefacePage: FC = () => {
-  const { t } = useTranslation("prefaceFill");
+  const { t } = useTranslation("preface");
   return (
     <>
       <Localer ns="preface" placement="bottom" />

@@ -4,8 +4,8 @@ module.exports = {
   pages: {
     "*": ["navbar"],
     "/": ["home"],
-    "/preface": ["preface", "prefaceFill"],
-    "/globe": ["globe", "globeFill"],
-    "/creator": ["creator", "creatorFill"],
+    "/preface": ["preface"],
+    "/globe": ["globe"],
+    "/creator": ["creator"],
   },
 };

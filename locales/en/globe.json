@@ -1,4 +1,6 @@
 {
   "title": "The Globe",
-  "tagline": "An interactive marble"
+  "tagline": "An interactive marble",
+  "overview": "Overview",
+  "listables": "Listables"
 }
