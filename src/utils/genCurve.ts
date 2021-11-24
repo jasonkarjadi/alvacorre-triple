@@ -25,10 +25,10 @@ export const genCurve = (start: Pnts[number], end: Pnts[number], rad = 1) => {
   const vC = new Vector3(cx, cy, cz);
   const curve = new CubicBezierCurve3(vA, vB, vC, vD);
 
-  const line = new Mesh(
-    new TubeGeometry(curve, 32, 0.05, 8),
-    new MeshBasicMaterial({ color: 0xf78f2e })
-  );
+  const lineGeom = new TubeGeometry(curve, 32, 0.1, 8);
+  const lineMatl = new MeshBasicMaterial({ color: 0xf78f2e });
+  const line = new Mesh(lineGeom, lineMatl);
+  line.name = end.NAME;
   return line;
 };
 // need to add shader function based on from A or AB
