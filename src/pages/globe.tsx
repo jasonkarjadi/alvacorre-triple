@@ -20,7 +20,7 @@ import {
 } from "three";
 import { CrossAikon, MenuAikon, UndoAikon } from "../components/Aikon";
 import { Canvas } from "../components/Canvas";
-import { InfoText } from "../components/InfoText";
+import { InfoWindow } from "../components/InfoWindow";
 import { Localer } from "../components/Localer";
 import points from "../data/countries_central_coordinates";
 import relations from "../data/curves_relations";
@@ -37,8 +37,6 @@ interface GlobePageProps {
 }
 
 const GlobePage: FC<GlobePageProps> = ({ points, relations }) => {
-  const nsRef = useRef("globe");
-  const wrapRef = useRef<HTMLDivElement>(null);
   const camRef = useRef(new PerspectiveCamera(50, 2, 1, 1000));
   const mouseRef = useRef(new Vector2());
   const rayRef = useRef(new Raycaster());
@@ -46,6 +44,8 @@ const GlobePage: FC<GlobePageProps> = ({ points, relations }) => {
   const diffRef = useRef(new Color(0x333333));
   const earthRef = useRef<Group[]>([]);
   const relsRef = useRef<Mesh[]>([]);
+  const nsRef = useRef("globe");
+  const wrapRef = useRef<HTMLDivElement>(null);
   const [rect, setRect] = useState<DOMRect>();
   const [data, setData] = useState<Ctrys>();
   const [curr, setCurr] = useState<Group>();
@@ -163,18 +163,7 @@ const GlobePage: FC<GlobePageProps> = ({ points, relations }) => {
             setRay={setRay}
           />
         )}
-        {curr && pair ? (
-          <Box
-            pos="absolute"
-            top="0"
-            left="0"
-            h="full"
-            w="full"
-            bg="orange.100"
-          >
-            <InfoText tuple={[curr.name, pair]} />
-          </Box>
-        ) : undefined}
+        {curr && pair ? <InfoWindow curr={curr.name} pair={pair} /> : undefined}
       </Box>
       {curr && (
         <ButtonGroup
@@ -214,7 +203,9 @@ const GlobePage: FC<GlobePageProps> = ({ points, relations }) => {
               borderBottomRightRadius="xl"
             />
             <MenuList userSelect="none">
-              <MenuItem onClick={() => setPair(1)}>{t("overview")}</MenuItem>
+              <MenuItem onClick={() => setPair(1)}>
+                {t("characteristics")}
+              </MenuItem>
               <MenuItem onClick={() => setPair(2)}>{t("listables")}</MenuItem>
             </MenuList>
           </Menu>
