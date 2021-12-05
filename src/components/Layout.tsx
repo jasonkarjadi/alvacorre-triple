@@ -6,7 +6,7 @@ export const AppLayout: FC = ({ children }) => {
   return (
     <Box h="full" p={3}>
       <VStack h="full" spacing="0" bg="orange.100">
-        <VStack h="full" w="full" spacing={6} p={6}>
+        <VStack h="full" w="full" spacing={3} p={6}>
           {children}
         </VStack>
         <NavBar />
