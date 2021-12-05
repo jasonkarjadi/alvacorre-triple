@@ -1,8 +1,6 @@
-import { ButtonGroup, IconButton } from "@chakra-ui/button";
+import { useBoolean } from "@chakra-ui/hooks";
 import { Box } from "@chakra-ui/layout";
-import { Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/menu";
 import { GetStaticProps } from "next";
-import useTranslation from "next-translate/useTranslation";
 import { FC, useCallback, useEffect, useRef, useState } from "react";
 import {
   BufferGeometry,
@@ -18,7 +16,7 @@ import {
   Scene,
   Vector2,
 } from "three";
-import { CrossAikon, MenuAikon, UndoAikon } from "../components/Aikon";
+import { BatenGrup } from "../components/BatenGrup";
 import { Canvas } from "../components/Canvas";
 import { InfoWindow } from "../components/InfoWindow";
 import { Localer } from "../components/Localer";
@@ -44,13 +42,13 @@ const GlobePage: FC<GlobePageProps> = ({ points, relations }) => {
   const diffRef = useRef(new Color(0x333333));
   const earthRef = useRef<Group[]>([]);
   const relsRef = useRef<Mesh[]>([]);
-  const nsRef = useRef("globe");
   const wrapRef = useRef<HTMLDivElement>(null);
   const [rect, setRect] = useState<DOMRect>();
   const [data, setData] = useState<Ctrys>();
   const [curr, setCurr] = useState<Group>();
-  const [pair, setPair] = useState<string | number>(0);
-  const { t } = useTranslation("globe");
+  const [ns, setNs] = useState("");
+  const [pageNum, setPageNum] = useState(1);
+  const [isInward, setIsInward] = useBoolean(true);
 
   const getColour = useCallback(
     (x: Group) => (x.children as CtryMesh[])[0].material.color,
@@ -77,15 +75,12 @@ const GlobePage: FC<GlobePageProps> = ({ points, relations }) => {
     [points, relations, getColour]
   );
 
-  const handleOff = useCallback(
-    (hitGrp: Group) => {
-      getColour(hitGrp).sub(diffRef.current);
-      if (relsRef.current[0]) sceneRef.current.remove(...relsRef.current);
-      relsRef.current = [];
-      setCurr(undefined);
-    },
-    [getColour]
-  );
+  const handleOff = useCallback(() => {
+    getColour(curr!).sub(diffRef.current);
+    if (relsRef.current[0]) sceneRef.current.remove(...relsRef.current);
+    relsRef.current = [];
+    setCurr(undefined);
+  }, [curr, getColour]);
 
   const setRay = useCallback(() => {
     rayRef.current.setFromCamera(mouseRef.current, camRef.current);
@@ -95,15 +90,19 @@ const GlobePage: FC<GlobePageProps> = ({ points, relations }) => {
       if (!curr) {
         handleOn(hitGrp); // from zero to one and many
       } else if (curr.name === hitGrp.name) {
-        handleOff(hitGrp); // from one and many to zero
+        handleOff(); // from one and many to zero
       } else {
         const rel = relsRef.current.filter((x) => x.name === hitGrp.name)[0];
         if (rel) {
-          setPair(rel.name); // open slide of rel
+          if (isInward) {
+            setNs(`relations/${rel.name} ${curr.name}`);
+          } else {
+            setNs(`relations/${curr.name} ${rel.name}`);
+          } // open slide of rel
         }
       }
     }
-  }, [curr, handleOn, handleOff]);
+  }, [curr, handleOn, handleOff, isInward]);
 
   useEffect(() => {
     const setResize = () => {
@@ -150,9 +149,13 @@ const GlobePage: FC<GlobePageProps> = ({ points, relations }) => {
     earthRef.current = meshGrps;
   }, [data]);
 
+  useEffect(() => {
+    if (!ns) setPageNum(1);
+  }, [ns]);
+
   return (
     <>
-      <Localer ns={nsRef.current} placement="bottom" />
+      <Localer ns="globe" placement="bottom" />
       <Box flex={1} w="full" ref={wrapRef} pos="relative">
         {rect && (
           <Canvas
@@ -163,54 +166,18 @@ const GlobePage: FC<GlobePageProps> = ({ points, relations }) => {
             setRay={setRay}
           />
         )}
-        {curr && pair ? <InfoWindow curr={curr.name} pair={pair} /> : undefined}
+        {curr && ns ? <InfoWindow ns={ns} pageNum={pageNum} /> : undefined}
       </Box>
-      {curr && (
-        <ButtonGroup
-          pos="absolute"
-          bottom={3}
-          left={innerWidth / 2}
-          zIndex="1"
-          h={9}
-          w={(innerWidth - 24) / 4}
-          isAttached
-        >
-          <IconButton
-            aria-label="Exit Back"
-            icon={pair ? <UndoAikon /> : <CrossAikon />}
-            flex={1}
-            bg="gray.900"
-            color="tan"
-            borderTopLeftRadius="none"
-            borderBottomLeftRadius="xl"
-            onClick={() => {
-              if (!pair) {
-                handleOff(curr);
-              } else {
-                setPair(0);
-              }
-            }}
-          />
-          <Menu placement="top" isLazy>
-            <MenuButton
-              as={IconButton}
-              aria-label="Menu"
-              icon={<MenuAikon />}
-              flex={1}
-              bg="gray.900"
-              color="tan"
-              borderTopRightRadius="none"
-              borderBottomRightRadius="xl"
-            />
-            <MenuList userSelect="none">
-              <MenuItem onClick={() => setPair(1)}>
-                {t("characteristics")}
-              </MenuItem>
-              <MenuItem onClick={() => setPair(2)}>{t("listables")}</MenuItem>
-            </MenuList>
-          </Menu>
-        </ButtonGroup>
-      )}
+      <BatenGrup
+        currName={curr?.name}
+        isInward={isInward}
+        setIsInward={setIsInward}
+        ns={ns}
+        setNs={setNs}
+        handleOff={handleOff}
+        pageNum={pageNum}
+        setPageNum={setPageNum}
+      />
     </>
   );
 };
