@@ -29,23 +29,23 @@
     "d3-delaunay": "^6.0.2",
     "d3-geo": "^3.0.1",
     "earcut": "^2.2.3",
-    "framer-motion": "^5.3.3",
-    "next": "^12.0.5",
+    "framer-motion": "^5.4.1",
+    "next": "^12.0.7",
     "next-translate": "^1.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "three": "^0.134.0"
+    "three": "^0.135.0"
   },
   "devDependencies": {
     "@types/d3-array": "^3.0.2",
     "@types/d3-delaunay": "^6.0.0",
     "@types/d3-geo": "^3.0.2",
     "@types/earcut": "^2.1.1",
-    "@types/node": "^16.11.11",
+    "@types/node": "^16.11.12",
     "@types/react": "^17.0.37",
-    "@types/three": "^0.134.0",
-    "eslint": "^8.4.0",
-    "eslint-config-next": "^12.0.5",
+    "@types/three": "^0.135.0",
+    "eslint": "^8.4.1",
+    "eslint-config-next": "^12.0.7",
     "typescript": "^4.5.2"
   }
 }
