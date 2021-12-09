@@ -1,4 +1,3 @@
-import { useBoolean } from "@chakra-ui/hooks";
 import { Box } from "@chakra-ui/layout";
 import { GetStaticProps } from "next";
 import { FC, useCallback, useEffect, useRef, useState } from "react";
@@ -48,7 +47,6 @@ const GlobePage: FC<GlobePageProps> = ({ points, relations }) => {
   const [curr, setCurr] = useState<Group>();
   const [ns, setNs] = useState("");
   const [pageNum, setPageNum] = useState(1);
-  const [isInward, setIsInward] = useBoolean(true);
 
   const getColour = useCallback(
     (x: Group) => (x.children as CtryMesh[])[0].material.color,
@@ -92,17 +90,17 @@ const GlobePage: FC<GlobePageProps> = ({ points, relations }) => {
       } else if (curr.name === hitGrp.name) {
         handleOff(); // from one and many to zero
       } else {
-        const rel = relsRef.current.filter((x) => x.name === hitGrp.name)[0];
+        const rel = relsRef.current.find((x) => x.name === hitGrp.name);
         if (rel) {
-          if (isInward) {
-            setNs(`relations/${rel.name} ${curr.name}`);
-          } else {
+          if (relations.find(({ A, B }) => A === curr.name && B === rel.name)) {
             setNs(`relations/${curr.name} ${rel.name}`);
+          } else {
+            setNs(`relations/${rel.name} ${curr.name}`);
           } // open slide of rel
         }
       }
     }
-  }, [curr, handleOn, handleOff, isInward]);
+  }, [curr, handleOn, handleOff, relations]);
 
   useEffect(() => {
     const setResize = () => {
@@ -170,8 +168,6 @@ const GlobePage: FC<GlobePageProps> = ({ points, relations }) => {
       </Box>
       <BatenGrup
         currName={curr?.name}
-        isInward={isInward}
-        setIsInward={setIsInward}
         ns={ns}
         setNs={setNs}
         handleOff={handleOff}

@@ -4,13 +4,7 @@ import { Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/menu";
 import { Slider, SliderThumb, SliderTrack } from "@chakra-ui/slider";
 import useTranslation from "next-translate/useTranslation";
 import { FC, SetStateAction } from "react";
-import {
-  CrossAikon,
-  DownloadAikon,
-  MenuAikon,
-  UndoAikon,
-  UploadAikon,
-} from "./Aikon";
+import { CrossAikon, MenuAikon, UndoAikon } from "./Aikon";
 
 const BaseButton: FC<ButtonProps> = (props) => {
   return (
@@ -30,8 +24,6 @@ const BaseButton: FC<ButtonProps> = (props) => {
 interface BatenGrupProps {
   currName?: string;
   handleOff: () => void;
-  isInward: boolean;
-  setIsInward: { on: () => void; off: () => void; toggle: () => void };
   ns: string;
   setNs: (value: SetStateAction<string>) => void;
   pageNum: number;
@@ -41,35 +33,12 @@ interface BatenGrupProps {
 export const BatenGrup: FC<BatenGrupProps> = ({
   currName,
   handleOff,
-  isInward,
-  setIsInward,
   ns,
   setNs,
   pageNum,
   setPageNum,
 }) => {
   const { t } = useTranslation("globe");
-  const BatenSlider: FC = () => {
-    if (!ns) {
-      return (
-        <BaseButton
-          leftIcon={isInward ? <DownloadAikon /> : <UploadAikon />}
-          onClick={setIsInward.toggle}
-        >
-          {isInward ? "Inward" : "Outward"}
-        </BaseButton>
-      );
-    } else {
-      return (
-        <Center flex={5} p={3} bg="gray.900">
-          <Slider min={1} max={10} value={pageNum} onChange={setPageNum}>
-            <SliderTrack bg="tan" />
-            <SliderThumb bg="tan" outline="solid" />
-          </Slider>
-        </Center>
-      );
-    }
-  };
   if (!currName) {
     return <Box w="full" h={9} borderRadius="xl" bg="gray.900" />;
   } else {
@@ -81,7 +50,14 @@ export const BatenGrup: FC<BatenGrupProps> = ({
         >
           {!ns ? "Deselect" : "Globe"}
         </BaseButton>
-        <BatenSlider />
+        {ns && (
+          <Center flex={5} p={3} bg="gray.900">
+            <Slider min={1} max={10} value={pageNum} onChange={setPageNum}>
+              <SliderTrack bg="tan" />
+              <SliderThumb bg="tan" outline="solid" />
+            </Slider>
+          </Center>
+        )}
         <Menu placement="top" closeOnSelect={false} isLazy>
           <MenuButton as={BaseButton} leftIcon={<MenuAikon />}>
             More
