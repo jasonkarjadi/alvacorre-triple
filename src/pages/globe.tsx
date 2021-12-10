@@ -18,7 +18,7 @@ import {
 } from "three";
 import { BatenGrup } from "../components/BatenGrup";
 import { Canvas } from "../components/Canvas";
-import { InfoWindow } from "../components/InfoWindow";
+import { Content } from "../components/Content";
 import { Localer } from "../components/Localer";
 import points from "../data/countries_central_coordinates";
 import relations from "../data/curves_relations";
@@ -171,7 +171,7 @@ const GlobePage: FC<GlobePageProps> = ({ points, relations }) => {
             bg="orange.100"
           >
             <DynamicNamespaces namespaces={[ns]} fallback="Loading...">
-              <InfoWindow
+              <Content
                 ns={ns}
                 setNs={setNs}
                 pageNum={pageNum}

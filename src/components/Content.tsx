@@ -1,5 +1,6 @@
 import { Button, ButtonProps } from "@chakra-ui/button";
 import { Heading, SimpleGrid, Text } from "@chakra-ui/layout";
+import Trans from "next-translate/Trans";
 import useTranslation from "next-translate/useTranslation";
 import { FC, SetStateAction } from "react";
 
@@ -18,14 +19,14 @@ const TBaten: FC<ButtonProps> = (props) => {
   return null;
 };
 
-interface InfoWindowProps {
+interface ContentProps {
   ns: string;
   setNs: (value: SetStateAction<string>) => void;
   pageNum: number;
   setPageNum: (value: SetStateAction<number>) => void;
 }
 
-export const InfoWindow: FC<InfoWindowProps> = ({
+export const Content: FC<ContentProps> = ({
   ns,
   setNs,
   pageNum,
@@ -34,7 +35,11 @@ export const InfoWindow: FC<InfoWindowProps> = ({
   const { t } = useTranslation();
 
   if (ns.includes("characteristics")) {
-    return <>lorem ipsum</>;
+    return (
+      <>
+        <Trans i18nKey={`${ns}:brief`} components={{ Text: <Text mb={3} /> }} />
+      </>
+    );
   } else if (ns.includes("listables")) {
     return (
       <SimpleGrid h="full" spacing={3} column={2} row={5}>
@@ -72,7 +77,5 @@ export const InfoWindow: FC<InfoWindowProps> = ({
         </Heading>
       </>
     );
-  }
-
-  return <p>author code messed up</p>;
+  } else return <p>author code messed up</p>;
 };
