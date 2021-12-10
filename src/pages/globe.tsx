@@ -1,5 +1,6 @@
 import { Box } from "@chakra-ui/layout";
 import { GetStaticProps } from "next";
+import DynamicNamespaces from "next-translate/DynamicNamespaces";
 import { FC, useCallback, useEffect, useRef, useState } from "react";
 import {
   BufferGeometry,
@@ -26,8 +27,6 @@ import { genCurve } from "../utils/genCurve";
 import { genLineGeom } from "../utils/genGeom";
 import { geoPolyTrnglt } from "../utils/geoPolyTrnglt";
 
-type CtryMesh = Mesh<BufferGeometry, MeshBasicMaterial>;
-
 interface GlobePageProps {
   points: Pnts;
   relations: Rels;
@@ -46,10 +45,12 @@ const GlobePage: FC<GlobePageProps> = ({ points, relations }) => {
   const [data, setData] = useState<Ctrys>();
   const [curr, setCurr] = useState<Group>();
   const [ns, setNs] = useState("");
-  const [pageNum, setPageNum] = useState(1);
+  const [pageNum, setPageNum] = useState(0);
 
   const getColour = useCallback(
-    (x: Group) => (x.children as CtryMesh[])[0].material.color,
+    (x: Group) =>
+      (x.children as Mesh<BufferGeometry, MeshBasicMaterial>[])[0].material
+        .color,
     []
   );
 
@@ -147,10 +148,6 @@ const GlobePage: FC<GlobePageProps> = ({ points, relations }) => {
     earthRef.current = meshGrps;
   }, [data]);
 
-  useEffect(() => {
-    if (!ns) setPageNum(1);
-  }, [ns]);
-
   return (
     <>
       <Localer ns="globe" placement="bottom" />
@@ -164,7 +161,25 @@ const GlobePage: FC<GlobePageProps> = ({ points, relations }) => {
             setRay={setRay}
           />
         )}
-        {curr && ns ? <InfoWindow ns={ns} pageNum={pageNum} /> : undefined}
+        {ns && (
+          <Box
+            pos="absolute"
+            top="0"
+            left="0"
+            h="full"
+            w="full"
+            bg="orange.100"
+          >
+            <DynamicNamespaces namespaces={[ns]} fallback="Loading...">
+              <InfoWindow
+                ns={ns}
+                setNs={setNs}
+                pageNum={pageNum}
+                setPageNum={setPageNum}
+              />
+            </DynamicNamespaces>
+          </Box>
+        )}
       </Box>
       <BatenGrup
         currName={curr?.name}

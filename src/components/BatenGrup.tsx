@@ -1,7 +1,6 @@
 import { Button, ButtonGroup, ButtonProps } from "@chakra-ui/button";
-import { Box, Center } from "@chakra-ui/layout";
+import { Box } from "@chakra-ui/layout";
 import { Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/menu";
-import { Slider, SliderThumb, SliderTrack } from "@chakra-ui/slider";
 import useTranslation from "next-translate/useTranslation";
 import { FC, SetStateAction } from "react";
 import { CrossAikon, MenuAikon, UndoAikon } from "./Aikon";
@@ -46,19 +45,13 @@ export const BatenGrup: FC<BatenGrupProps> = ({
       <ButtonGroup w="full" h={9} isAttached>
         <BaseButton
           leftIcon={!ns ? <CrossAikon /> : <UndoAikon />}
-          onClick={() => (!ns ? handleOff() : setNs(""))}
+          onClick={() =>
+            !ns ? handleOff() : !pageNum ? setNs("") : setPageNum(0)
+          }
         >
-          {!ns ? "Deselect" : "Globe"}
+          {!ns ? "Deselect" : "Back"}
         </BaseButton>
-        {ns && (
-          <Center flex={5} p={3} bg="gray.900">
-            <Slider min={1} max={10} value={pageNum} onChange={setPageNum}>
-              <SliderTrack bg="tan" />
-              <SliderThumb bg="tan" outline="solid" />
-            </Slider>
-          </Center>
-        )}
-        <Menu placement="top" closeOnSelect={false} isLazy>
+        <Menu isLazy>
           <MenuButton as={BaseButton} leftIcon={<MenuAikon />}>
             More
           </MenuButton>
