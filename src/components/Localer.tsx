@@ -1,28 +1,22 @@
 import { Box } from "@chakra-ui/layout";
 import { Menu, MenuButton, MenuList } from "@chakra-ui/menu";
-import { UsePopperProps } from "@chakra-ui/popper";
 import useTranslation from "next-translate/useTranslation";
 import { FC } from "react";
 import { LocalerAitems } from "./LocalerAitem";
 import { TitleTag } from "./TitleTag";
 
-interface LocalerProps {
-  ns: string;
-  placement?: UsePopperProps["placement"];
-}
-
-export const Localer: FC<LocalerProps> = ({ ns, placement }) => {
-  const { t, lang } = useTranslation(ns);
+export const Localer: FC = () => {
+  const { t, lang } = useTranslation("navbar");
   return (
-    <Menu placement={placement} isLazy>
+    <Menu placement="top" isLazy>
       <MenuButton textAlign="center" pos="relative">
-        <TitleTag title={t("title")} tagline={t("tagline")} main={true} />
-        <Box as="span" fontSize="small" pos="absolute" top="1" right="-5">
+        <TitleTag title={t("title")} tagline={t("tagline")} />
+        <Box as="span" fontSize="x-small" pos="absolute" top="0" right="-4">
           {lang.toUpperCase()}
         </Box>
       </MenuButton>
       <MenuList userSelect="none">
-        <LocalerAitems lang={lang} ns={ns} />
+        <LocalerAitems lang={lang} ns="navbar" />
       </MenuList>
     </Menu>
   );

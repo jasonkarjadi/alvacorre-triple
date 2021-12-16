@@ -27,7 +27,6 @@ export const AikonLink: FC<AikonLinkProps> = ({ children, href, leftIcon }) => {
         leftIcon={leftIcon}
         h={9}
         flex={1}
-        px="0"
         borderTopRadius="none"
         borderBottomRadius="xl"
         fontSize="x-small"
@@ -44,7 +43,7 @@ export const AikonLink: FC<AikonLinkProps> = ({ children, href, leftIcon }) => {
       <BaseFormat
         as={MergedLink}
         bg="transparent"
-        _hover={{ bg: "orange.100", textDecorationThickness: "1px" }}
+        _hover={{ bg: "orange.100" }}
       />
     );
   }

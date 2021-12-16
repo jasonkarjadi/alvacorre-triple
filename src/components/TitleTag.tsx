@@ -4,21 +4,16 @@ import { FC } from "react";
 interface TitleTagProps {
   title: string;
   tagline: string;
-  main: boolean;
 }
 
-export const TitleTag: FC<TitleTagProps> = ({ title, tagline, main }) => {
+export const TitleTag: FC<TitleTagProps> = ({ title, tagline }) => {
   return (
     <>
-      <Heading
-        as="h1"
-        fontSize={main ? "3xl" : "xl"}
-        fontWeight={main ? "bold" : "normal"}
-      >
+      <Heading as="h1" fontSize="xl">
         {title.toUpperCase()}
       </Heading>
-      <Text fontSize={main ? "" : "x-small"} lineHeight="none">
-        {tagline}
+      <Text fontSize="x-small" fontWeight="bold" lineHeight="none">
+        {tagline.toUpperCase()}
       </Text>
     </>
   );

@@ -27,7 +27,7 @@ const LocalerAitem: FC<LocalerAitemProps> = ({ locale, ns }) => {
       onClick={async () => await setLanguage(`${locale}`)}
     >
       <Box as="span" textAlign="center">
-        <TitleTag title={title} tagline={tagline} main={false} />
+        <TitleTag title={title} tagline={tagline} />
       </Box>
     </MenuItem>
   );

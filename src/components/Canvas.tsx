@@ -77,7 +77,6 @@ export const Canvas: FC<CanvasProps> = ({
       onMouseMove={setMouseXY}
       onMouseDown={setRay}
       userSelect="none"
-      borderRadius="xl"
     />
   );
 };

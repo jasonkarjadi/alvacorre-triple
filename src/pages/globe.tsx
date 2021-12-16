@@ -1,6 +1,15 @@
+import { Button, IconButton, IconButtonProps } from "@chakra-ui/button";
 import { Box } from "@chakra-ui/layout";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerOverlay,
+  DrawerBody,
+} from "@chakra-ui/modal";
+import { useDisclosure } from "@chakra-ui/react";
 import { GetStaticProps } from "next";
 import DynamicNamespaces from "next-translate/DynamicNamespaces";
+import useTranslation from "next-translate/useTranslation";
 import { FC, useCallback, useEffect, useRef, useState } from "react";
 import {
   BufferGeometry,
@@ -16,16 +25,29 @@ import {
   Scene,
   Vector2,
 } from "three";
-import { BatenGrup } from "../components/BatenGrup";
+import { CrossAikon, MenuAikon, UndoAikon } from "../components/Aikon";
 import { Canvas } from "../components/Canvas";
 import { Content } from "../components/Content";
-import { Localer } from "../components/Localer";
 import points from "../data/countries_central_coordinates";
 import relations from "../data/curves_relations";
 import { Ctrys, Pnts, Rels } from "../types";
 import { genCurve } from "../utils/genCurve";
 import { genLineGeom } from "../utils/genGeom";
 import { geoPolyTrnglt } from "../utils/geoPolyTrnglt";
+
+const AikonBaten: FC<IconButtonProps> = (props) => {
+  return (
+    <IconButton
+      {...props}
+      w={9}
+      h={9}
+      pos="absolute"
+      bottom="12px"
+      bg="gray.900"
+      color="tan"
+    />
+  );
+};
 
 interface GlobePageProps {
   points: Pnts;
@@ -46,6 +68,8 @@ const GlobePage: FC<GlobePageProps> = ({ points, relations }) => {
   const [curr, setCurr] = useState<Group>();
   const [ns, setNs] = useState("");
   const [pageNum, setPageNum] = useState(0);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { t } = useTranslation("globe");
 
   const getColour = useCallback(
     (x: Group) =>
@@ -108,8 +132,8 @@ const GlobePage: FC<GlobePageProps> = ({ points, relations }) => {
       setRect(undefined);
       setRect(wrapRef.current?.getBoundingClientRect());
     };
-    addEventListener("resize", setResize);
     setResize();
+    addEventListener("resize", setResize);
     (async () => {
       // const res = await fetch(
       //   "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson"
@@ -149,47 +173,80 @@ const GlobePage: FC<GlobePageProps> = ({ points, relations }) => {
   }, [data]);
 
   return (
-    <>
-      <Localer ns="globe" placement="bottom" />
-      <Box flex={1} w="full" ref={wrapRef} pos="relative">
-        {rect && (
-          <Canvas
-            rect={rect}
-            camera={camRef.current}
-            mouse={mouseRef.current}
-            scene={sceneRef.current}
-            setRay={setRay}
-          />
-        )}
-        {ns && (
-          <Box
-            pos="absolute"
-            top="0"
-            left="0"
-            h="full"
-            w="full"
-            bg="orange.100"
-          >
-            <DynamicNamespaces namespaces={[ns]} fallback="Loading...">
-              <Content
-                ns={ns}
-                setNs={setNs}
-                pageNum={pageNum}
-                setPageNum={setPageNum}
-              />
-            </DynamicNamespaces>
-          </Box>
-        )}
-      </Box>
-      <BatenGrup
-        currName={curr?.name}
-        ns={ns}
-        setNs={setNs}
-        handleOff={handleOff}
-        pageNum={pageNum}
-        setPageNum={setPageNum}
-      />
-    </>
+    <Box flex={1} w="full" ref={wrapRef} pos="relative">
+      {rect && (
+        <Canvas
+          rect={rect}
+          camera={camRef.current}
+          mouse={mouseRef.current}
+          scene={sceneRef.current}
+          setRay={setRay}
+        />
+      )}
+      {ns && (
+        <Box
+          pos="absolute"
+          top="0"
+          left="0"
+          h="full"
+          w="full"
+          p={3}
+          pb={14}
+          zIndex="1"
+          bg="orange.100"
+        >
+          <DynamicNamespaces namespaces={[ns]} fallback="Loading...">
+            <Content
+              ns={ns}
+              setNs={setNs}
+              pageNum={pageNum}
+              setPageNum={setPageNum}
+            />
+          </DynamicNamespaces>
+        </Box>
+      )}
+      {curr && (
+        <AikonBaten
+          aria-label={!ns ? t("deselect") : !pageNum ? t("globe") : t("back")}
+          icon={!ns ? <CrossAikon /> : <UndoAikon />}
+          left="12px"
+          zIndex="2"
+          onClick={() =>
+            !ns ? handleOff() : !pageNum ? setNs("") : setPageNum(0)
+          }
+        />
+      )}
+      {curr && (
+        <AikonBaten
+          aria-label={"More"}
+          icon={<MenuAikon />}
+          right="12px"
+          zIndex="2"
+          onClick={onOpen}
+        />
+      )}
+      <Drawer isOpen={isOpen} onClose={onClose} placement="bottom">
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerBody p={0} display="flex">
+            <Button
+              flex={1}
+              borderRadius="none"
+              onClick={() => setNs(`characteristics/${curr?.name}`)}
+            >
+              {t("characteristics")}
+            </Button>
+            <Button
+              flex={1}
+              borderRadius="none"
+              onClick={() => setNs(`listables/${curr?.name}`)}
+            >
+              {t("listables")}
+            </Button>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
+    </Box>
   );
 };
 

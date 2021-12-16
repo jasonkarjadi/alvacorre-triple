@@ -1,6 +1,9 @@
 {
-  "title": "Bola Dunia",
-  "tagline": "Kelereng interaktif",
   "characteristics": "Ciri-ciri",
-  "listables": "Daftar Tabel"
+  "listables": "Daftar Tabel",
+  "deselect": "Batal Pilih",
+  "globe": "Bola Dunia",
+  "back": "Balik",
+  "history": "SEJARAH",
+  "influences": "PENGARUH"
 }

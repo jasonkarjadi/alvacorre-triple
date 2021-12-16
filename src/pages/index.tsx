@@ -1,13 +1,11 @@
+import { Box } from "@chakra-ui/layout";
 import { FC } from "react";
-import { Localer } from "../components/Localer";
 
 const IndexPage: FC = () => {
   return (
-    <>
+    <Box flex={1} w="full">
       {/* <Image flex={1} alt="main visual" /> */}
-      <div style={{ flex: "1" }} />
-      <Localer ns="home" placement="top" />
-    </>
+    </Box>
   );
 };
 

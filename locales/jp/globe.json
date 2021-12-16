@@ -1,6 +1,9 @@
 {
-  "title": "地球儀",
-  "tagline": "双方向ビー玉",
   "characteristics": "特徴",
-  "listables": "一覧表"
+  "listables": "一覧表",
+  "deselect": "選択解除",
+  "globe": "地球儀",
+  "back": "戻る",
+  "history": "歴史",
+  "influences": "影響"
 }

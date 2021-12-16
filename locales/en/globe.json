@@ -1,9 +1,8 @@
 {
-  "title": "The Globe",
-  "tagline": "An interactive marble",
   "characteristics": "Characteristics",
   "listables": "Listables",
   "deselect": "Deselect",
+  "globe": "Globe",
   "back": "Back",
   "history": "HISTORY",
   "influences": "INFLUENCES"
