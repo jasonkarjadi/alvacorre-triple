@@ -1,6 +1,6 @@
-import { Fams } from "../types";
+import { Fam } from "../types";
 
-const families: Fams = [
+const families: Fam[] = [
   {
     FAMILY: "Austronesian",
     COUNTRIES: [

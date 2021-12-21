@@ -1,9 +1,7 @@
 {
-  "characteristics": "特徴",
+  "overview": "概要",
   "listables": "一覧表",
-  "deselect": "選択解除",
-  "globe": "地球儀",
-  "back": "戻る",
+  "close": "閉じる",
   "history": "歴史",
   "influences": "影響"
 }

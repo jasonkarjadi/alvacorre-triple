@@ -1,11 +1,9 @@
-import { Box } from "@chakra-ui/layout";
 import { FC } from "react";
+import { ContentWrap } from "../components/ContentWrap";
 
 const IndexPage: FC = () => {
   return (
-    <Box flex={1} w="full">
-      {/* <Image flex={1} alt="main visual" /> */}
-    </Box>
+    <ContentWrap>{/* <Image flex={1} alt="main visual" /> */}</ContentWrap>
   );
 };
 

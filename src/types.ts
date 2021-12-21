@@ -22,15 +22,22 @@ export type FeatColl = {
   }[];
   bbox: BBox;
 };
-export type Ctrys = {
-  properties: FeatProps;
+export type Ctry = {
+  NAME: string;
+  LAT: number;
+  LNG: number;
+  LISTABLES: string[];
   bbox?: BBox;
   geometry: FeatGeom;
-}[];
-export type Rels = { A: string; B: string; FROM: "A" | "AB" }[];
-export type Pnts = { NAME: string; LAT: number; LNG: number }[];
-export type Fams = {
+};
+export type Rel = {
+  A: string;
+  B: string;
+  FROM: "A" | "AB";
+  LISTABLES: string[];
+};
+export type Fam = {
   FAMILY: string;
   COUNTRIES: string[];
   COLOR: ColorRepresentation;
-}[];
+};

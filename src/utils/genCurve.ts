@@ -6,10 +6,10 @@ import {
   TubeGeometry,
   Vector3,
 } from "three";
-import { Pnts } from "../types";
+import { Ctry } from "../types";
 import { toXYZ } from "./toXYZ";
 
-export const genCurve = (start: Pnts[number], end: Pnts[number], rad = 1) => {
+export const genCurve = (start: Ctry, end: Ctry, rad = 1) => {
   const [ax, ay, az] = toXYZ(start.LAT, start.LNG, rad);
   const [dx, dy, dz] = toXYZ(end.LAT, end.LNG, rad);
   const vA = new Vector3(ax, ay, az);

@@ -1,9 +1,7 @@
 {
-  "characteristics": "Ciri-ciri",
+  "overview": "Ikhtisar",
   "listables": "Daftar Tabel",
-  "deselect": "Batal Pilih",
-  "globe": "Bola Dunia",
-  "back": "Balik",
-  "history": "SEJARAH",
-  "influences": "PENGARUH"
+  "close": "Tutup",
+  "history": "Sejarah",
+  "influences": "Pengaruh"
 }

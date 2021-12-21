@@ -1,8 +1,11 @@
-import { Ctrys } from "../types";
+import { Ctry } from "../types";
 
-const countries: Ctrys = [
+const countries: Ctry[] = [
   {
-    properties: { NAME: "Fiji" },
+    NAME: "Fiji",
+    LAT: -17.7134,
+    LNG: 178.065,
+    LISTABLES: [],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -44,7 +47,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Tanzania" },
+    NAME: "Tanzania",
+    LAT: -6.369,
+    LNG: 34.8888,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -106,7 +112,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "W. Sahara" },
+    NAME: "W. Sahara",
+    LAT: 24.2155,
+    LNG: -12.8858,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -144,7 +153,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Canada" },
+    NAME: "Canada",
+    LAT: 56.1304,
+    LNG: -106.3468,
+    LISTABLES: [],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -1066,7 +1078,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "United States of America" },
+    NAME: "United States of America",
+    LAT: 37.0902,
+    LNG: -95.7129,
+    LISTABLES: [],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -1561,7 +1576,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Kazakhstan" },
+    NAME: "Kazakhstan",
+    LAT: 48.0196,
+    LNG: 66.9237,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -1683,7 +1701,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Uzbekistan" },
+    NAME: "Uzbekistan",
+    LAT: 41.3775,
+    LNG: 66.9237,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -1747,7 +1768,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Papua New Guinea" },
+    NAME: "Papua New Guinea",
+    LAT: -6.315,
+    LNG: 143.9555,
+    LISTABLES: [],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -1852,7 +1876,13 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Indonesia" },
+    NAME: "Indonesia",
+    LAT: -0.7893,
+    LNG: 113.9213,
+    LISTABLES: [
+      "Indonesian Dutch-Origin Vocabulary",
+      "Indonesian Arabic-Origin Vocabulary",
+    ],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -2162,7 +2192,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Argentina" },
+    NAME: "Argentina",
+    LAT: -38.4161,
+    LNG: -63.6167,
+    LISTABLES: [],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -2299,7 +2332,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Chile" },
+    NAME: "Chile",
+    LAT: -35.6751,
+    LNG: -71.543,
+    LISTABLES: [],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -2429,7 +2465,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Dem. Rep. Congo" },
+    NAME: "Dem. Rep. Congo",
+    LAT: -4.0383,
+    LNG: 21.7587,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -2563,7 +2602,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Somalia" },
+    NAME: "Somalia",
+    LAT: 5.1521,
+    LNG: 46.1996,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -2610,7 +2652,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Kenya" },
+    NAME: "Kenya",
+    LAT: -0.0236,
+    LNG: 37.9062,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -2657,7 +2702,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Sudan" },
+    NAME: "Sudan",
+    LAT: 12.8628,
+    LNG: 30.2176,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -2748,7 +2796,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Chad" },
+    NAME: "Chad",
+    LAT: 15.4542,
+    LNG: 18.7322,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -2816,7 +2867,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Haiti" },
+    NAME: "Haiti",
+    LAT: 18.9712,
+    LNG: -72.2852,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -2847,7 +2901,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Dominican Rep." },
+    NAME: "Dominican Rep.",
+    LAT: 18.7357,
+    LNG: -70.1627,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -2883,7 +2940,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Russia" },
+    NAME: "Russia",
+    LAT: 61.524,
+    LNG: 105.3188,
+    LISTABLES: [],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -3572,7 +3632,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Bahamas" },
+    NAME: "Bahamas",
+    LAT: 25.0343,
+    LNG: -77.3963,
+    LISTABLES: [],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -3613,7 +3676,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Falkland Is." },
+    NAME: "Falkland Is.",
+    LAT: -51.7963,
+    LNG: -59.5236,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -3633,7 +3699,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Norway" },
+    NAME: "Norway",
+    LAT: 60.472,
+    LNG: 8.4689,
+    LISTABLES: [],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -3745,7 +3814,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Greenland" },
+    NAME: "Greenland",
+    LAT: 71.7069,
+    LNG: 42.6043,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -3887,7 +3959,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Fr. S. Antarctic Lands" },
+    NAME: "Fr. S. Antarctic Lands",
+    LAT: -49.2804,
+    LNG: 69.3486,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -3906,7 +3981,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Timor-Leste" },
+    NAME: "Timor-Leste",
+    LAT: -8.8742,
+    LNG: 125.7275,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -3927,7 +4005,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "South Africa" },
+    NAME: "South Africa",
+    LAT: -30.5595,
+    LNG: 22.9375,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -4033,7 +4114,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Lesotho" },
+    NAME: "Lesotho",
+    LAT: -29.61,
+    LNG: 28.2336,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -4055,7 +4139,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Mexico" },
+    NAME: "Mexico",
+    LAT: 23.6345,
+    LNG: -102.5528,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -4235,7 +4322,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Uruguay" },
+    NAME: "Uruguay",
+    LAT: -32.5228,
+    LNG: -55.7658,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -4266,7 +4356,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Brazil" },
+    NAME: "Brazil",
+    LAT: -14.235,
+    LNG: -51.9253,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -4479,7 +4572,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Bolivia" },
+    NAME: "Bolivia",
+    LAT: -16.2902,
+    LNG: -63.5887,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -4549,7 +4645,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Peru" },
+    NAME: "Peru",
+    LAT: -9.19,
+    LNG: -75.0152,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -4635,7 +4734,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Colombia" },
+    NAME: "Colombia",
+    LAT: 4.5709,
+    LNG: -74.2973,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -4745,7 +4847,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Panama" },
+    NAME: "Panama",
+    LAT: 8.538,
+    LNG: -80.7821,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -4807,7 +4912,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Costa Rica" },
+    NAME: "Costa Rica",
+    LAT: 9.7489,
+    LNG: -83.7534,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -4853,7 +4961,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Nicaragua" },
+    NAME: "Nicaragua",
+    LAT: 12.8654,
+    LNG: -85.2072,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -4915,7 +5026,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Honduras" },
+    NAME: "Honduras",
+    LAT: 15.2,
+    LNG: -86.2419,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -4982,7 +5096,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "El Salvador" },
+    NAME: "El Salvador",
+    LAT: 13.7942,
+    LNG: -88.8965,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5012,7 +5129,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Guatemala" },
+    NAME: "Guatemala",
+    LAT: 15.7835,
+    LNG: -90.2308,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5057,7 +5177,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Belize" },
+    NAME: "Belize",
+    LAT: 17.1899,
+    LNG: -88.4976,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5087,7 +5210,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Venezuela" },
+    NAME: "Venezuela",
+    LAT: 6.4238,
+    LNG: -66.5897,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5189,7 +5315,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Guyana" },
+    NAME: "Guyana",
+    LAT: 4.8604,
+    LNG: -58.9302,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5239,7 +5368,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Suriname" },
+    NAME: "Suriname",
+    LAT: 3.9193,
+    LNG: -56.0278,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5275,7 +5407,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "France" },
+    NAME: "France",
+    LAT: 46.2276,
+    LNG: 2.2137,
+    LISTABLES: [],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -5369,7 +5504,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Ecuador" },
+    NAME: "Ecuador",
+    LAT: -1.8312,
+    LNG: -78.1834,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5412,7 +5550,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Puerto Rico" },
+    NAME: "Puerto Rico",
+    LAT: 18.2208,
+    LNG: -66.5901,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5431,7 +5572,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Jamaica" },
+    NAME: "Jamaica",
+    LAT: 18.1096,
+    LNG: -77.2975,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5452,7 +5596,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Cuba" },
+    NAME: "Cuba",
+    LAT: 21.5218,
+    LNG: -77.7812,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5504,7 +5651,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Zimbabwe" },
+    NAME: "Zimbabwe",
+    LAT: -19.0154,
+    LNG: 29.1549,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5551,7 +5701,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Botswana" },
+    NAME: "Botswana",
+    LAT: -22.3285,
+    LNG: 24.6849,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5601,7 +5754,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Namibia" },
+    NAME: "Namibia",
+    LAT: -22.9576,
+    LNG: 18.4904,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5655,7 +5811,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Senegal" },
+    NAME: "Senegal",
+    LAT: 14.4974,
+    LNG: -14.4524,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5709,7 +5868,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Mali" },
+    NAME: "Mali",
+    LAT: 17.5707,
+    LNG: -3.9962,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5795,7 +5957,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Mauritania" },
+    NAME: "Mauritania",
+    LAT: 21.0079,
+    LNG: -10.9408,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5844,7 +6009,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Benin" },
+    NAME: "Benin",
+    LAT: 9.3077,
+    LNG: 2.3158,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5879,7 +6047,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Niger" },
+    NAME: "Niger",
+    LAT: 17.6078,
+    LNG: 8.0817,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -5947,7 +6118,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Nigeria" },
+    NAME: "Nigeria",
+    LAT: 9.082,
+    LNG: 8.6753,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6015,7 +6189,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Cameroon" },
+    NAME: "Cameroon",
+    LAT: 7.3697,
+    LNG: 12.3547,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6086,7 +6263,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Togo" },
+    NAME: "Togo",
+    LAT: 8.6195,
+    LNG: 0.8248,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6115,7 +6295,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Ghana" },
+    NAME: "Ghana",
+    LAT: 7.9465,
+    LNG: -1.0232,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6150,7 +6333,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Côte d'Ivoire" },
+    NAME: "Côte d'Ivoire",
+    LAT: 7.54,
+    LNG: -5.5471,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6206,7 +6392,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Guinea" },
+    NAME: "Guinea",
+    LAT: 9.9456,
+    LNG: -9.6966,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6286,7 +6475,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Guinea-Bissau" },
+    NAME: "Guinea-Bissau",
+    LAT: 11.8037,
+    LNG: -15.1804,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6315,7 +6507,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Liberia" },
+    NAME: "Liberia",
+    LAT: 6.4281,
+    LNG: -9.4295,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6352,7 +6547,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Sierra Leone" },
+    NAME: "Sierra Leone",
+    LAT: 8.4606,
+    LNG: -11.7799,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6384,7 +6582,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Burkina Faso" },
+    NAME: "Burkina Faso",
+    LAT: 12.2383,
+    LNG: -1.5616,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6433,7 +6634,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Central African Rep." },
+    NAME: "Central African Rep.",
+    LAT: 6.6111,
+    LNG: 20.9394,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6505,7 +6709,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Congo" },
+    NAME: "Congo",
+    LAT: -4.0383,
+    LNG: 21.7587,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6564,7 +6771,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Gabon" },
+    NAME: "Gabon",
+    LAT: -0.8037,
+    LNG: 11.6094,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6605,7 +6815,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Eq. Guinea" },
+    NAME: "Eq. Guinea",
+    LAT: 1.6508,
+    LNG: 10.2679,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6622,7 +6835,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Zambia" },
+    NAME: "Zambia",
+    LAT: -13.1339,
+    LNG: 27.8493,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6693,7 +6909,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Malawi" },
+    NAME: "Malawi",
+    LAT: -13.2543,
+    LNG: 34.3015,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6731,7 +6950,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Mozambique" },
+    NAME: "Mozambique",
+    LAT: -18.6657,
+    LNG: 35.5296,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6820,7 +7042,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Swaziland" },
+    NAME: "Swaziland",
+    LAT: -26.5225,
+    LNG: 31.4659,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6841,7 +7066,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Angola" },
+    NAME: "Angola",
+    LAT: -11.2027,
+    LNG: 17.8739,
+    LISTABLES: [],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -6932,7 +7160,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Burundi" },
+    NAME: "Burundi",
+    LAT: -3.3731,
+    LNG: 29.9189,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6955,7 +7186,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Israel" },
+    NAME: "Israel",
+    LAT: 31.0461,
+    LNG: 34.8516,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -6991,7 +7225,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Lebanon" },
+    NAME: "Lebanon",
+    LAT: 33.8547,
+    LNG: 35.8623,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7012,7 +7249,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Madagascar" },
+    NAME: "Madagascar",
+    LAT: -18.7669,
+    LNG: 46.8691,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7071,7 +7311,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Palestine" },
+    NAME: "Palestine",
+    LAT: 31.9522,
+    LNG: 35.2332,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7090,7 +7333,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Gambia" },
+    NAME: "Gambia",
+    LAT: 13.4432,
+    LNG: -15.3101,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7116,7 +7362,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Tunisia" },
+    NAME: "Tunisia",
+    LAT: 33.8869,
+    LNG: 9.5375,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7157,7 +7406,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Algeria" },
+    NAME: "Algeria",
+    LAT: 28.0339,
+    LNG: 1.6596,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7229,7 +7481,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Jordan" },
+    NAME: "Jordan",
+    LAT: 30.5852,
+    LNG: 36.2384,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7258,7 +7513,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "United Arab Emirates" },
+    NAME: "United Arab Emirates",
+    LAT: 23.4241,
+    LNG: 53.8478,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7290,7 +7548,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Qatar" },
+    NAME: "Qatar",
+    LAT: 25.3548,
+    LNG: 51.1839,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7309,7 +7570,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Kuwait" },
+    NAME: "Kuwait",
+    LAT: 29.3117,
+    LNG: 47.4818,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7328,7 +7592,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Iraq" },
+    NAME: "Iraq",
+    LAT: 33.2232,
+    LNG: 43.6793,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7368,7 +7635,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Oman" },
+    NAME: "Oman",
+    LAT: 21.4735,
+    LNG: 55.9754,
+    LISTABLES: [],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -7431,7 +7701,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Vanuatu" },
+    NAME: "Vanuatu",
+    LAT: -15.3767,
+    LNG: 166.9592,
+    LISTABLES: [],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -7459,7 +7732,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Cambodia" },
+    NAME: "Cambodia",
+    LAT: 12.5657,
+    LNG: 104.991,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7486,7 +7762,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Thailand" },
+    NAME: "Thailand",
+    LAT: 15.87,
+    LNG: 100.9925,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7560,7 +7839,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Laos" },
+    NAME: "Laos",
+    LAT: 19.8563,
+    LNG: 102.4955,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7607,7 +7889,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Myanmar" },
+    NAME: "Myanmar",
+    LAT: 21.9162,
+    LNG: 95.956,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7687,7 +7972,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Vietnam" },
+    NAME: "Vietnam",
+    LAT: 14.0583,
+    LNG: 108.2772,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7741,7 +8029,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "North Korea" },
+    NAME: "North Korea",
+    LAT: 40.3399,
+    LNG: 127.5101,
+    LISTABLES: [],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -7805,7 +8096,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "South Korea" },
+    NAME: "South Korea",
+    LAT: 35.9078,
+    LNG: 127.7669,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7834,7 +8128,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Mongolia" },
+    NAME: "Mongolia",
+    LAT: 46.8625,
+    LNG: 103.8467,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -7919,7 +8216,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "India" },
+    NAME: "India",
+    LAT: 20.5937,
+    LNG: 78.9629,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8065,7 +8365,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Bangladesh" },
+    NAME: "Bangladesh",
+    LAT: 23.685,
+    LNG: 90.3563,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8111,7 +8414,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Bhutan" },
+    NAME: "Bhutan",
+    LAT: 27.5142,
+    LNG: 90.4336,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8134,7 +8440,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Nepal" },
+    NAME: "Nepal",
+    LAT: 28.3949,
+    LNG: 84.124,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8167,7 +8476,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Pakistan" },
+    NAME: "Pakistan",
+    LAT: 30.3753,
+    LNG: 69.3451,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8243,7 +8555,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Afghanistan" },
+    NAME: "Afghanistan",
+    LAT: 33.9391,
+    LNG: 67.71,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8322,7 +8637,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Tajikistan" },
+    NAME: "Tajikistan",
+    LAT: 38.861,
+    LNG: 71.2761,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8373,7 +8691,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Kyrgyzstan" },
+    NAME: "Kyrgyzstan",
+    LAT: 41.2044,
+    LNG: 74.7661,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8418,7 +8739,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Turkmenistan" },
+    NAME: "Turkmenistan",
+    LAT: 38.9697,
+    LNG: 59.5563,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8482,7 +8806,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Iran" },
+    NAME: "Iran",
+    LAT: 32.4279,
+    LNG: 53.688,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8568,7 +8895,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Syria" },
+    NAME: "Syria",
+    LAT: 34.8021,
+    LNG: 38.9968,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8605,7 +8935,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Armenia" },
+    NAME: "Armenia",
+    LAT: 40.0691,
+    LNG: 45.0382,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8635,7 +8968,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Sweden" },
+    NAME: "Sweden",
+    LAT: 60.1282,
+    LNG: 18.6435,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8685,7 +9021,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Belarus" },
+    NAME: "Belarus",
+    LAT: 53.7098,
+    LNG: 27.9534,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8740,7 +9079,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Ukraine" },
+    NAME: "Ukraine",
+    LAT: 48.3794,
+    LNG: 31.1656,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8843,7 +9185,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Poland" },
+    NAME: "Poland",
+    LAT: 51.9194,
+    LNG: 19.1451,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8898,7 +9243,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Austria" },
+    NAME: "Austria",
+    LAT: 47.5162,
+    LNG: 14.5501,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8945,7 +9293,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Hungary" },
+    NAME: "Hungary",
+    LAT: 47.1625,
+    LNG: 19.5033,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -8987,7 +9338,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Moldova" },
+    NAME: "Moldova",
+    LAT: 47.4116,
+    LNG: 28.3699,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9024,7 +9378,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Romania" },
+    NAME: "Romania",
+    LAT: 45.9432,
+    LNG: 24.9668,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9078,7 +9435,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Lithuania" },
+    NAME: "Lithuania",
+    LAT: 55.1694,
+    LNG: 23.8813,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9107,7 +9467,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Latvia" },
+    NAME: "Latvia",
+    LAT: 56.8796,
+    LNG: 24.6032,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9139,7 +9502,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Estonia" },
+    NAME: "Estonia",
+    LAT: 58.5953,
+    LNG: 25.0136,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9168,7 +9534,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Germany" },
+    NAME: "Germany",
+    LAT: 51.1657,
+    LNG: 10.4515,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9236,7 +9605,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Bulgaria" },
+    NAME: "Bulgaria",
+    LAT: 42.7339,
+    LNG: 25.4858,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9274,7 +9646,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Greece" },
+    NAME: "Greece",
+    LAT: 39.0742,
+    LNG: 21.8243,
+    LISTABLES: [],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -9344,7 +9719,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Turkey" },
+    NAME: "Turkey",
+    LAT: 38.9637,
+    LNG: 35.2433,
+    LISTABLES: [],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -9428,7 +9806,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Albania" },
+    NAME: "Albania",
+    LAT: 41.1533,
+    LNG: 20.1683,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9462,7 +9843,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Croatia" },
+    NAME: "Croatia",
+    LAT: 45.1,
+    LNG: 15.2,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9515,7 +9899,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Switzerland" },
+    NAME: "Switzerland",
+    LAT: 46.8182,
+    LNG: 8.2275,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9549,7 +9936,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Luxembourg" },
+    NAME: "Luxembourg",
+    LAT: 49.8153,
+    LNG: 6.1296,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9566,7 +9956,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Belgium" },
+    NAME: "Belgium",
+    LAT: 50.5039,
+    LNG: 4.4699,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9593,7 +9986,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Netherlands" },
+    NAME: "Netherlands",
+    LAT: 52.1326,
+    LNG: 5.2913,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9618,7 +10014,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Portugal" },
+    NAME: "Portugal",
+    LAT: 39.3999,
+    LNG: -8.2245,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9661,7 +10060,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Spain" },
+    NAME: "Spain",
+    LAT: 40.4637,
+    LNG: -3.7492,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9722,7 +10124,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Ireland" },
+    NAME: "Ireland",
+    LAT: 53.1424,
+    LNG: -7.6921,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9745,7 +10150,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "New Caledonia" },
+    NAME: "New Caledonia",
+    LAT: -20.9043,
+    LNG: 165.618,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -9768,7 +10176,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Solomon Is." },
+    NAME: "Solomon Is.",
+    LAT: -9.6457,
+    LNG: 160.1562,
+    LISTABLES: [],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -9833,7 +10244,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "New Zealand" },
+    NAME: "New Zealand",
+    LAT: -40.9006,
+    LNG: 174.886,
+    LISTABLES: [],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -9915,7 +10329,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Australia" },
+    NAME: "Australia",
+    LAT: -25.2744,
+    LNG: 133.7751,
+    LISTABLES: [],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -10172,7 +10589,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Sri Lanka" },
+    NAME: "Sri Lanka",
+    LAT: 7.8731,
+    LNG: 80.7718,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -10192,7 +10612,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "China" },
+    NAME: "China",
+    LAT: 35.8617,
+    LNG: 104.1954,
+    LISTABLES: [],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -10448,7 +10871,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Taiwan" },
+    NAME: "Taiwan",
+    LAT: 23.6978,
+    LNG: 120.9605,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -10467,7 +10893,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Italy" },
+    NAME: "Italy",
+    LAT: 41.8719,
+    LNG: 12.5674,
+    LISTABLES: [],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -10574,7 +11003,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Denmark" },
+    NAME: "Denmark",
+    LAT: 56.2639,
+    LNG: 9.5018,
+    LISTABLES: [],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -10614,7 +11046,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "United Kingdom" },
+    NAME: "United Kingdom",
+    LAT: 55.3781,
+    LNG: -3.436,
+    LISTABLES: [],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -10686,7 +11121,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Iceland" },
+    NAME: "Iceland",
+    LAT: 64.9631,
+    LNG: -19.0208,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -10716,7 +11154,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Azerbaijan" },
+    NAME: "Azerbaijan",
+    LAT: 40.1431,
+    LNG: 47.5769,
+    LISTABLES: [],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -10776,7 +11217,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Georgia" },
+    NAME: "Georgia",
+    LAT: 42.3154,
+    LNG: 43.3569,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -10810,7 +11254,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Philippines" },
+    NAME: "Philippines",
+    LAT: 12.8797,
+    LNG: 121.774,
+    LISTABLES: [],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -10956,7 +11403,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Malaysia" },
+    NAME: "Malaysia",
+    LAT: 4.2105,
+    LNG: 101.9758,
+    LISTABLES: [],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -11034,7 +11484,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Brunei" },
+    NAME: "Brunei",
+    LAT: 4.5353,
+    LNG: 114.7277,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -11052,7 +11505,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Slovenia" },
+    NAME: "Slovenia",
+    LAT: 46.1512,
+    LNG: 14.9955,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -11080,7 +11536,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Finland" },
+    NAME: "Finland",
+    LAT: 61.9241,
+    LNG: 25.7482,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -11130,7 +11589,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Slovakia" },
+    NAME: "Slovakia",
+    LAT: 48.669,
+    LNG: 19.699,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -11173,7 +11635,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Czechia" },
+    NAME: "Czechia",
+    LAT: 49.8175,
+    LNG: 15.473,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -11218,7 +11683,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Eritrea" },
+    NAME: "Eritrea",
+    LAT: 15.1794,
+    LNG: 39.7823,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -11256,7 +11724,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Japan" },
+    NAME: "Japan",
+    LAT: 36.2048,
+    LNG: 138.2529,
+    LISTABLES: [],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -11341,7 +11812,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Paraguay" },
+    NAME: "Paraguay",
+    LAT: -23.4425,
+    LNG: -58.4438,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -11384,7 +11858,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Yemen" },
+    NAME: "Yemen",
+    LAT: 15.5527,
+    LNG: 48.5164,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -11438,7 +11915,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Saudi Arabia" },
+    NAME: "Saudi Arabia",
+    LAT: 23.8859,
+    LNG: 45.0792,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -11524,7 +12004,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Antarctica" },
+    NAME: "Antarctica",
+    LAT: 82.8628,
+    LNG: 135.0,
+    LISTABLES: [],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -12225,7 +12708,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "N. Cyprus" },
+    NAME: "N. Cyprus",
+    LAT: 35.248,
+    LNG: 33.6577,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12251,7 +12737,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Cyprus" },
+    NAME: "Cyprus",
+    LAT: 35.1264,
+    LNG: 33.4299,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12276,7 +12765,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Morocco" },
+    NAME: "Morocco",
+    LAT: 31.7917,
+    LNG: -7.0926,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12349,7 +12841,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Egypt" },
+    NAME: "Egypt",
+    LAT: 26.8206,
+    LNG: 30.8025,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12403,7 +12898,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Libya" },
+    NAME: "Libya",
+    LAT: 26.3351,
+    LNG: 17.2283,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12469,7 +12967,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Ethiopia" },
+    NAME: "Ethiopia",
+    LAT: 9.145,
+    LNG: 40.4897,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12538,7 +13039,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Djibouti" },
+    NAME: "Djibouti",
+    LAT: 11.8251,
+    LNG: 42.5903,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12563,7 +13067,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Somaliland" },
+    NAME: "Somaliland",
+    LAT: 9.4117,
+    LNG: 46.8253,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12599,7 +13106,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Uganda" },
+    NAME: "Uganda",
+    LAT: 1.3733,
+    LNG: 32.2903,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12637,7 +13147,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Rwanda" },
+    NAME: "Rwanda",
+    LAT: -1.9403,
+    LNG: 29.8739,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12661,7 +13174,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Bosnia and Herz." },
+    NAME: "Bosnia and Herz.",
+    LAT: 43.9159,
+    LNG: 17.6791,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12694,7 +13210,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "North Macedonia" },
+    NAME: "North Macedonia",
+    LAT: 41.6086,
+    LNG: 21.7453,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12722,7 +13241,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Serbia" },
+    NAME: "Serbia",
+    LAT: 44.0165,
+    LNG: 21.0059,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12780,7 +13302,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Montenegro" },
+    NAME: "Montenegro",
+    LAT: 42.7087,
+    LNG: 19.3744,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12808,7 +13333,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Kosovo" },
+    NAME: "Kosovo",
+    LAT: 42.6026,
+    LNG: 20.903,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12839,7 +13367,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "Trinidad and Tobago" },
+    NAME: "Trinidad and Tobago",
+    LAT: 10.6918,
+    LNG: -61.2225,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [
@@ -12857,7 +13388,10 @@ const countries: Ctrys = [
     },
   },
   {
-    properties: { NAME: "S. Sudan" },
+    NAME: "S. Sudan",
+    LAT: 6.877,
+    LNG: 31.307,
+    LISTABLES: [],
     geometry: {
       type: "Polygon",
       coordinates: [

@@ -1,9 +1,7 @@
 {
-  "characteristics": "Characteristics",
+  "overview": "Overview",
   "listables": "Listables",
-  "deselect": "Deselect",
-  "globe": "Globe",
-  "back": "Back",
-  "history": "HISTORY",
-  "influences": "INFLUENCES"
+  "close": "Close",
+  "history": "History",
+  "influences": "Influences"
 }
