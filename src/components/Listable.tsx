@@ -9,17 +9,20 @@ interface ListableProps {
 
 export const Listable: FC<ListableProps> = ({ content, tableData }) => {
   return (
-    <Table>
+    <Table size="sm">
       <Thead>
         <Tr>
-          <Trans i18nKey={`${content}:heading`} components={{ Th: <Th /> }} />
+          <Trans
+            i18nKey={`${content}:heading`}
+            components={{ Th: <Th color="gray.900" /> }}
+          />
         </Tr>
       </Thead>
       <Tbody>
-        {tableData?.map((x) => (
-          <Tr key={x.toString()}>
-            {x.map((y) => (
-              <Td key={y}>{y}</Td>
+        {tableData?.map((x, i) => (
+          <Tr key={i}>
+            {x.map((y, i) => (
+              <Td key={i}>{y}</Td>
             ))}
           </Tr>
         ))}

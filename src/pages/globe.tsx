@@ -1,13 +1,11 @@
 import { IconButton } from "@chakra-ui/button";
-import { Box } from "@chakra-ui/layout";
+import { Box, VStack } from "@chakra-ui/layout";
 import { GetStaticProps } from "next";
 import DynamicNamespaces from "next-translate/DynamicNamespaces";
 import useTranslation from "next-translate/useTranslation";
 import {
   FC,
-  JSXElementConstructor,
   ReactElement,
-  SetStateAction,
   useCallback,
   useEffect,
   useRef,
@@ -27,11 +25,12 @@ import {
   Scene,
   Vector2,
 } from "three";
-import { CrossAikon } from "../components/Aikon";
+import { ColumnsAikon, CrossAikon, ScrollAikon } from "../components/Aikon";
 import { Canvas } from "../components/Canvas";
 import { ContentWrap } from "../components/ContentWrap";
 import { Listable } from "../components/Listable";
 import { Listables } from "../components/Listables";
+import { Overview } from "../components/Overview";
 import rels from "../data/rels";
 import { Ctry, Rel } from "../types";
 import { genCurve, genLineGeom, geoPolyTrnglt } from "../utils";
@@ -53,10 +52,11 @@ const GlobePage: FC<GlobePageProps> = ({ rels }) => {
   const [rect, setRect] = useState<DOMRect>();
   const [data, setData] = useState<Ctry[]>();
   const [curr, setCurr] = useState<Group>();
-  const [pair, setPair] = useState<XMesh>();
+  const [pair, setPair] = useState<Group>();
   const [content, setContent] = useState<string>();
   const [ns, setNs] = useState<string[]>();
   const [tableData, setTableData] = useState<string[][]>();
+  const { t } = useTranslation("globe");
 
   const setRay = useCallback(() => {
     rayRef.current.setFromCamera(mouseRef.current, camRef.current);
@@ -64,7 +64,7 @@ const GlobePage: FC<GlobePageProps> = ({ rels }) => {
     if (hit) {
       const hitGrp = hit.object.parent! as Group;
       const removePair = () => {
-        pair?.material.color.sub(diffRef.current);
+        pair && (pair.children[0] as XMesh).material.color.sub(diffRef.current);
         setPair(undefined);
       };
       if (!curr) {
@@ -93,8 +93,8 @@ const GlobePage: FC<GlobePageProps> = ({ rels }) => {
         if (rel) {
           if (rel.name !== pair?.name) {
             removePair();
-            setPair(rel);
-            rel.material.color.add(diffRef.current);
+            (hitGrp.children[0] as XMesh).material.color.add(diffRef.current);
+            setPair(hitGrp);
           } else removePair();
         }
       }
@@ -150,10 +150,9 @@ const GlobePage: FC<GlobePageProps> = ({ rels }) => {
 
   interface AikonBatenProps {
     keystring: string;
-    keyicon: ReactElement<any, JSXElementConstructor<any>>;
+    keyicon: ReactElement;
     isLeft: boolean;
     nsArray: string[] | undefined;
-    exFunc?: () => void;
   }
 
   const AikonBaten: FC<AikonBatenProps> = ({
@@ -161,9 +160,7 @@ const GlobePage: FC<GlobePageProps> = ({ rels }) => {
     keyicon,
     isLeft,
     nsArray,
-    exFunc,
   }) => {
-    const { t } = useTranslation("globe");
     const isKey = content === keystring;
     const mpx = "12px";
     return (
@@ -182,23 +179,14 @@ const GlobePage: FC<GlobePageProps> = ({ rels }) => {
         onClick={() => {
           if (isKey) {
             setContent(undefined);
-            setNs(undefined);
           } else {
             setContent(keystring);
-            if (exFunc) {
-              exFunc();
-              return;
-            }
-            console.log("setNs executed");
             setNs(nsArray);
           }
         }}
       />
     );
   };
-
-  const findRel = (a: string, b: string) =>
-    rels.find((x) => x.A === a && x.B === b);
 
   return (
     <Box h="full" w="full" ref={wrapRef} pos="relative">
@@ -215,7 +203,7 @@ const GlobePage: FC<GlobePageProps> = ({ rels }) => {
         <ContentWrap pos="absolute" top="0" left="0" zIndex="2" pb={14}>
           <DynamicNamespaces namespaces={ns} fallback="Loading...">
             {content === "overview" ? (
-              <></>
+              <Overview />
             ) : content === "listables" ? (
               <Listables
                 setContent={setContent}
@@ -232,50 +220,49 @@ const GlobePage: FC<GlobePageProps> = ({ rels }) => {
         <>
           <AikonBaten
             keystring="overview"
-            keyicon={<></>}
+            keyicon={<ScrollAikon />}
             isLeft={true}
             nsArray={[
               !pair
                 ? `ctrys/${curr.name}`
                 : `rels/${
-                    findRel(curr.name, pair.name)
+                    rels.find(({ A, B }) => A === curr.name && B === pair.name)
                       ? `${curr.name} ${pair.name}`
                       : `${pair.name} ${curr.name}`
                   }`,
             ]}
           />
           <Box
+            as={VStack}
+            spacing={0}
             pos="absolute"
             bottom="12px"
             left={innerWidth / 2}
             transform="translateX(-50%)"
             zIndex="1"
+            textAlign="center"
             color="white"
           >
-            {curr.name}
-            {pair && (
-              <>
-                <br />
-                {pair.name}
-              </>
-            )}
+            <Box as="span">{curr.name}</Box>
+            {pair && <Box as="span">{pair.name}</Box>}
           </Box>
           <AikonBaten
             keystring="listables"
-            keyicon={<></>}
+            keyicon={<ColumnsAikon />}
             isLeft={false}
             nsArray={(!pair
               ? data?.find((x) => x.NAME === curr.name)
-              : findRel(curr.name, pair.name) || findRel(pair.name, curr.name)
+              : rels.find(
+                  ({ A, B }) =>
+                    (A === curr.name && B === pair.name) ||
+                    (A === pair.name && B === curr.name)
+                )
             )?.LISTABLES.map((x) => `listables/${x}`)}
-            exFunc={tableData && (() => setTableData(undefined))}
           />
         </>
       )}
     </Box>
   );
-  // const findRel = (a: string, b: string) =>
-  //   rels.find((x) => x.A === a && x.B === b);
 };
 
 export const getStaticProps: GetStaticProps = () => {
