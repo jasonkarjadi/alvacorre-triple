@@ -1,8 +1,10 @@
 import { IconButton } from "@chakra-ui/button";
-import { Box, VStack } from "@chakra-ui/layout";
+import { Box, VStack, Center } from "@chakra-ui/layout";
+import { Slider, SliderTrack, SliderThumb } from "@chakra-ui/slider";
 import { GetStaticProps } from "next";
 import DynamicNamespaces from "next-translate/DynamicNamespaces";
 import useTranslation from "next-translate/useTranslation";
+import Head from "next/head";
 import {
   FC,
   ReactElement,
@@ -188,8 +190,35 @@ const GlobePage: FC<GlobePageProps> = ({ rels }) => {
     );
   };
 
+  interface SliderDisplayProps {
+    currName: string;
+  }
+
+  const SliderDisplay: FC<SliderDisplayProps> = ({ currName }) => {
+    if (content) {
+      return (
+        <Slider>
+          <SliderTrack bg="tan" />
+          <SliderThumb bg="tan" outline="solid" outlineColor="gray.900" />
+        </Slider>
+      );
+    }
+    return (
+      <>
+        <Box as="span">{currName}</Box>
+        {pair && <Box as="span">{pair.name}</Box>}
+      </>
+    );
+  };
+
   return (
     <Box h="full" w="full" ref={wrapRef} pos="relative">
+      <Head>
+        <title>
+          {t("page")}
+          {t("navbar:title")}
+        </title>
+      </Head>
       {rect && (
         <Canvas
           rect={rect}
@@ -233,18 +262,22 @@ const GlobePage: FC<GlobePageProps> = ({ rels }) => {
             ]}
           />
           <Box
-            as={VStack}
+            as={!pair ? Center : VStack}
             spacing={0}
             pos="absolute"
             bottom="12px"
             left={innerWidth / 2}
             transform="translateX(-50%)"
-            zIndex="1"
-            textAlign="center"
+            zIndex="3"
             color="white"
+            h={9}
+            px={3}
+            fontSize="sm"
+            borderRadius="md"
+            bg={!content ? undefined : "gray.900"}
+            w={!content ? undefined : innerWidth - 120}
           >
-            <Box as="span">{curr.name}</Box>
-            {pair && <Box as="span">{pair.name}</Box>}
+            <SliderDisplay currName={curr.name} />
           </Box>
           <AikonBaten
             keystring="listables"
