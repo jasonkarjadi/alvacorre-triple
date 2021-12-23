@@ -1,18 +1,20 @@
 import { Button } from "@chakra-ui/button";
-import { Grid } from "@chakra-ui/layout";
+import { Grid, Text } from "@chakra-ui/layout";
 import useTranslation from "next-translate/useTranslation";
 import { FC, SetStateAction } from "react";
 
 interface ListablesProps {
   setContent: (value: SetStateAction<string | undefined>) => void;
   ns: string[] | undefined;
-  setTableData: (value: SetStateAction<string[][] | undefined>) => void;
+  setPgdTblData: (value: SetStateAction<string[][][] | undefined>) => void;
+  maxRows: number;
 }
 
 export const Listables: FC<ListablesProps> = ({
   setContent,
   ns,
-  setTableData,
+  setPgdTblData,
+  maxRows,
 }) => {
   const { t } = useTranslation();
   return (
@@ -26,12 +28,21 @@ export const Listables: FC<ListablesProps> = ({
         <Button
           key={x}
           h="full"
+          bg="tan"
+          _hover={{ bg: "orange.100", textDecor: "underline" }}
           onClick={async () => {
-            setTableData((await import(`../data/${x}`)).default);
+            const tblData: string[][] = (await import(`../data/${x}`)).default;
+            const pgdTblData: string[][][] = [];
+            const maxPageNum = Math.ceil(tblData.length / maxRows);
+            for (let i = 0; i < maxPageNum; i++) {
+              const n = i * maxRows;
+              pgdTblData.push(tblData.slice(n, n + maxRows));
+            }
+            setPgdTblData(pgdTblData);
             setContent(x);
           }}
         >
-          {t(`${x}:title`)}
+          <Text>{t(`${x}:title`)}</Text>
         </Button>
       ))}
     </Grid>

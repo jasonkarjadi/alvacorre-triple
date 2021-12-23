@@ -1,6 +1,5 @@
 import { IconButton } from "@chakra-ui/button";
-import { Box, VStack, Center } from "@chakra-ui/layout";
-import { Slider, SliderTrack, SliderThumb } from "@chakra-ui/slider";
+import { Box, BoxProps, Center, StackProps, VStack } from "@chakra-ui/layout";
 import { GetStaticProps } from "next";
 import DynamicNamespaces from "next-translate/DynamicNamespaces";
 import useTranslation from "next-translate/useTranslation";
@@ -33,6 +32,7 @@ import { ContentWrap } from "../components/ContentWrap";
 import { Listable } from "../components/Listable";
 import { Listables } from "../components/Listables";
 import { Overview } from "../components/Overview";
+import { Penggeser } from "../components/Penggeser";
 import rels from "../data/rels";
 import { Ctry, Rel } from "../types";
 import { genCurve, genLineGeom, geoPolyTrnglt } from "../utils";
@@ -57,7 +57,9 @@ const GlobePage: FC<GlobePageProps> = ({ rels }) => {
   const [pair, setPair] = useState<Group>();
   const [content, setContent] = useState<string>();
   const [ns, setNs] = useState<string[]>();
-  const [tableData, setTableData] = useState<string[][]>();
+  const [pgdTblData, setPgdTblData] = useState<string[][][]>();
+  const [sliderVal, setSliderVal] = useState(0);
+  const [maxRows, setMaxRows] = useState(14);
   const { t } = useTranslation("globe");
 
   const setRay = useCallback(() => {
@@ -190,24 +192,20 @@ const GlobePage: FC<GlobePageProps> = ({ rels }) => {
     );
   };
 
-  interface SliderDisplayProps {
-    currName: string;
-  }
-
-  const SliderDisplay: FC<SliderDisplayProps> = ({ currName }) => {
-    if (content) {
-      return (
-        <Slider>
-          <SliderTrack bg="tan" />
-          <SliderThumb bg="tan" outline="solid" outlineColor="gray.900" />
-        </Slider>
-      );
-    }
+  const SliderDisplay: FC<BoxProps & StackProps> = (props) => {
     return (
-      <>
-        <Box as="span">{currName}</Box>
-        {pair && <Box as="span">{pair.name}</Box>}
-      </>
+      <Box
+        pos="absolute"
+        bottom="12px"
+        left={innerWidth / 2}
+        transform="translateX(-50%)"
+        zIndex="3"
+        h={9}
+        px={3}
+        borderRadius="md"
+        fontWeight="bold"
+        {...props}
+      />
     );
   };
 
@@ -237,10 +235,15 @@ const GlobePage: FC<GlobePageProps> = ({ rels }) => {
               <Listables
                 setContent={setContent}
                 ns={ns}
-                setTableData={setTableData}
+                setPgdTblData={setPgdTblData}
+                maxRows={maxRows}
               />
             ) : (
-              <Listable content={content} tableData={tableData} />
+              <Listable
+                content={content}
+                pgdTblData={pgdTblData}
+                sliderVal={sliderVal}
+              />
             )}
           </DynamicNamespaces>
         </ContentWrap>
@@ -261,24 +264,29 @@ const GlobePage: FC<GlobePageProps> = ({ rels }) => {
                   }`,
             ]}
           />
-          <Box
-            as={!pair ? Center : VStack}
-            spacing={0}
-            pos="absolute"
-            bottom="12px"
-            left={innerWidth / 2}
-            transform="translateX(-50%)"
-            zIndex="3"
-            color="white"
-            h={9}
-            px={3}
-            fontSize="sm"
-            borderRadius="md"
-            bg={!content ? undefined : "gray.900"}
-            w={!content ? undefined : innerWidth - 120}
-          >
-            <SliderDisplay currName={curr.name} />
-          </Box>
+          {content?.includes("listables/") ? (
+            <SliderDisplay as={Center} bg="gray.900" w={innerWidth - 120}>
+              <Penggeser
+                pgdTblData={pgdTblData}
+                sliderVal={sliderVal}
+                setSliderVal={setSliderVal}
+              />
+            </SliderDisplay>
+          ) : (
+            <SliderDisplay
+              as={!pair ? Center : VStack}
+              spacing={0}
+              justifyContent="space-evenly"
+              color="orange.100"
+              fontSize="x-small"
+              lineHeight="none"
+              bg={!content ? undefined : "gray.900"}
+              w={!content ? undefined : innerWidth - 120}
+            >
+              <Box as="span">{curr.name.toUpperCase()}</Box>
+              {pair && <Box as="span">{pair.name.toUpperCase()}</Box>}
+            </SliderDisplay>
+          )}
           <AikonBaten
             keystring="listables"
             keyicon={<ColumnsAikon />}
