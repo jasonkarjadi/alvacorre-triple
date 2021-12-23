@@ -27,7 +27,6 @@ export const Penggeser: FC<PenggeserProps> = ({
       <SliderMark
         value={sliderVal}
         color="tan"
-        fontWeight="bold"
         bg="gray.900"
         borderRadius="md"
         w={6}

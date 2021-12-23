@@ -1,5 +1,5 @@
 import { Button } from "@chakra-ui/button";
-import { Grid, Text } from "@chakra-ui/layout";
+import { Grid } from "@chakra-ui/layout";
 import useTranslation from "next-translate/useTranslation";
 import { FC, SetStateAction } from "react";
 
@@ -28,8 +28,12 @@ export const Listables: FC<ListablesProps> = ({
         <Button
           key={x}
           h="full"
+          whiteSpace="normal"
           bg="tan"
-          _hover={{ bg: "orange.100", textDecor: "underline" }}
+          _hover={{
+            textDecor: "underline 2px",
+            border: "solid",
+          }}
           onClick={async () => {
             const tblData: string[][] = (await import(`../data/${x}`)).default;
             const pgdTblData: string[][][] = [];
@@ -42,7 +46,7 @@ export const Listables: FC<ListablesProps> = ({
             setContent(x);
           }}
         >
-          <Text>{t(`${x}:title`)}</Text>
+          {t(`${x}:title`)}
         </Button>
       ))}
     </Grid>
