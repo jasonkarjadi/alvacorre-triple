@@ -59,7 +59,7 @@ const GlobePage: FC<GlobePageProps> = ({ rels }) => {
   const [ns, setNs] = useState<string[]>();
   const [pgdTblData, setPgdTblData] = useState<string[][][]>();
   const [sliderVal, setSliderVal] = useState(0);
-  const [maxRows, setMaxRows] = useState(14);
+  const [maxRows, setMaxRows] = useState(12);
   const { t } = useTranslation("globe");
 
   const setRay = useCallback(() => {
@@ -233,10 +233,19 @@ const GlobePage: FC<GlobePageProps> = ({ rels }) => {
               <Overview />
             ) : content === "listables" ? (
               <Listables
-                setContent={setContent}
-                ns={ns}
-                setPgdTblData={setPgdTblData}
-                maxRows={maxRows}
+                stringArr={ns}
+                onClick={async (x: string) => {
+                  const tblData: string[][] = (await import(`../data/${x}`))
+                    .default;
+                  const pagedTableData: string[][][] = [];
+                  const maxPageNum = Math.ceil(tblData.length / maxRows);
+                  for (let i = 0; i < maxPageNum; i++) {
+                    const n = i * maxRows;
+                    pagedTableData.push(tblData.slice(n, n + maxRows));
+                  }
+                  setPgdTblData(pagedTableData);
+                  setContent(x);
+                }}
               />
             ) : (
               <Listable
