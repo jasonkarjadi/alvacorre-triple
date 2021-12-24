@@ -1,4 +1,4 @@
-import { Text } from "@chakra-ui/layout";
+import { Heading, Text } from "@chakra-ui/layout";
 import useTranslation from "next-translate/useTranslation";
 import Head from "next/head";
 import { FC } from "react";
@@ -10,7 +10,8 @@ const CreatorPage: FC = () => {
     <ContentWrap>
       <Head>
         <title>
-          {t("page")}
+          {t("title")}
+          {t("navbar:|")}
           {t("navbar:title")}
         </title>
       </Head>
@@ -21,10 +22,14 @@ const CreatorPage: FC = () => {
           height: "120px",
           borderRadius: "120px",
           background: "black",
+          margin: "auto",
         }}
       />
-      <Text w="full" textAlign="justify">
-        {t("creator")}
+      <Heading textAlign="center" fontSize="lg">
+        {"Jason Karjadi".toUpperCase()}
+      </Heading>
+      <Text w="full" textAlign="center">
+        {t("body")}
       </Text>
     </ContentWrap>
   );

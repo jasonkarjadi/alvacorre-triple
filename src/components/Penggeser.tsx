@@ -31,6 +31,7 @@ export const Penggeser: FC<PenggeserProps> = ({
         borderRadius="md"
         w={6}
         textAlign="center"
+        lineHeight="normal"
         ml={-3}
         mt={-7}
       >

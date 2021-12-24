@@ -1,4 +1,4 @@
-import { Text } from "@chakra-ui/layout";
+import { Text, Heading } from "@chakra-ui/layout";
 import useTranslation from "next-translate/useTranslation";
 import Head from "next/head";
 import { FC } from "react";
@@ -10,12 +10,17 @@ const PrefacePage: FC = () => {
     <ContentWrap>
       <Head>
         <title>
-          {t("page")}
+          {t("title")}
+          {t("navbar:|")}
           {t("navbar:title")}
         </title>
       </Head>
+      <Heading fontSize="lg">{t("title").toUpperCase()}</Heading>
+      <Text textAlign="right" py={3}>
+        {t("quote")}
+      </Text>
       <Text w="full" textAlign="justify">
-        &emsp;{t("preface")}
+        &emsp;{t("body")}
       </Text>
     </ContentWrap>
   );

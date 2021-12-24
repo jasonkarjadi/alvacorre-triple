@@ -213,7 +213,8 @@ const GlobePage: FC<GlobePageProps> = ({ rels }) => {
     <Box h="full" w="full" ref={wrapRef} pos="relative">
       <Head>
         <title>
-          {t("page")}
+          {t("title")}
+          {t("navbar:|")}
           {t("navbar:title")}
         </title>
       </Head>
@@ -274,7 +275,12 @@ const GlobePage: FC<GlobePageProps> = ({ rels }) => {
             ]}
           />
           {content?.includes("listables/") ? (
-            <SliderDisplay as={Center} bg="gray.900" w={innerWidth - 120}>
+            <SliderDisplay
+              as={Center}
+              bg="gray.900"
+              w={innerWidth - 120}
+              userSelect="none"
+            >
               <Penggeser
                 pgdTblData={pgdTblData}
                 sliderVal={sliderVal}
