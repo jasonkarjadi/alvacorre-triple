@@ -10,12 +10,12 @@ const PrefacePage: FC = () => {
     <ContentWrap>
       <Head>
         <title>
-          {t("title")}
+          {t("navbar:preface")}
           {t("navbar:|")}
           {t("navbar:title")}
         </title>
       </Head>
-      <Heading fontSize="lg">{t("title").toUpperCase()}</Heading>
+      <Heading fontSize="lg">{t("navbar:preface").toUpperCase()}</Heading>
       <Text textAlign="right" py={3}>
         {t("quote")}
       </Text>

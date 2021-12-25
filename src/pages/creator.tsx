@@ -10,7 +10,7 @@ const CreatorPage: FC = () => {
     <ContentWrap>
       <Head>
         <title>
-          {t("title")}
+          {t("navbar:creator")}
           {t("navbar:|")}
           {t("navbar:title")}
         </title>

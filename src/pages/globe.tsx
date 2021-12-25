@@ -213,7 +213,7 @@ const GlobePage: FC<GlobePageProps> = ({ rels }) => {
     <Box h="full" w="full" ref={wrapRef} pos="relative">
       <Head>
         <title>
-          {t("title")}
+          {t("navbar:globe")}
           {t("navbar:|")}
           {t("navbar:title")}
         </title>
