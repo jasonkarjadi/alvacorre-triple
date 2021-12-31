@@ -231,7 +231,7 @@ const GlobePage: FC<GlobePageProps> = ({ rels }) => {
         <ContentWrap pos="absolute" top="0" left="0" zIndex="2" pb={14}>
           <DynamicNamespaces namespaces={ns} fallback="Loading...">
             {content === "overview" ? (
-              <Overview />
+              <Overview ns={ns} />
             ) : content === "listables" ? (
               <Listables
                 stringArr={ns}
