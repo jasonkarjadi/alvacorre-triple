@@ -63,6 +63,7 @@ const GlobePage: FC<GlobePageProps> = ({ rels }) => {
   const { t } = useTranslation("globe");
 
   const setRay = useCallback(() => {
+    if (!data) return;
     rayRef.current.setFromCamera(mouseRef.current, camRef.current);
     const hit = rayRef.current.intersectObjects(earthRef.current)[0];
     if (hit) {
@@ -77,10 +78,10 @@ const GlobePage: FC<GlobePageProps> = ({ rels }) => {
         const isX = (x: string) => x === hitGrp.name;
         const filRels = rels.filter(({ A, B }) => isX(A) || isX(B));
         if (filRels[0]) {
-          const ctryFind = (x: string) => data?.find((p) => x === p.NAME);
-          const pntA = ctryFind(hitGrp.name);
+          const ctryFind = (x: string) => data.find((ctry) => x === ctry.NAME);
+          const ctryA = ctryFind(hitGrp.name);
           const filEnds = filRels.map(({ A, B }) => (isX(A) ? B : A));
-          const lines = filEnds.map((D) => genCurve(pntA!, ctryFind(D)!, 50));
+          const lines = filEnds.map((D) => genCurve(ctryA!, ctryFind(D)!, 50));
           relArray.push(...lines);
           sceneRef.current.add(...lines);
         }
@@ -253,6 +254,7 @@ const GlobePage: FC<GlobePageProps> = ({ rels }) => {
                 content={content}
                 pgdTblData={pgdTblData}
                 sliderVal={sliderVal}
+                setSliderVal={setSliderVal}
               />
             )}
           </DynamicNamespaces>
@@ -298,8 +300,8 @@ const GlobePage: FC<GlobePageProps> = ({ rels }) => {
               bg={!content ? undefined : "gray.900"}
               w={!content ? undefined : innerWidth - 120}
             >
-              <Box as="span">{curr.name.toUpperCase()}</Box>
-              {pair && <Box as="span">{pair.name.toUpperCase()}</Box>}
+              <Box as="span">{curr.name.toUpperCase()}</Box> {/**/}
+              {pair && <Box as="span">{pair.name.toUpperCase()}</Box>} {/**/}
             </SliderDisplay>
           )}
           <AikonBaten
