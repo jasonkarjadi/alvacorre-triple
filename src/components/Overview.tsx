@@ -9,7 +9,7 @@ interface OverviewProps {
 export const Overview: FC<OverviewProps> = ({ ns }) => {
   return (
     <Trans
-      i18nKey={`${ns?.length && ns[0]}:brief`}
+      i18nKey={`${ns && ns[0]}:brief`}
       components={{
         Heading: <Heading fontSize="lg" mb={1} />,
         Text: <Text />,
