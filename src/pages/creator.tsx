@@ -1,7 +1,9 @@
-import { Heading, Text } from "@chakra-ui/layout";
+import { Box, Flex, Heading, Text } from "@chakra-ui/layout";
 import useTranslation from "next-translate/useTranslation";
 import Head from "next/head";
+import Image from "next/image";
 import { FC } from "react";
+import ProfilePicture from "../../public/DSC_8106.jpg";
 import { ContentWrap } from "../components/ContentWrap";
 
 const CreatorPage: FC = () => {
@@ -15,22 +17,21 @@ const CreatorPage: FC = () => {
           {t("navbar:title")}
         </title>
       </Head>
-      {/* <Image alt="my profile picture" /> */}
-      <div
-        style={{
-          width: "120px",
-          height: "120px",
-          borderRadius: "120px",
-          background: "black",
-          margin: "auto",
-        }}
-      />
-      <Heading textAlign="center" fontSize="lg">
-        {"Jason Karjadi".toUpperCase()}
+      <Heading fontSize="lg" mb={3}>
+        {t("navbar:creator").toUpperCase()}
       </Heading>
-      <Text w="full" textAlign="center">
-        {t("body")}
-      </Text>
+      <Flex>
+        <Box mr={3}>
+          <Box w={32} h={32} overflow="hidden" border="solid tan">
+            <Image src={ProfilePicture} alt="Picture of Author" />
+          </Box>
+          <Text textAlign="center">{"Jason Karjadi"}</Text>
+        </Box>
+        <Box>
+          <Text w="full">{t("body")}</Text>
+          <Text>jason@karjadi.com</Text>
+        </Box>
+      </Flex>
     </ContentWrap>
   );
 };
