@@ -16,12 +16,10 @@ const PrefacePage: FC = () => {
         </title>
       </Head>
       <Heading fontSize="lg">{t("navbar:preface").toUpperCase()}</Heading>
-      <Text textAlign="right" py={3}>
+      <Text textAlign="right" my={3}>
         {t("quote")}
       </Text>
-      <Text w="full" textAlign="justify">
-        &emsp;{t("body")}
-      </Text>
+      <Text w="full">{t("body")}</Text>
     </ContentWrap>
   );
 };
