@@ -1880,8 +1880,8 @@ const countries: Ctry[] = [
     LAT: -0.7893,
     LNG: 113.9213,
     LISTABLES: [
-      "Indonesian Dutch-Origin Vocabulary",
-      "Indonesian Arabic-Origin Vocabulary",
+      "IndonesianVocabularyFromDutch",
+      "IndonesianVocabularyFromArabic",
     ],
     geometry: {
       type: "MultiPolygon",
@@ -10615,7 +10615,7 @@ const countries: Ctry[] = [
     NAME: "China",
     LAT: 35.8617,
     LNG: 104.1954,
-    LISTABLES: [],
+    LISTABLES: ["HanCharacters"],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -11049,7 +11049,7 @@ const countries: Ctry[] = [
     NAME: "United Kingdom",
     LAT: 55.3781,
     LNG: -3.436,
-    LISTABLES: [],
+    LISTABLES: ["EnglishIrregularVerbs"],
     geometry: {
       type: "MultiPolygon",
       coordinates: [
@@ -11727,7 +11727,7 @@ const countries: Ctry[] = [
     NAME: "Japan",
     LAT: 36.2048,
     LNG: 138.2529,
-    LISTABLES: [],
+    LISTABLES: ["HanCharacters"],
     geometry: {
       type: "MultiPolygon",
       coordinates: [

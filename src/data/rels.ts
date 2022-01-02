@@ -5,7 +5,7 @@ const relations: Rel[] = [
     A: "Netherlands",
     B: "Indonesia",
     FROM: "A",
-    LISTABLES: ["Indonesian Dutch-Origin Vocabulary"],
+    LISTABLES: ["IndonesianVocabularyFromDutch"],
   },
   {
     A: "Japan",
@@ -29,7 +29,7 @@ const relations: Rel[] = [
     A: "China",
     B: "Japan",
     FROM: "AB",
-    LISTABLES: [],
+    LISTABLES: ["HanCharacters"],
   },
   {
     A: "Japan",
@@ -47,7 +47,7 @@ const relations: Rel[] = [
     A: "Saudi Arabia",
     B: "Indonesia",
     FROM: "A",
-    LISTABLES: ["Indonesian Arabic-Origin Vocabulary"],
+    LISTABLES: ["IndonesianVocabularyFromArabic"],
   },
   {
     A: "Portugal",
@@ -103,12 +103,12 @@ const relations: Rel[] = [
     FROM: "A",
     LISTABLES: [],
   },
-  {
-    A: "United Kingdom",
-    B: "Hong Kong",
-    FROM: "A",
-    LISTABLES: [],
-  },
+  // {
+  //   A: "United Kingdom",
+  //   B: "Hong Kong",
+  //   FROM: "A",
+  //   LISTABLES: [],
+  // },
   {
     A: "United Kingdom",
     B: "United States of America",
