@@ -15,10 +15,9 @@ const PrefacePage: FC = () => {
           {t("navbar:title")}
         </title>
       </Head>
-      <Heading fontSize="lg">{t("navbar:preface").toUpperCase()}</Heading>
-      <Text textAlign="right" my={3}>
-        {t("quote")}
-      </Text>
+      <Heading fontSize="lg" mb={3}>
+        {t("navbar:preface").toUpperCase()}
+      </Heading>
       <Text w="full">{t("body")}</Text>
     </ContentWrap>
   );
