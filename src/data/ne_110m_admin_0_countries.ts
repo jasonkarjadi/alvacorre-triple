@@ -1882,6 +1882,8 @@ const countries: Ctry[] = [
     LISTABLES: [
       "IndonesianVocabularyFromDutch",
       "IndonesianVocabularyFromArabic",
+      "IndonesianVocabularyFromSouthernChinese",
+      "IndonesiaVocabularyFromSanskrit",
     ],
     geometry: {
       type: "MultiPolygon",

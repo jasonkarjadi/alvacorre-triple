@@ -17,14 +17,14 @@ const relations: Rel[] = [
     A: "China",
     B: "Indonesia",
     FROM: "A",
-    LISTABLES: [],
+    LISTABLES: ["IndonesianVocabularyFromSouthernChinese"],
   },
-  {
-    A: "China",
-    B: "Vietnam",
-    FROM: "A",
-    LISTABLES: [],
-  },
+  // {
+  //   A: "China",
+  //   B: "Vietnam",
+  //   FROM: "A",
+  //   LISTABLES: [],
+  // },
   {
     A: "China",
     B: "Japan",
@@ -41,7 +41,7 @@ const relations: Rel[] = [
     A: "India",
     B: "Indonesia",
     FROM: "A",
-    LISTABLES: [],
+    LISTABLES: ["IndonesiaVocabularyFromSanskrit"],
   },
   {
     A: "Saudi Arabia",
@@ -121,18 +121,18 @@ const relations: Rel[] = [
     FROM: "A",
     LISTABLES: [],
   },
-  {
-    A: "Portugal",
-    B: "Angola",
-    FROM: "A",
-    LISTABLES: [],
-  },
-  {
-    A: "Spain",
-    B: "Mexico",
-    FROM: "A",
-    LISTABLES: [],
-  },
+  // {
+  //   A: "Portugal",
+  //   B: "Angola",
+  //   FROM: "A",
+  //   LISTABLES: [],
+  // },
+  // {
+  //   A: "Spain",
+  //   B: "Mexico",
+  //   FROM: "A",
+  //   LISTABLES: [],
+  // },
 ];
 
 export default relations;
