@@ -125,30 +125,42 @@ const GlobePage: FC<GlobePageProps> = ({ rels }) => {
 
   useEffect(() => {
     if (!data) return;
-    const meshGrps = data.map(({ NAME, geometry }) => {
+    data.map(({ geometry }) => {
       const polys =
         geometry.type === "Polygon"
           ? [geometry.coordinates]
           : geometry.coordinates;
-      const meshMatl = new MeshBasicMaterial({ color: 0x171923 });
-      const meshGrp = new Group();
-      polys.map((c) => {
-        const { verts, inds } = geoPolyTrnglt(c, 50, 1);
-        const meshGeom = new BufferGeometry()
-          .setIndex(inds)
-          .setAttribute("position", new Float32BufferAttribute(verts, 3));
-        meshGeom.computeVertexNormals();
-        meshGrp.add(new Mesh(meshGeom, meshMatl));
-      });
       const lineMatl = new LineBasicMaterial({ color: 0xf6ad55 });
       const lineGrp = new Group();
       polys.map((c) =>
         lineGrp.add(new LineSegments(genLineGeom(c, 50, 1), lineMatl))
       ); // shorten??
-      meshGrp.name = NAME;
-      sceneRef.current.add(meshGrp, lineGrp);
-      return meshGrp;
+      sceneRef.current.add(lineGrp);
     });
+    const meshGrps = data
+      .filter(
+        ({ NAME }) =>
+          NAME === "Indonesia" || NAME === "Japan" || NAME === "United Kingdom"
+      )
+      .map(({ NAME, geometry }) => {
+        const polys =
+          geometry.type === "Polygon"
+            ? [geometry.coordinates]
+            : geometry.coordinates;
+        const meshMatl = new MeshBasicMaterial({ color: 0x1a202c });
+        const meshGrp = new Group();
+        polys.map((c) => {
+          const { verts, inds } = geoPolyTrnglt(c, 50, 1);
+          const meshGeom = new BufferGeometry()
+            .setIndex(inds)
+            .setAttribute("position", new Float32BufferAttribute(verts, 3));
+          meshGeom.computeVertexNormals();
+          meshGrp.add(new Mesh(meshGeom, meshMatl));
+        });
+        meshGrp.name = NAME;
+        sceneRef.current.add(meshGrp);
+        return meshGrp;
+      });
     earthRef.current = meshGrps;
   }, [data]);
 
