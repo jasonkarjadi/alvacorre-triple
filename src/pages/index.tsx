@@ -6,11 +6,10 @@ import { ContentWrap } from "../components/ContentWrap";
 const IndexPage: FC = () => {
   const { t } = useTranslation("home");
   return (
-    <ContentWrap>
+    <ContentWrap bg="no-repeat url('/WillowVisual.jpg')" bgSize="cover">
       <Head>
         <title>{t("navbar:title")}</title>
       </Head>
-      {/* <Image flex={1} alt="main visual" /> */}
     </ContentWrap>
   );
 };
